@@ -38,7 +38,7 @@ http://www.xitongcheng.cc/xtjc/12276.html
 运行下面的命令，重新注册启动小娜
 Get-AppXPackage -Name Microsoft.Windows.Cortana | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
 
-# 小娜启动绿色换件
+# 小娜启动绿色软件
 小娜启动绿色软件的步骤
 - 在开始菜单中创建快捷键
 - 没有权限，首先设置权限

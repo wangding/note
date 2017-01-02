@@ -1,3 +1,6 @@
+## 学习资料
+http://billie66.github.io/TLCL/book/zh/index.html
+
 ## 腾讯主机控制台：
 https://console.qcloud.com/cvm
 

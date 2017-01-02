@@ -1,3 +1,6 @@
+# 解决了弹窗的问题
+https://www.zhihu.com/question/24265718
+
 # 去掉六个文件夹
 原文地址：
 http://www.askvg.com/tip-remove-6-extra-folders-from-windows-10-explorer-this-pc/

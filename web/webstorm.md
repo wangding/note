@@ -1,12 +1,17 @@
+# 参考资料
+- http://frontenddev.org/column/introduction-to-webstorm/
 # 视频课程
 - 51CTO 上无此类课程
 - 极客学院和慕课网有这类课程，不过都特别简单
 
 # 快捷键
+- 参考资料：https://my.oschina.net/powertoolsteam/blog/796156
 - 新建文件或目录：Ctrl + Alt + Ins 
 - 打开命令行终端：Alt + F12
 - require 表达式：Ctrl + Alt + V
 - 完成当前表达式：Ctrl + Shift + Enter
+- 删除行：Ctrl + X（复制行到剪贴板），Ctrl + Y（不复制到剪贴板）
+- 复制整行：Ctrl + D
 
 # 环境设置
 - 设置编辑器代码自动换行，避免水平滚动

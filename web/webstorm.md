@@ -41,3 +41,10 @@
 
 # 教程
 - https://my.oschina.net/klausgao/blog/380351
+
+# 2017年1月9日 解决了几个问题
+- 问题 1 描述：Github 建了 learnyounode 仓库，webstorm 中克隆了该仓库，直接添加 step01.js 文件，做 learnyounode 的闯关任务，写 console.log 都没有正确的智能感知。感觉是库没有加上。  
+  不知道加什么库。尝试解决一下，建了一个web express 的框架，发现他的库里有 predefined node core 库，我的没有，怎么加上呢？查 webstorm 的官方帮助文档，找到了解决办法。如下图所示：  
+  ![](images/webstorm01.png)
+  
+- 问题 2 描述：learnyounode 的第二个任务开始操作命令行参数了，程序逻辑开始有些复杂了，这个时候有两种方式：一、直接在终端上执行程序，可以在命令行给参数，但是不利于程序调试。二、开启调试模式运行，这个时候需要设置命令行参数。设置的办法如下：

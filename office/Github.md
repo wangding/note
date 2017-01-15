@@ -39,9 +39,26 @@ http://jlord.us/git-it/index-zhtw.html
 ## gitref.org
 777
 
-## git 命令行配置
+## Git 命令行配置
 
 - 自动记忆凭证  
 - 设置快捷键  
 - 设置换行检查  
 - 
+
+## Git 命令
+
+stash 类命令
+```bash
+# 保存进度
+git stash
+
+# 弹出进度
+git stash pop
+
+# 查看 stash 列表
+git stash list
+
+# 删除所有进度
+git stash clear
+```

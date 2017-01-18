@@ -33,6 +33,9 @@
 # Node.js Development Workflow in WebStorm  中的技术
 
 - 视频地址：https://www.youtube.com/watch?v=xuXIBSa_7j4&list=LLb4RKByoKxlPiG5mB-q4mkA  
+  - 一开头讲 Github 上创建仓库  
+  - 17分19秒开始讲单元测试  
+  
 - 工作流：  
   在 Github 上重建空白仓库，添加并修改 gitignore 文件，从 webstorm 直接克隆该项目，增加代码。  
   - VCS ->  Checkout from Version Control -> Github 可以直接从 Github Clone 仓库  

@@ -45,7 +45,7 @@
 - npm ls 查看安装的所有包  
   - 可能会报错：extraneous 错误，需要修改 package.json 文件的 dependence  
 - npm install  
-  有了 package.json 文件，尤其是其中的 dependencies 字段指明了包的依赖关系后，直接使用 npm install 命令，就会在当前目录中安装所需要的模块。所以代码上传 Github 时，不用上传 node_modules 中的内容，服务器部署的时候可以自动安装依赖包。可以做个实验把 node_modules 文件夹都删除，执行 npm install 命令看看效果。  
+  有了 package.json 文件，尤其是其中的 dependencies 字段指明了包的依赖关系后，直接使用 npm install 命令，就会在当前目录中安装所需要的模块。所以代码上传 Github 时，不用上传 node\_modules 中的内容，服务器部署的时候可以自动安装依赖包。可以做个实验把 node_modules 文件夹都删除，执行 npm install 命令看看效果。  
 - npm test  
 - npm publish  
 - npm config set registry  
@@ -58,6 +58,7 @@
 - npm update --save 更新 package.json 依赖项中的软件包  
 - npm uninstall --save 删除依赖的包  
 - npm unpublish <package> --force  
+- npm list -g 查看全局安装的包  
 
 - 《法老的金字塔：JavaScript web 全栈开发之旅》课程思路  
   - 环境准备  

@@ -10,6 +10,8 @@
   http://javascript.ruanyifeng.com/nodejs/packagejson.html  
 - 阮一峰：npm scripts 使用指南  
   http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html  
+- 阮一峰：package.json 详解  
+  http://javascript.ruanyifeng.com/nodejs/packagejson.html  
 - npm help install  
 - npm 命令的用法：
   http://blog.sina.com.cn/s/blog_4a2defca0102w6c0.html

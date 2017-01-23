@@ -11,6 +11,11 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
 - git-it 课程资料  
   http://jlord.us/git-it/index-zhtw.html  
 
+## 资源
+
+- 勋章：http://shields.io/  
+- 进度：https://github.com/fehmicansaglam/progressed.io  
+
 ## 常见问题
 
 - git 存储凭证  

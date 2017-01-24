@@ -47,22 +47,32 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
 
 ## Git 常用命令
 
-```bash
-# 保存进度
-git stash
+- git stash 相关操作  
 
-# 弹出进度
-git stash pop
+    ```bash
+    # 保存进度
+    git stash
 
-# 查看 stash 列表
-git stash list
+    # 弹出进度
+    git stash pop
 
-# 删除所有进度
-git stash clear
+    # 查看 stash 列表
+    git stash list
 
-# 查看某个文件的提交记录
-git log <file name>
+    # 删除所有进度
+    git stash clear
+    ```
 
-# 把 upstream 代表的远程仓库的 master 分支拽到本地
-git pull upstream master
-```
+- git 其他操作  
+
+    ```bash
+    # 查看某个文件的提交记录
+    git log <file name>
+
+    # 把 upstream 代表的远程仓库的 master 分支拽到本地
+    git pull upstream master
+
+    # 撤销上一个 commit，前提是没有 push 到远程仓库
+    git add <something>
+    git commit --amend -m "some comment"
+    ```

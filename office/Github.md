@@ -10,6 +10,13 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
   http://www.ui.cn/detail/20957.html  
 - git-it 课程资料  
   http://jlord.us/git-it/index-zhtw.html  
+- git 心法（张文细）  
+  https://blog.alphacamp.co/2015/01/13/git/  
+- 张文细的所有 Git 资料（带视频，讲的很到位）  
+  https://ihower.tw/git/  
+- git ready  
+  http://gitready.com/
+
 
 ## 资源
 

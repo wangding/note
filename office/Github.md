@@ -1,9 +1,25 @@
 Git 仓库的版本控制，好处是所有代码发展的历史都会记录下来。我们只要去看代码的每个版本，就可以从中学习到很多东西，知道代码怎么写，知道文档该怎么写。可以举例说明，比如不知道到 MarkDown 中的 TaskList  
 
-## 学习资料
+## 阮一峰的 Git 教程
 
 - 常用 Git 命令清单  
   http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html  
+- Git 使用规范流程  
+  http://www.ruanyifeng.com/blog/2015/08/git-use-process.html  
+- Git 远程操作详解  
+  http://www.ruanyifeng.com/blog/2014/06/git_remote.html  
+- Git 工作流程  
+  http://www.ruanyifeng.com/blog/2015/12/git-workflow.html  
+- Git 分支管理策略  
+  http://www.ruanyifeng.com/blog/2012/07/git.html  
+- Git 使用规范  
+  http://www.ruanyifeng.com/blog/2015/08/git-use-process.html  
+- Commit message 和 Change log 编写指南  
+  http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html  
+
+
+## 学习资料
+
 - Git 命令中文版  
   http://www.open-open.com/lib/view/open1401433488824.html  
 - github 资料  
@@ -16,7 +32,6 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
   https://ihower.tw/git/  
 - git ready  
   http://gitready.com/
-
 
 ## 资源
 
@@ -74,6 +89,13 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
     
     echo 33 >> a
     git commit -am "33"
+    ```
+
+- git rebase 操作  
+
+    ```bash
+    # -i 是交互操作
+    git rebase -i <SHA>
     ```
 
 - git 基本操作1  
@@ -135,6 +157,25 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
 - git branch 操作
 
     ```bash
+    # 删除分支 foo 分支，前提 foo 已经合并过
+    git branch foo -d
+
+    # 强制删除分支 foo
+    git branch foo -D
+
+    # 创建分支 foo
+    git branch foo
+
+    # 切换到分支 foo
+    git checkout foo
+
+    # 创建分支并同时切换到 foo，一步做到
+    git checkout -b foo
+
+    # 修改分支名字
+    git branch -m old_name new_name
+    git branch -M old_name new_name
+
     # 列出远程分支
     git branch -r
 
@@ -143,6 +184,20 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
 
     # 取出远程的 foo 分支
     git checkout -t origin/foo
+
+    # 删除远程分支 1
+    # <space> 是空格，<remote branch> 是远程分支的名字
+    # 把空内容推到远程的分支上，就是删除的意思
+    git push origin <space> :<remote branch>
+    
+    # 删除远程分支 2
+    # 在 github 上可以直接删除分支
+    # 在本地 git pull 不能把远程分支的变化反应到本地
+    # git pull 和 git fetch 不会清除已经删除的远程分支
+    # git branch -r 还可以看到已经删除的远程分支
+    # sourceTree 的线图还可以看到已经删除的远程分支
+    # 可以执行下面的命令解决问题
+    git fetch -p
     ```
     
 - git blame 逐行查看文档
@@ -168,7 +223,7 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
     git clean -x
     ```
     
-- git 标签操作
+- git tag 操作
 
     ```bash
     # 给当前的 HEAD 指针处贴标签 foo
@@ -182,6 +237,12 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
     
     # 删除标签 foo
     git tag -d foo
+    
+    # 将所有标签推送到远程仓库中
+    git push --tags
+    
+    # 将具体某个标签推送到远程仓库中
+    git push origin v0.1
 ```
 
 - git stash 操作  

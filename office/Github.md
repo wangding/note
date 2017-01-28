@@ -54,7 +54,137 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
 
 ## Git 常用命令
 
-- git stash 相关操作  
+- git 教学演示  
+
+    ```bash
+    # 目的命令简单，快捷，可以制造变更
+    # 快速制造多个提交，看到版本路线
+    # 先看一下命令的效果，然后就不用看了
+
+    touch a
+    touch b
+    touch c
+    
+    echo 11 >> a
+    echo 22 >> a
+    
+    git add .
+
+    git commit -m "11"
+    
+    echo 33 >> a
+    git commit -am "33"
+    ```
+
+- git 基本操作1  
+
+    ```bash
+    # add & commit Mothed 1
+    git add .
+    git commit -m "message"
+
+    # add & commit Mothed 2
+    git commit -a -m "message"
+
+    # add & commit Mothed 3
+    git commit -am "message"
+    ```
+
+- git 基本操作2  
+
+    ```bash
+    # diff working directory with repos 
+    git diff
+
+    # diff staging area with repos
+    git diff --cached
+    
+    # 拿 working directory 和 SHA 比较
+    git diff <SHA>
+
+    # ?
+    git diff <SHA 1> <SHA 2>
+    
+    # ?
+    git diff --stat <SHA>
+    ```
+
+- git ssh 链接
+
+    ```bash
+    # diff working directory with repos 
+    ssh-Keygen -t rsa -C "your email"
+
+    # 查看用户主目录的 .ssh/ 文件夹中创建的私钥文件（注意备份）
+    ls ~/.ssh
+    # 目录中两个文件：id_rsa （私钥）  和   id_rsa.pub (公钥)
+
+    # 打印公钥文件内容
+    cat ~/.ssh/id_rsa.pub
+    # 把文件内容复制到剪贴板中
+
+    # 在 github.com 的 Settings 中找 SSH and GPG keys, new SSH key
+
+    # 利用 SSH 协议来克隆仓库
+    git clone git@github.com:wangding/test
+    
+    # 利用 SSH 协议来添加远程链接
+    git remote add origin git@github.com:wangding/test
+    ```
+
+- git branch 操作
+
+    ```bash
+    # 列出远程分支
+    git branch -r
+
+    # 列出远程合并的分支
+    git branch -r --merged
+
+    # 取出远程的 foo 分支
+    git checkout -t origin/foo
+    ```
+    
+- git blame 逐行查看文档
+
+    ```bash
+    # 逐行查看 <filename> 的历史
+    git blame <filename>
+    
+    # 从第 100 行开始查看 10 行
+    git blame -L 100,10 <filename>
+    ```
+
+- git clean 砍掉 untracked 档案
+
+    ```bash
+    # 列出打算要清除的档案
+    git clean -n
+    
+    # 真正的删除
+    git clean -f
+    
+    # 连 .gitignore 中忽略的档案也清除
+    git clean -x
+    ```
+    
+- git 标签操作
+
+    ```bash
+    # 给当前的 HEAD 指针处贴标签 foo
+    git tag foo
+
+    # 给任意的一个提交贴标签 foo
+    git tag foo <SHAI>
+    
+    # 给当前的 HEAD 指针处贴标签 foo
+    git tag foo -m "message"
+    
+    # 删除标签 foo
+    git tag -d foo
+```
+
+- git stash 操作  
 
     ```bash
     # 保存进度

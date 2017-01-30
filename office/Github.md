@@ -191,7 +191,7 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
     # <space> 是空格，<remote branch> 是远程分支的名字
     # 把空内容推到远程的分支上，就是删除的意思
     git push origin <space> :<remote branch>
-    
+
     # 删除远程分支 2
     # 在 github 上可以直接删除分支
     # 在本地 git pull 不能把远程分支的变化反应到本地
@@ -200,14 +200,20 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
     # sourceTree 的线图还可以看到已经删除的远程分支
     # 可以执行下面的命令解决问题
     git fetch -p
+
+    # 合并分支
+    git merge <branch name>
+
+    # 合并分支，拒绝 fast forward，产生合并 commit
+    git merge --no-ff
     ```
-    
+
 - git blame 逐行查看文档
 
     ```bash
     # 逐行查看 <filename> 的历史
     git blame <filename>
-    
+
     # 从第 100 行开始查看 10 行
     git blame -L 100,10 <filename>
     ```
@@ -217,14 +223,14 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
     ```bash
     # 列出打算要清除的档案
     git clean -n
-    
+
     # 真正的删除
     git clean -f
-    
+
     # 连 .gitignore 中忽略的档案也清除
     git clean -x
     ```
-    
+
 - git tag 操作
 
     ```bash
@@ -233,16 +239,16 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
 
     # 给任意的一个提交贴标签 foo
     git tag foo <SHAI>
-    
+
     # 给当前的 HEAD 指针处贴标签 foo
     git tag foo -m "message"
-    
+
     # 删除标签 foo
     git tag -d foo
-    
+
     # 将所有标签推送到远程仓库中
     git push --tags
-    
+
     # 将具体某个标签推送到远程仓库中
     git push origin v0.1
 ```
@@ -275,4 +281,10 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
     # 撤销上一个 commit，前提是没有 push 到远程仓库
     git add <something>
     git commit --amend -m "some comment"
+
+    # 弹出 vim 输入多行 message
+    git commit
+
+    # 查看 log 日志，并过滤需要的信息
+    git log --grep <filter word>
     ```

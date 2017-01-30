@@ -21,6 +21,7 @@
   - npm init  
   - npm login  
   - npm logout  
+- how-to-npm 教程  
 
 ## 重要知识点
 
@@ -61,16 +62,3 @@
 - npm uninstall --save 删除依赖的包  
 - npm unpublish <package> --force  
 - npm list -g 查看全局安装的包  
-
-- 《法老的金字塔：JavaScript web 全栈开发之旅》课程思路  
-  - 环境准备  
-    - NodeJS 安装  
-    - webstorm 安装  
-  - 命令行的法老的金字塔  
-  - 前端的法老的金字塔  
-  - 后端的法老的金字塔  
-  - 前端发出参数请求后台数据  
-  - 单元测试  
-  - 持续集成  
-  - npm 包管理  
-  - npm 包发布  

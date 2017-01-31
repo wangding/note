@@ -19,4 +19,13 @@ diff a.c b.c -y -b -B
 ```bash
 # 复制文件夹 ~/scope/ 到当前目录
 cp -r ~/scope/ .
+
+# 查看内存占用
+free -m
+
+# 删除文件夹 scope
+mv -r scope
+
+# 查看内存和 CPU 占用
+top
 ```

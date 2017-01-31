@@ -36,8 +36,12 @@
   - -g 是全局安装命令，获知使用$npm set global=true来设定安装模式，$npm get global 可以查看当前使用的安装模式。
   - 但是代码中，直接通过require()的方式是没有办法调用全局安装包的。全局的安装是供命令行使用的，就好像全局安装了 vmarket 后，就可以在命令行中直接运行 vm 命令。
   
+- npm install  
+  有了 package.json 文件，尤其是其中的 dependencies 字段指明了包的依赖关系后，直接使用 npm install 命令，就会在当前目录中安装所需要的模块。所以代码上传 Github 时，不用上传 node\_modules 中的内容，服务器部署的时候可以自动安装依赖包。可以做个实验把 node_modules 文件夹都删除，执行 npm install 命令看看效果。  
+- npm install -S|--save 安装依赖包，并将依赖包的信息写入 package.json 文件  
 - npm install 命令的 --save 参数或者 -S 参数  
   - 将信息写入 package.json 中项目路径中如果有 package.json 文件时，直接使用 npm install 方法就可以根据 dependencies 配置安装所有的依赖包，这样代码提交到 github 时，就不用提交 node_modules 这个文件夹了。  
+- npm install -D|--save-dev 安装依赖包，并将依赖包的信息写入 package.json 文件的开发依赖节下  
 
 - npm config get cache 查看缓存目录  
 - npm cache list  查看缓存
@@ -47,8 +51,7 @@
 - npm init --scope=<username>  
 - npm ls 查看安装的所有包  
   - 可能会报错：extraneous 错误，需要修改 package.json 文件的 dependence  
-- npm install  
-  有了 package.json 文件，尤其是其中的 dependencies 字段指明了包的依赖关系后，直接使用 npm install 命令，就会在当前目录中安装所需要的模块。所以代码上传 Github 时，不用上传 node\_modules 中的内容，服务器部署的时候可以自动安装依赖包。可以做个实验把 node_modules 文件夹都删除，执行 npm install 命令看看效果。  
+
 - npm test  
 - npm publish  
 - npm config set registry  

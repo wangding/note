@@ -20,6 +20,12 @@ diff a.c b.c -y -b -B
 # 复制文件夹 ~/scope/ 到当前目录
 cp -r ~/scope/ .
 
+# 去用户主目录
+cd ~
+
+# 返回之前的目录
+cd -
+
 # 查看内存占用
 free -m
 

@@ -1,6 +1,10 @@
-#v im﻿
+# vim﻿
 
 模式化的编辑器
+
+## 学习资料
+
+- http://www.jianshu.com/p/a361ce8c97bc
 
 ## 基本模式
 

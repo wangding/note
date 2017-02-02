@@ -31,11 +31,14 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
   https://ihower.tw/git/  
 - git ready  
   http://gitready.com/
+- git 命令图解  
+  http://www.tuicool.com/articles/y6VfQj
 
 ## 资源
 
 - 勋章：http://shields.io/  
 - 进度：https://github.com/fehmicansaglam/progressed.io  
+- Git 教学软件：onlywei.github.io/explain-git-with-d3/
 
 ## 常见问题
 
@@ -106,6 +109,14 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
     # add & commit Mothed 1
     git add .
     git commit -m "message"
+
+    #Git 假定所有的改变都是针对同一件事情的，因此它把这些都放在了一个块里。你有如下几个选项：
+    #输入 y 来暂存该块
+    #输入 n 不暂存
+    #输入 e 手工编辑该块
+    #输入 d 退出或者转到下一个文件
+    #输入 s 来分割该块
+    git add -p <file name>
 
     # add & commit Mothed 2
     git commit -a -m "message"
@@ -180,6 +191,12 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
 
     # 列出远程分支
     git branch -r
+
+    # 查看已经合并的分支
+    git checkout --merged
+
+    # 查看没有合并的分支
+    git checkout --no-merged
 
     # 列出远程合并的分支
     git branch -r --merged

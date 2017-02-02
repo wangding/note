@@ -1,9 +1,9 @@
 # 文字教程学习资料
 
-- 廖雪峰的 JavaScript 教程  
-  http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000  
 - 阮一峰的 JavaScript 教程  
   http://javascript.ruanyifeng.com/  
+- 廖雪峰的 JavaScript 教程  
+  http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000  
 - 独孤求败的全栈教程：  
   https://happypeter.github.io/digicity/
 
@@ -15,3 +15,6 @@
 # 在线通关练习资料
 
 - Node 大学的资料
+  - javascripting
+  - scope-chains-closures
+  -

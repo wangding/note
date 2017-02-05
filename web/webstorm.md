@@ -18,6 +18,9 @@
 - 复制整行：Ctrl + D  
 - 添加或删除 bookmark：Ctrl + Shift + n  
 - 定位到 bookmark：Ctrl + n  
+- 行注释 ctrl + /
+- 块注释 ctrl + shift + /
+- 自动增加分号：ctrl + shift + enter
 
 # 环境设置
 

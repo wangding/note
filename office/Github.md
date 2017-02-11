@@ -32,7 +32,9 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
 - git ready  
   http://gitready.com/
 - git 命令图解  
-  http://www.tuicool.com/articles/y6VfQj
+  http://www.tuicool.com/articles/y6VfQj  
+- 猴子都能懂的 Git 入门  
+  http://backlogtool.com/git-guide/cn/intro/intro1_1.html  
 
 ## 资源
 

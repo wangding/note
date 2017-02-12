@@ -32,7 +32,7 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
 - git ready  
   http://gitready.com/
 - git 命令图解  
-  http://www.tuicool.com/articles/y6VfQj  
+  http://blog.csdn.net/yangwen123/article/details/9084007  
 - 猴子都能懂的 Git 入门  
   http://backlogtool.com/git-guide/cn/intro/intro1_1.html  
 
@@ -257,7 +257,7 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
     git tag foo
 
     # 给任意的一个提交贴标签 foo
-    git tag foo <SHAI>
+    git tag foo HEAD~4
 
     # 给当前的 HEAD 指针处贴标签 foo
     git tag foo -m "message"
@@ -265,11 +265,20 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
     # 删除标签 foo
     git tag -d foo
 
+    # 列出标签
+    git tag
+
     # 将所有标签推送到远程仓库中
     git push --tags
 
     # 将具体某个标签推送到远程仓库中
     git push origin v0.1
+
+    # 拉下来远程仓库的标签
+    git pull --tags
+
+    # 删除远程仓库的标签 foo
+    git push origin :refs/tags/foo
 ```
 
 - git stash 操作  

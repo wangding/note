@@ -195,10 +195,10 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
     git branch -r
 
     # 查看已经合并的分支
-    git checkout --merged
+    git branch --merged
 
     # 查看没有合并的分支
-    git checkout --no-merged
+    git branch --no-merged
 
     # 列出远程合并的分支
     git branch -r --merged

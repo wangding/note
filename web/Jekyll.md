@@ -1,8 +1,9 @@
 # 资料
-- http://wiki.jikexueyuan.com/project/jekyll/
-- http://www.cnblogs.com/purediy/archive/2013/03/07/2948892.html
-- https://en.wikipedia.org/wiki/Jekyll_(software)
-- https://segmentfault.com/a/1190000002473246
+- http://wiki.jikexueyuan.com/project/jekyll/  
+- http://www.cnblogs.com/purediy/archive/2013/03/07/2948892.html  
+- https://en.wikipedia.org/wiki/Jekyll_(software)  
+- https://segmentfault.com/a/1190000002473246  
+- http://www.pchou.info/ssgithubPage/2013-01-03-build-github-blog-page-01.html  
 
 # 市场调研
 - 51CTO 学院没有这方面的课程  

@@ -2,6 +2,8 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
 
 ## 阮一峰的 Git 教程
 
+阮一峰老师的博客网站，搜索 git 的结果，每个文章质量都很高。
+
 - 常用 Git 命令清单  
   http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html  
 - Git 使用规范流程  
@@ -20,27 +22,37 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
 ## 学习资料
 
 - Git 命令中文版  
-  http://www.open-open.com/lib/view/open1401433488824.html  
-- github 资料  
-  http://www.ui.cn/detail/20957.html  
+  - 网站不错，全是开源方面的资料，平时可以多看看，会有很多简单、有趣的东西  
+  - http://www.open-open.com/lib/view/open1401433488824.html  
+- 专为设计师写的 github 资料  
+  - 可以参考一下吧，职业方向还是有差异的  
+  - http://www.ui.cn/detail/20957.html  
 - git-it 课程资料  
-  http://jlord.us/git-it/index-zhtw.html  
+  - 闯关练习软件的教程文字  
+  - http://jlord.us/git-it/index-zhtw.html  
 - git 心法（张文细）  
-  https://blog.alphacamp.co/2015/01/13/git/  
-- 张文细的所有 Git 资料（带视频，讲的很到位）  
-  https://ihower.tw/git/  
+  - 点评：一个简单、明了的博客文章  
+  - https://blog.alphacamp.co/2015/01/13/git/  
+- 张文细的所有 Git 资料  
+  - 点评：带视频，有幻灯片，讲的很到位，可以模仿  
+  - 地址：https://ihower.tw/git/  
 - git ready  
   http://gitready.com/
 - git 命令图解  
-  http://blog.csdn.net/yangwen123/article/details/9084007  
+  - 点评：配图清楚，比较多，够啰嗦  
+  - http://blog.csdn.net/yangwen123/article/details/9084007  
 - 猴子都能懂的 Git 入门  
-  http://backlogtool.com/git-guide/cn/intro/intro1_1.html  
+  - 点评：配图还算可以，有点儿卡通幼稚，寓教于乐  
+  - http://backlogtool.com/git-guide/cn/intro/intro1_1.html  
+- Learn Git  
+  - 点评：排版简洁、大方，配图时尚、漂亮，内容专业权威  
+  - https://www.atlassian.com/git  
 
 ## 资源
 
 - 勋章：http://shields.io/  
 - 进度：https://github.com/fehmicansaglam/progressed.io  
-- Git 教学软件：onlywei.github.io/explain-git-with-d3/
+- Git 教学软件：onlywei.github.io/explain-git-with-d3/  
 
 ## 常见问题
 

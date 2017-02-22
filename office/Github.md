@@ -142,6 +142,11 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
 - git 基本操作2  
 
     ```bash
+    # 改变文件夹的名字：Name -> name
+    # 直接运行 git mv Name name，执行不成功，会搞成：Name ->name/Name
+    git mv Name tmp
+    git mv tmp name
+    
     # diff working directory with repos 
     git diff
 

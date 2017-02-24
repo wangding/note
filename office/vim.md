@@ -5,6 +5,7 @@
 ## 学习资料
 
 - http://www.jianshu.com/p/a361ce8c97bc
+- vim 练级攻略：https://globalinheart.wordpress.com/2011/09/07/简明-vim-练级攻略/  
 
 ## 基本模式
 

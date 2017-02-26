@@ -1,6 +1,9 @@
 # vim﻿
 
-模式化的编辑器
+模式化的编辑器。
+
+- [官网](http://www.vim.org/)  
+- [插件](http://www.vim.org/scripts/script_search_results.php?order_by=rating)  
 
 ## 学习资料
 

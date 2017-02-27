@@ -1,11 +1,11 @@
 # CSS 技术
 
-CSS 的层次：
-- 基本样式：背景色，文字颜色，字体，最简单的选择器；
-- 选择器、布局、定位；
+学习 CSS 的层次：
+- 基本样式：背景色，文字颜色，字体，最简单的选择器，把英文单词学一下，就记住了；
+- 盒模型、选择器、布局、定位；
 - CSS3 的动画特效等；
-- bootstrap；（看了看 github 是 sass 的代码）
-- less 或 sass；（less 曾亮有课，sass 也有课）
+- bootstrap；（bootstrap 的 github 仓库是 sass 代码，可以研究一下）；
+- sass；
 
 ## CSS 基础
 

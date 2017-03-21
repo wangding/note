@@ -22,24 +22,38 @@
 - 第一个安装画面：选择安装 CentOS 7
 - 语言：中文
 - 安全策略：Common Profile for General-Purpose Systems
-- 软件选择：开发及生成工作站，包括：开发工具，图形生成工具，办公套件和生产效率，必要的图形工具
+- 软件选择：开发及生成工作站，包括：图形生成工具，办公套件和生产效率
 - 安装介质
 - 安装位置
 - 网络启用
 - root 密码
-- 创建新用户并设置密码
+- 创建新用户并设置密码，把新用户加到管理员组中
 
 ## 工作环境安装
 
-- git --version 验证 git 已经安装
+- 安装 git 并验证 git 安装成功
+```bash
+sudo yum install git
+git --version 
+```
+- 下载了 git 的配置文件，
+  - 问题是如何能从网上一键安装配置文件？
+  - git 的表现不完全和 windows 相同
 - 火狐浏览器已经安装
 - 设置火狐浏览器的参数
 - 添加火狐浏览器的插件
+  - vimperator
+  - Adblock Plus
+- 安装双拼输入
 - 
 
 ## 常用命令
 
 - ls -R 显示所有子目录和文件
+- 查看 centOS 版本
+```bash
+cat /etc/redhat-release
+```
 
 ## 常见问题
 

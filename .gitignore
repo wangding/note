@@ -3,3 +3,7 @@
 
 # 忽略 webstorm 创建的文件夹
 .idea/
+
+# 忽略 vim 的临时文件
+*.swp
+

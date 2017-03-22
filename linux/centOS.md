@@ -1,3 +1,21 @@
+# centOS 作为服务器
+
+## docker 技术
+
+- 安装 docker，从 github 官网用 sh 脚本一键安装  
+- docker version 检查 docker 安装是否成功  
+- 如果出现
+  ```
+  docker can not connet to docker domean, 则运行下面的命令
+  service docker start
+  ```
+- docker images 查看安装的所有容器
+- docker run hello-world 运行 hello-world 容器
+- hub.docker.com docker 容器的网站
+- docker pull hello-world 从 docker hub 上下载 hello-world 容器
+
+
+
 # CentOS 作为开发和办公环境的安装过程
 
 首先在虚拟机中构建 CentOS 办公环境，体验成功之后。再在物理机中安装使用 CentOS。下面的内容记录这个过程中的经验。
@@ -54,6 +72,55 @@ git --version
 ```bash
 cat /etc/redhat-release
 ```
+- rpm -aq 查看本机安装的软件包
+- init 3 从窗口界面进入命令行界面
+- init 5 startx 从命令行界面进入窗口界面
+- nmtui 命令行界面设置网卡
+- ps -ef 查看系统中的进程
+- which firewalld 查看进程 firewalld 用到的命令
+- kill pid 杀掉 pid 的进程
+- kill -9 970 强制删除 970 进程
+
+## 安装卸载程序（yum 包管理）
+
+- yum list 列出本系统安装的应用程序
+- /etc/yum.repos.d/*.repo  yum 源定义文件
+- 把 cdrom 的安装包设为本地 yum 源
+- yum install package 安装 package
+- yum remove package 删除 package
+- yum update package 升级 package
+- yum list updates 列出所有可以升级的软件包
+
+## 启动服务
+
+- systemctl start mariadb  启动 mariadb 数据库服务
+- systemctl start httpd    启动 apache 服务
+- systemctl status httpd   查询 apache 服务是否启动
+- systemctl restart httpd  重新启动 apache 服务
+- apache 服务启动不正常的解决办法
+  firewall-cmd --add-service=http
+
+## 用户、组和文件权限
+
+- useradd wangding 添加新用户 wangding
+- vipw 命令查看系统中的用户，一般新添加的用户都在文件的最后一行
+  查看的信息包括：用户 ID 和主 ID，用户家目录，用户的 shell
+- groupadd abc 添加 abc 用户组
+- vigr 命令查看用户组的信息，vipw 命令和 vigr 命令是有规律的，vi 代表 vi 编辑器，其实是用 vi 编辑器查看信息的。pw 代表 password 用户，gr 代表 group 用户组。查看的信息包括：组的 ID 和组的成员。
+- gpasswd -a username groupname 把用户加到组中
+- groups wangding 查看用户 wangding 所在的用户组信息
+- whoami 查看当前登录的用户
+- su - 切换到 root 用户，su 是 switch user 的缩写
+- su - wangding 将当前用户环境切换到 wangding 用户环境下面，退出用 exit
+- userdel wangding 删除用户 wangding
+- groupdel 删除组
+- id root 查看 root 用户的 ID 值，ID 值越小权限越大
+- chmod permission filename 修改文件权限
+- permission：r=4, w=2, x=1, rw=4+2=6, rx=4+1=5, 等等，用户权限，组权限和其他用户权限，按顺序依次为三个组
+- chown user filename 改变文件或目录的所有者，ch: change, own：owner
+- chgrp group filename 改变文件或目录的组名
+- chown user.group filename 改变文件或目录的所有者为 group 组的 user 用户
+
 
 ## 常见问题
 

@@ -9,11 +9,11 @@
   docker can not connet to docker domean, 则运行下面的命令
   service docker start
   ```
-- docker images 查看安装的所有容器
+- docker images 查看安装的所有镜像
 - docker run hello-world 运行 hello-world 容器
-- hub.docker.com docker 容器的网站
-- docker pull hello-world 从 docker hub 上下载 hello-world 容器
-
+- hub.docker.com docker 镜像的网站
+- docker pull hello-world 从 docker hub 上下载 hello-world 镜像
+- 没有运行的是 docker 镜像，运行中的是 docker 容器
 
 
 # CentOS 作为开发和办公环境的安装过程
@@ -62,7 +62,7 @@ git --version
 - 添加火狐浏览器的插件
   - vimperator
   - Adblock Plus
-- 安装双拼输入
+- 配置 ibus 的双拼输入
 - 
 
 ## 常用命令
@@ -74,7 +74,7 @@ cat /etc/redhat-release
 ```
 - rpm -aq 查看本机安装的软件包
 - init 3 从窗口界面进入命令行界面
-- init 5 startx 从命令行界面进入窗口界面
+- init 5 或 startx 从命令行界面进入窗口界面
 - nmtui 命令行界面设置网卡
 - ps -ef 查看系统中的进程
 - which firewalld 查看进程 firewalld 用到的命令
@@ -83,7 +83,9 @@ cat /etc/redhat-release
 
 ## 安装卸载程序（yum 包管理）
 
-- yum list 列出本系统安装的应用程序
+- yum list 列出已安装的和可安装的应用程序包
+- yum list package 列出 package 应用的安装情况
+- yum clean 清除缓存的软件包信息
 - /etc/yum.repos.d/*.repo  yum 源定义文件
 - 把 cdrom 的安装包设为本地 yum 源
 - yum install package 安装 package

@@ -80,6 +80,7 @@ cat /etc/redhat-release
 - which firewalld 查看进程 firewalld 用到的命令
 - kill pid 杀掉 pid 的进程
 - kill -9 970 强制删除 970 进程
+- gsettings set org.gnome.desktop.interface cursor-blink false 设置终端光标不闪烁
 
 ## 安装卸载程序（yum 包管理）
 

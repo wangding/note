@@ -83,6 +83,17 @@
 - :vs filename (垂直分隔窗口，编辑文件)  
 - 关闭分割窗口 :q  
 - 切换窗口 切换到普通模式下 ctrl + w w  
+- ctrl w + 先按 ctrl w，然后再按 + ，放大窗口
+- ctrl w - 先按 ctrl w，然后再按 -，缩小窗口
+- :close 关闭窗口
+- ctrl w j,k,l,m 切换到上下左右的窗口
+- :Ex 开启目录浏览器，可以浏览目录的所有文件并选择打开
+- :resize+num 把当前窗口增加 num 行
+- :resize-num 把当前窗口减少 num 行
+- :vertical resize+num 把当前窗口增加 num 列
+- :vertical resize-num 把当前窗口减少 num 列
+- :ls 显示所有打开的文档
+
 
 ## 撤销操作
 
@@ -108,10 +119,13 @@
 - :n,m !command 起始行号 n 到结束行号 m 之间的内容，用 command 来处理。例如：:2,4 !sort
 - 
 
-## 复制
+## 复制和移动
 
 - yy 复制一行
-- 
+- :n1,n2 co n3 将 n1 到 n2 行的内容复制到 n3 行下
+- :n1,n2 m m3 将 n1 到 n2 行的内容移动到 n3 行下
+- :n1,n2 !command 将 n1 到 n2 行的内容作为 command 命令的输入并执行，执行的结果放到 n1 行的位置
+- :n1,n2 d 将 n1 到 n2 行的内容删除
 
 ## 查找替换
 

@@ -115,17 +115,13 @@
 
 - :!command
 - :!bash  创新启动一个 bash 执行命令，而没有退出 vim，执行完命令后 exit 回到 vim
-- :r !command  讲命令运行的结果插入到当前行的下一行
+- :r !command  将命令运行的结果插入到当前行的下一行
 - :n,m !command 起始行号 n 到结束行号 m 之间的内容，用 command 来处理。例如：:2,4 !sort
 - 
 
 ## 复制和移动
 
 - yy 复制一行
-- :n1,n2 co n3 将 n1 到 n2 行的内容复制到 n3 行下
-- :n1,n2 m m3 将 n1 到 n2 行的内容移动到 n3 行下
-- :n1,n2 !command 将 n1 到 n2 行的内容作为 command 命令的输入并执行，执行的结果放到 n1 行的位置
-- :n1,n2 d 将 n1 到 n2 行的内容删除
 
 ## 查找替换
 
@@ -141,4 +137,36 @@
 - :bn 下一个文件
 - :bp 上一个文件
 - Ctrl + 6 下一个文件
+- :n1,n2 co n3 将 n1 到 n2 行的内容复制到 n3 行下
+- :n1,n2 m m3 将 n1 到 n2 行的内容移动到 n3 行下
+- :n1,n2 !command 将 n1 到 n2 行的内容作为 command 命令的输入并执行，执行的结果放到 n1 行的位置
+- :n1,n2 d 将 n1 到 n2 行的内容删除
+
+## vim 插件管理工具 Pathogen
+
+- 安装 Pathogen
+```bash
+mkdir -p ~/.vim/autoload ~/.vim/bundle
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+```
+- 配置 .vimrc
+```
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+```
+- 插件管理方法
+```bash
+cd ~/.vim/bundle
+git clone https://github.com/tpope/vim-sensible.git
+```
+
+## 常用 vim 插件
+
+- tpope/vim-sensible
+
+## 键盘映射
+
+- 有待补充
+
 

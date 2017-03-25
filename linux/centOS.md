@@ -81,8 +81,9 @@ cat /etc/redhat-release
 - kill pid 杀掉 pid 的进程
 - kill -9 970 强制删除 970 进程
 - gsettings set org.gnome.desktop.interface cursor-blink false 设置终端光标不闪烁
-- sudo sysctl kernel.hostname=AMTB 将主机名改为 AMTB
 - passwd wangding 修改当前用户 wangding 账户的密码
+- sudo hostnamectl --static set-hostname DEV 设置主机名为 DEV
+- hostnamectl --status 查看主机名信息
 
 
 ## 安装卸载程序（yum 包管理）

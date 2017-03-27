@@ -7,8 +7,14 @@
 
 ## 学习资料
 
+下面这些文章一篇一篇的搞定，学扎实了：
+
 - http://www.jianshu.com/p/a361ce8c97bc
 - vim 练级攻略：https://globalinheart.wordpress.com/2011/09/07/简明-vim-练级攻略/  
+- 知乎 vim 专栏：https://zhuanlan.zhihu.com/hack-vim
+- youtube 上大神的 vim 视频：https://www.youtube.com/playlist?list=PLwJS-G75vM7kFO-yUkyNphxSIdbi_1NKX
+- 百度前端工程师的文章：http://efe.baidu.com/blog/vim-javascript-completion/
+- **伯乐在线的 vim 文章（重点学习）**：http://blog.jobbole.com/tag/vim/
 
 ## 基本模式
 

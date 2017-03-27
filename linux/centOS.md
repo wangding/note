@@ -83,7 +83,7 @@ cat /etc/redhat-release
 - gsettings set org.gnome.desktop.interface cursor-blink false 设置终端光标不闪烁
 - passwd wangding 修改当前用户 wangding 账户的密码
 - sudo hostnamectl --static set-hostname DEV 设置主机名为 DEV
-- hostnamectl --status 查看主机名信息
+- hostnamectl status 查看主机名信息
 
 
 ## 安装卸载程序（yum 包管理）

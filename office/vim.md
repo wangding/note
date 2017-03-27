@@ -29,6 +29,7 @@
 - +# 打开文件后，光标处于第#行的行首
 - +/pattern 打开文件后，直接让光标处于第一个被/pattern匹配到的行的行首
 - +打开文件后，在尾行追加
+- :e <path/to/file>  打开一个文件
 
 ## 模式转换
 
@@ -38,6 +39,7 @@
    - i：insert 在光标所在处输入
    - a：append 在光标的处后方输入
    - o：在光标所在处的下方打开一个新行
+   - cw: 替换光标所在位置单词
    - I：在光标所在行的行首输入
    - A：在光标所在行的行尾输入
    - O：在光标所在处的上方打开一个新行
@@ -55,6 +57,7 @@
 - :wq 保存并退出
 - :x 保存并退出
 - :w /path/file 另存为
+- :saveas <path/to/file> 另存为
 
 ## 光标跳转
 
@@ -115,6 +118,8 @@
 - ctrl-I 执行前进
 - ngg or nG 光标跳转的第 n 行
 - :n 命令模式跳转到第 n 行
+- %  匹配括号
+- * 和 # 匹配光标所在的单词，* 移到上一个匹配的单词处，# 移动到下一个单词处
 
 ## vim 设置
 
@@ -170,7 +175,21 @@ cd ~/.vim/bundle
 git clone https://github.com/tpope/vim-sensible.git
 ```
 
-## 常用 vim 插件
+## 可以打造 IDE 的插件
+
+- supertab
+  - https://github.com/ervandew/supertab
+  - 用法需要补全的时候按 tab 键
+  - 出现候选菜单中，用 tab 键和 shift-tab 上下导航
+
+- syntastic
+  - https://github.com/vim-syntastic/syntastic
+  - 语法检查，**没有搞定**
+
+- NERD_commenter
+  - https://github.com/scrooloose/nerdcommenter
+  - 注释代码
+  - 用法：<leader>cc
 
 - tpope/vim-sensible
 

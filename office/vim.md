@@ -74,6 +74,7 @@
 - 句间跳转
 - 段间跳转
 - g; 跳到上一次修改的地方
+- L 光标跳到屏幕下方
 
 ## 窗口滚动
 
@@ -197,4 +198,6 @@ git clone https://github.com/tpope/vim-sensible.git
 
 - 有待补充
 
+## 杂项
 
+- :source ~/.vimrc 不退出 vim 重新加载配置文件

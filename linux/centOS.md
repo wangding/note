@@ -296,3 +296,7 @@ driver.quit();
 ## 网页按钮推动后台操作<待续>
 
 ## node.js 代码开发的工具有待研究
+
+## 字体美化
+
+- http://www.jinbuguo.com/gui/fonts.conf.html

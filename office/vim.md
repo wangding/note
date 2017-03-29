@@ -157,33 +157,26 @@
 - :n1,n2 !command 将 n1 到 n2 行的内容作为 command 命令的输入并执行，执行的结果放到 n1 行的位置
 - :n1,n2 d 将 n1 到 n2 行的内容删除
 
-## vim 插件管理工具 Pathogen
+## vim 插件管理工具 Vundle
 
-- 安装 Pathogen
+- 安装 Vundle
 ```bash
-mkdir -p ~/.vim/autoload ~/.vim/bundle
-curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+mkdir -p ~/.vim/bundle
+cd ~/.vim/bundle
+git clone https://github.com/VundleVim/Vundle.vim.git
 ```
 - 配置 .vimrc
-```
-execute pathogen#infect()
-syntax on
-filetype plugin indent on
-```
+略
+
 - 插件管理方法
-```bash
-cd ~/.vim/bundle
-git clone https://github.com/tpope/vim-sensible.git
-```
+略
 
 ## 可以打造 IDE 的插件
 
-- supertab
-  - https://github.com/ervandew/supertab
-  - 用法需要补全的时候按 tab 键
-  - 出现候选菜单中，用 tab 键和 shift-tab 上下导航
+- ternjs/tern_for_vim
+- Valloric/YouCompleteMe
+- jiangmiao/auto-pairs
 
-- syntastic
   - https://github.com/vim-syntastic/syntastic
   - 语法检查，**没有搞定**
 

@@ -157,6 +157,57 @@
 - :n1,n2 !command 将 n1 到 n2 行的内容作为 command 命令的输入并执行，执行的结果放到 n1 行的位置
 - :n1,n2 d 将 n1 到 n2 行的内容删除
 
+## 录制宏
+
+- qa 启动录制宏 a
+- 操作
+- q 停止录制宏
+- @a 或者 @@ 执行宏 a 或者执行最新的宏
+- 100@@ 执行 100 次最近的宏
+
+## 的区域对象操作
+
+- i 代表 in
+- a 代表 around
+- 语法：<动作>i/a<对象范围>
+  - 动作有：
+    - v 选中
+    - d 删除
+    - y 复制
+  - 区域范围有：
+    - i 代表 in
+    - a 代表 around
+  - 对象范围有：
+    - w 单词
+    - s 句子
+    - p 段落
+    - 也可以是一些范围界定符号，例如：逗号，括号，等
+  - 参考：http://blog.jobbole.com/18339
+
+## 块操作
+
+操作流程如下：
+- ctrl-v 块的起始位置
+- 向上或向下移动光标
+- I 大写字母 I，代表行首插入操作
+- 或者行尾操作，$，A，内容
+- 插入的内容，如：空格或前导符 -
+- ESC 退出插入操作，块的位置都会插入
+
+## 代码缩进
+
+操作流程如下：
+- V 进入整行的可视操作模式
+- 向上或向下移动光标
+- < 或 > 进行左右缩进
+- = 自动缩进，自动缩进就是把代码复制到其他的位置之后，使用自动缩进，一步把代码的缩进调整到位
+
+## 相对行号
+
+设置方法，set relativenumber
+优势如下：
+- 高效。如果代码比较长，比如当前的光标在 700 行处，因为跳转都是局部和小范围内的跳转，也就是在一个屏幕窗口的可是范围内跳转。使用绝对行号跳转是 705G，而使用相对行号就是 5j，可见敲击按键的次数少一些。
+- 代码块操作。对一块连续的代码块进行复制或者缩进，等操作时，块的起始位置到终止位置光标的移动用相对行号会非常方便。跟上面的类似，例如：700 行处，V 整行选中作为代码块的起始行，705G作为代码块的终止行，这是绝对行号操作方式。而相对行号，V，5j，显然按键次数更少一些。
 ## vim 插件管理工具 Vundle
 
 - 安装 Vundle
@@ -169,23 +220,21 @@ git clone https://github.com/VundleVim/Vundle.vim.git
 略
 
 - 插件管理方法
-略
+  - 在 vim 应用中运行 :PluginInstall
 
-## 可以打造 IDE 的插件
+## 打造 IDE
+
+基本的文章参考：http://efe.baidu.com/blog/vim-javascript-completion/
 
 - ternjs/tern_for_vim
 - Valloric/YouCompleteMe
+  - 安装：使用 Vundle 下载 YCM 插件
+  - 在 YCM 文件夹下执行 install.py --tern-completer
+  - 配置 .vimrc 的 <leader>-gf 跳转到定义处
 - jiangmiao/auto-pairs
 
   - https://github.com/vim-syntastic/syntastic
   - 语法检查，**没有搞定**
-
-- NERD_commenter
-  - https://github.com/scrooloose/nerdcommenter
-  - 注释代码
-  - 用法：<leader>cc
-
-- tpope/vim-sensible
 
 ## 键盘映射
 
@@ -194,3 +243,4 @@ git clone https://github.com/VundleVim/Vundle.vim.git
 ## 杂项
 
 - :source ~/.vimrc 不退出 vim 重新加载配置文件
+

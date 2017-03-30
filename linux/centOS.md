@@ -260,10 +260,10 @@ ls
 http://www.cnblogs.com/LH2014/p/4073881.html
 ```bash
 # 安装依赖软件
-yum -y install wget fontconfig
+yum install -y wget fontconfig
 
 # 下载安装包
-wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
+wget -c https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
 
 # 解压缩
 tar jxvf phantomjs-2.1.1-linux-x86_64.tar.bz2

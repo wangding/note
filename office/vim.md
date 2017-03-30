@@ -62,19 +62,37 @@
 ## 光标跳转
 
 - 字符间跳转
-- h, l, 左右
-- j, k, 上下
-- #cmd 跳#个字符
+  - h, l, 左右
+  - j, k, 上下
+  - #cmd 跳#个字符
 - 单词间跳转
-- w, 下一个单词的词首
-- e,
-- b,
+  - w, 下一个单词的词首
+  - e, 光标向前移动到词尾
+  - b, 光标向后移动到词首
+  - #cmd 跳#个单词
 - 行首尾跳转
+  - 0 行首
+  - ^ 非空白行首
+  - $ 行尾
 - 行间跳转
+  - gg, 1G 到首行
+  - G 到末行
+  - nG, ngg 到第 n 行
 - 句间跳转
+  - ) 下一句
+  - ( 前一句
 - 段间跳转
-- g; 跳到上一次修改的地方
-- L 光标跳到屏幕下方
+  - } 下一段落
+  - {  }
+- 其他跳转
+  - g; 跳到上一次修改的地方
+  - L 光标跳到屏幕下方
+  - ctrl-O 执行后退
+  - ctrl-I 执行前进
+  - :n 命令模式跳转到第 n 行
+  - %  匹配括号
+  - * 和 # 匹配光标所在的单词，* 移到上一个匹配的单词处，# 移动到下一个单词处
+  - gj, gk 在软换行的情况下在行中上下移动光标
 
 ## 窗口滚动
 
@@ -112,15 +130,6 @@
 
 - u 撤销操作
 - ctrl-r 恢复撤销
-
-## 光标位置跳转
-
-- ctrl-O 执行后退
-- ctrl-I 执行前进
-- ngg or nG 光标跳转的第 n 行
-- :n 命令模式跳转到第 n 行
-- %  匹配括号
-- * 和 # 匹配光标所在的单词，* 移到上一个匹配的单词处，# 移动到下一个单词处
 
 ## vim 设置
 
@@ -165,7 +174,7 @@
 - @a 或者 @@ 执行宏 a 或者执行最新的宏
 - 100@@ 执行 100 次最近的宏
 
-## 的区域对象操作
+## i 和 a 的区域对象操作
 
 - i 代表 in
 - a 代表 around
@@ -208,6 +217,7 @@
 优势如下：
 - 高效。如果代码比较长，比如当前的光标在 700 行处，因为跳转都是局部和小范围内的跳转，也就是在一个屏幕窗口的可是范围内跳转。使用绝对行号跳转是 705G，而使用相对行号就是 5j，可见敲击按键的次数少一些。
 - 代码块操作。对一块连续的代码块进行复制或者缩进，等操作时，块的起始位置到终止位置光标的移动用相对行号会非常方便。跟上面的类似，例如：700 行处，V 整行选中作为代码块的起始行，705G作为代码块的终止行，这是绝对行号操作方式。而相对行号，V，5j，显然按键次数更少一些。
+
 ## vim 插件管理工具 Vundle
 
 - 安装 Vundle
@@ -222,7 +232,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git
 - 插件管理方法
   - 在 vim 应用中运行 :PluginInstall
 
-## 打造 IDE
+## 打造 vim IDE
 
 基本的文章参考：http://efe.baidu.com/blog/vim-javascript-completion/
 
@@ -230,6 +240,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git
 - Valloric/YouCompleteMe
   - 安装：使用 Vundle 下载 YCM 插件
   - 在 YCM 文件夹下执行 install.py --tern-completer
+  - 在 YCM 文件夹下执行 install.py --clang-completer，**没有搞定**
   - 配置 .vimrc 的 <leader>-gf 跳转到定义处
 - jiangmiao/auto-pairs
 
@@ -238,7 +249,9 @@ git clone https://github.com/VundleVim/Vundle.vim.git
 
 ## 键盘映射
 
-- 有待补充
+键盘映射是 vim 高效率的关键所在。
+
+- 参考资料：http://www.cnblogs.com/softwaretesting/archive/2011/09/28/2194515.html
 
 ## 杂项
 

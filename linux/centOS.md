@@ -76,6 +76,12 @@ cat /etc/redhat-release
 - init 3 从窗口界面进入命令行界面
 - init 5 或 startx 从命令行界面进入窗口界面
 - nmtui 命令行界面设置网卡
+  - 在 root 权限下设置 NAT 模式下固定 IP 地址
+  - 默认网关是 x.x.x.2
+  - vim 修改 /etc/sysconfig/network-scripts/ifcfg-ensxx（查 ifconfig 知道网卡的名字）
+  - BOOTPROTO=static
+  - systemctl restart network # 让修改的 IP 地址立刻生效
+
 - ps -ef 查看系统中的进程
 - which firewalld 查看进程 firewalld 用到的命令
 - kill pid 杀掉 pid 的进程

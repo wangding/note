@@ -252,15 +252,24 @@ git clone https://github.com/VundleVim/Vundle.vim.git
 基本的文章参考：http://efe.baidu.com/blog/vim-javascript-completion/
 
 - ternjs/tern_for_vim
+  - npm install 安装 node module 依赖
 - Valloric/YouCompleteMe
   - 安装：使用 Vundle 下载 YCM 插件
   - 在 YCM 文件夹下执行 install.py --tern-completer
   - 在 YCM 文件夹下执行 install.py --clang-completer，**没有搞定**
   - 配置 .vimrc 的 <leader>-gf 跳转到定义处
 - jiangmiao/auto-pairs
+- wincent/command-t
+  - 安装 command-t
+  - yum install -y ruby-devel
+  - 编译 command-t，~/.vim/bundle/command-T/ruby/command-t/ruby extconf.rb && make
+  - 用法普通模式下 <leader>t 打开 command-T 窗口，输入文件名缩小范围，ctrl-j,k 上下移动光标，回车打开文件。
 
-  - https://github.com/vim-syntastic/syntastic
-  - 语法检查，**没有搞定**
+- vim-syntastic/syntastic
+  - 语法检查
+  - 需要配置 .vimrc 插件器
+  - 需要全局安装 int
+  - 语法错误的代码，保存的时候会提示错误信息
 
 ## 键盘映射
 

@@ -77,6 +77,8 @@ cat /etc/redhat-release
 - init 5 或 startx 从命令行界面进入窗口界面
 - nmtui 命令行界面设置网卡
   - 在 root 权限下设置 NAT 模式下固定 IP 地址
+  - 用 nmtui 设置网卡的 IP 地址、子网掩码、DNS，等
+  - 例如：192.168.29.144/24
   - 默认网关是 x.x.x.2
   - vim 修改 /etc/sysconfig/network-scripts/ifcfg-ensxx（查 ifconfig 知道网卡的名字）
   - BOOTPROTO=static

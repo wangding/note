@@ -99,7 +99,7 @@ cat /etc/redhat-release
 - yum list 列出已安装的和可安装的应用程序包
 - yum list package 列出 package 应用的安装情况
 - yum clean 清除缓存的软件包信息
-- /etc/yum.repos.d/*.repo  yum 源定义文件
+- /etc/yum.repos.d/\*.repo  yum 源定义文件
 - 把 cdrom 的安装包设为本地 yum 源
 - yum install package 安装 package
 - yum remove package 删除 package

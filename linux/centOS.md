@@ -315,11 +315,11 @@ zsh 的安装过程如下：
 
 - echo $SHELL                   # 查看当前的 shell
 - sudo yum install -y zsh       # 安装 zsh
+- sudo yum install -y wget      # 安装 wget
+- wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+- vim ~/.zshrc                  # 编辑 zsh 的配置文件
 - chsh -s /bin/zsh              # 却换 bash 至 zsh
 - exit                          # 查新登录 shell
-- sudo yum install -y wget      # 安装 wget
-- wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -0 - | sh
-- vim ~/.zshrc                  # 编辑 zsh 的配置文件
 
 ## tmux
 

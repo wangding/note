@@ -330,3 +330,28 @@ tmux 的安装和使用：
 - tmux
 - 一堆快捷键，请参考：http://blog.csdn.net/hcx25909/article/details/7602935
     http://cenalulu.github.io/linux/tmux/
+
+## strace 的用法
+
+- 安装：yum install -y strace
+- 使用：
+```bash
+ls xxx
+strace -eopen ls
+```
+
+## locale 的用法
+
+- 参考资料：
+http://blog.chinaunix.net/uid-20726500-id-4662320.html
+
+## nfs 的用法
+
+
+## 笔记本安装 CentOS
+
+- 参考资料，主要借鉴如何制作安装 U 盘：
+http://www.centoscn.com/image-text/setup/2015/0613/5648.html
+安装过程比较简单和顺利，连无线网卡都能识别出来，非常顺利，唯一的问题是安装完之后中文是乱码的，暂时没有解决。
+
+

@@ -276,6 +276,10 @@ wget -c https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x8
 # 解压缩
 tar jxvf phantomjs-2.1.1-linux-x86_64.tar.bz2
 
+如果 tar 出错，错误信息是：tar (child): bzip2：无法 exec: 没有那个文件或目录
+则说明没有安装 bzip2
+yum intall -y bzip2
+
 # 移动位置
 mv phantomjs-2.1.1-linux-x86_64 /usr/local/src/phantomjs
 
@@ -354,4 +358,17 @@ http://blog.chinaunix.net/uid-20726500-id-4662320.html
 http://www.centoscn.com/image-text/setup/2015/0613/5648.html
 安装过程比较简单和顺利，连无线网卡都能识别出来，非常顺利，唯一的问题是安装完之后中文是乱码的，暂时没有解决。
 
+## 命令行测网速
+
+http://www.centoscn.com/CentOS/Intermediate/2015/0311/4860.html
+
+## 通过 xshell windows 给 linux 虚拟机上传文件
+
+http://www.linuxidc.com/Linux/2015-05/117975.htm
+
+## linux 查找文件内容
+
+```bash
+grep "hello" ./*.js  # 在当前目录的所有 js 文件中查找 hello 字符串
+```
 

@@ -1,7 +1,9 @@
-# 解决了弹窗的问题
+# win10 操作系统
+
+## 解决了弹窗的问题
 https://www.zhihu.com/question/24265718
 
-# 去掉六个文件夹
+## 去掉六个文件夹
 原文地址：
 http://www.askvg.com/tip-remove-6-extra-folders-from-windows-10-explorer-this-pc/
 
@@ -34,15 +36,19 @@ create new string "**ThisPCPolicy**" and set its value to **Hide** for this key.
 
 经验证有效。
 
-# 小娜不工作
+## 小娜不工作
 小娜不能启动应用程序的处理办法
 http://www.xitongcheng.cc/xtjc/12276.html
 系统管理员身份打开 powershell
 运行下面的命令，重新注册启动小娜
 Get-AppXPackage -Name Microsoft.Windows.Cortana | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
 
-# 小娜启动绿色软件
+## 小娜启动绿色软件
 小娜启动绿色软件的步骤
 - 在开始菜单中创建快捷键
 - 没有权限，首先设置权限
 - 添加了快捷方式后，小娜就能正常工作了
+
+## win10 磁盘占用百分之百
+
+- http://jingyan.baidu.com/article/2f9b480d94898541cb6cc282.html

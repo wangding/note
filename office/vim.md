@@ -241,8 +241,9 @@ mkdir -p ~/.vim/bundle
 cd ~/.vim/bundle
 git clone https://github.com/VundleVim/Vundle.vim.git
 ```
+
 - 配置 .vimrc
-略
+直接从 wangding/tools 仓库中复制 .vimrc 文件，文件中已经配好了常用的插件。
 
 - 插件管理方法
   - 在 vim 应用中运行 :PluginInstall
@@ -252,13 +253,20 @@ git clone https://github.com/VundleVim/Vundle.vim.git
 基本的文章参考：http://efe.baidu.com/blog/vim-javascript-completion/
 
 - ternjs/tern_for_vim
-  - npm install 安装 node module 依赖
+  - 安装 nodejs 环境
+  - 在插件的目录下运行 npm install 安装 tern 插件需要的 node module 依赖
+  - 在每个项目代码目录下创建 .tern-project 文件，描述项目中需要用到的模块
+  - .tern-project 配置文件很关键，配置好了才能完成代码补全
+
 - Valloric/YouCompleteMe
   - 安装：使用 Vundle 下载 YCM 插件
-  - 在 YCM 文件夹下执行 install.py --tern-completer
+  - 在 YCM 文件夹下执行 install.py --tern-completer，可以打造成一个 JavaScript 开发环境
   - 在 YCM 文件夹下执行 install.py --clang-completer，**没有搞定**
   - 配置 .vimrc 的 <leader>-gf 跳转到定义处
+
 - jiangmiao/auto-pairs
+  - 安装之后直接可用，不用进行配置
+
 - wincent/command-t
   - 安装 command-t
   - yum install -y ruby-devel

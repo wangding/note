@@ -34,4 +34,14 @@ mv -r scope
 
 # 查看内存和 CPU 占用
 top
+
+# 复制文件到远程主机
+scp /path/file root@ipaddr:/path/
+# 例如：
+scp index.js wangding@192.168.59.148:/home/wangding/wd/auto/
+
+# 从远程主机复制文件到本地
+scp root@ipaddr:/path/file .
+# 例如：
+scp wangding@192.168.59.144:/home/wangding/wd/auto/index.js .
 ```

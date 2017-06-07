@@ -193,7 +193,7 @@ ls
 # 在 baseurl 中修改第 2 个路径为 /mnt/cdrom（即为光盘挂载点）
 # 将 enabled=0 改为 1
 
-# 运行 yum install 命令
+# 运行 yum install 命令，net-tools 安装包中包括 ifconfig 命令
 yum install net-tools
 
 # 设置国内的 yum 源（略），请参考文章：http://www.cnblogs.com/mchina/archive/2013/01/04/2842275.html

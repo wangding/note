@@ -372,3 +372,48 @@ http://www.linuxidc.com/Linux/2015-05/117975.htm
 grep "hello" ./*.js  # 在当前目录的所有 js 文件中查找 hello 字符串
 ```
 
+# ubuntu Linux 开发环境
+
+## 一般问题
+
+- 终端环境  
+  字符编码，选择 utf-8  
+- npm install  
+  sudo 做为前缀  
+  
+## terminal 下的快捷键
+
+# 命令行快捷键
+
+快捷键大全的参考资料，非常权威：
+- https://linux.cn/article-5660-1.html
+
+- ctrl + a 移动光标到行首  ahead  
+- ctrl + e 移动光标到行尾  end
+
+- ctrl + f 按字符前移（右） forward  
+- ctrl + b 按字符后移（左） backward  
+- alt  + f 按单词前移（右） forward  
+- alt  + b 按单词后移（左） backward  
+
+- ctrl + w 删除光标前面的一个单词  
+- alt  + d 删除光标后面的一个单词
+
+- ctrl + k 从光标处删除至命令行尾  
+- ctrl + u 从光标处删除至命令行首  
+
+- ctrl + r 逆向搜索命令历史  
+- ctrl + d 删除当前字符
+- ctrl + h 删除光标前一个字符
+
+- ctrl + l 窗口清屏，效果等同命令 clear  
+
+- alt  + c 从光标处更改为首字符大写的单词 capital  
+- alt  + u 从光标处更改为全部大写的单词   upper  
+- alt  + l 从光标处更改为全部小写的单词   lower  
+
+- ctrl + t 交换光标处和之前的字符
+- alt  + t 交换光标处和之前的单词
+
+
+在 xshell 中使用 alt 快捷键，需要进行设置，否则会和 window 窗口的快捷键冲突：

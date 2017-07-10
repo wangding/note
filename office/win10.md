@@ -44,6 +44,7 @@ http://www.xitongcheng.cc/xtjc/12276.html
 Get-AppXPackage -Name Microsoft.Windows.Cortana | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
 
 ## 小娜启动绿色软件
+
 小娜启动绿色软件的步骤
 - 在开始菜单中创建快捷键
 - 没有权限，首先设置权限
@@ -52,3 +53,7 @@ Get-AppXPackage -Name Microsoft.Windows.Cortana | Foreach {Add-AppxPackage -Disa
 ## win10 磁盘占用百分之百
 
 - http://jingyan.baidu.com/article/2f9b480d94898541cb6cc282.html
+
+## 阻止 win10 自动安装软件
+
+http://jingyan.baidu.com/article/4dc40848b152cdc8d846f143.html

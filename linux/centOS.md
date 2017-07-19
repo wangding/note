@@ -417,3 +417,35 @@ grep "hello" ./*.js  # 在当前目录的所有 js 文件中查找 hello 字符�
 
 
 在 xshell 中使用 alt 快捷键，需要进行设置，否则会和 window 窗口的快捷键冲突：
+
+## 搭建 apache 服务器
+
+```bash
+# 安装软件
+sudo yum install -y httpd
+
+# 开通端口
+sudo firewall-cmd --add-service=http
+sudo firewall-cmd --permanent --add-port=80/tcp
+sudo firewall-cmd --reload
+
+# 启动服务
+systemctl enable httpd.service
+systemctl start httpd.service
+
+# 浏览器测试，应该能看到测试网页
+http://ip_addr/
+
+# 配置 apache，编辑 /etc/httpd/conf/httpd.conf 配置文件
+```
+
+## 搭建 lighttpd 服务器
+
+```bash
+# 安装文件
+sudo yum install -y epel-release
+sudo yum update
+sudo yum install -y lighttpd, gitweb
+
+# lighttpd 是 web 服务器，gitweb 是网站代码，或者网站程序
+```

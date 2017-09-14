@@ -449,3 +449,39 @@ sudo yum install -y lighttpd, gitweb
 
 # lighttpd 是 web 服务器，gitweb 是网站代码，或者网站程序
 ```
+
+export 命令的用法
+
+1、执行脚本时是在一个子shell环境运行的，脚本执行完后该子shell自动退出；
+2、一个shell中的系统环境变量才会被复制到子shell中（用export定义的变量）；
+3、一个shell中的系统环境变量只对该shell或者它的子shell有效，该shell结束时变量消失（并不能返回到父shell中）。
+4、不用export定义的变量只对该shell有效，对子shell也是无效的。
+
+```bash
+# 实验，验证 export 命令的用法
+
+test='hello'
+echo $test
+
+vi a.sh
+
+# --- 以下是 a.sh 中的内容
+
+#!/usr/bin/sh
+
+echo $PATH
+echo $test
+
+# --- a.sh 内容结束
+
+chmod u+x a.sh
+
+./a.sh
+
+# 看不到 test 变量的值
+
+export test
+./a.sh
+
+# 可以看到 test 变量的值
+```

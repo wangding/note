@@ -250,6 +250,8 @@ curl http://192.168.29.129:1337
 
 firewall-cmd --permanent --add-port=1337/tcp
 firewall-cmd --reload
+sudo firewall-cmd --zone=public --list-ports
+# 上面的命令列出本机防火墙打开的所有端口
 ```
 ## 安装 selenium webdriver
 参考：https://www.npmjs.com/package/selenium-webdriver

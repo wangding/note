@@ -8,6 +8,8 @@
 - 阮一峰的 JavaScript 教程中有 NodeJS 的内容：http://javascript.ruanyifeng.com/nodejs/basic.html
 - 极客学院的 wiki 有 nodejs api 中文：http://wiki.jikexueyuan.com/project/nodejs/
 - 阮一峰的前端开发教程中的 nodejs 文章：https://github.com/ruanyf/jstraining/blob/master/docs/node.md
+- https://github.com/ElemeFE/node-interview/blob/master/sections/zh-cn/README.md
+- https://cnodejs.org/
 
 # 视频教程
 

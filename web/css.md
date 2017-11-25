@@ -222,3 +222,25 @@ http://www.w3school.com.cn/cssref/css_selectors.asp
   - 作品：http://www.oschina.net/news/52103/50-css-only-icon-graphics
   - 极客：http://one-div.com/
   - 
+
+盒模型中 margin、border 和 paddding 会让盒子尺寸变大，替代方案是使用 box-sizing
+
+- background 和 background-color 的区别  
+  background 包括 background-color，当用 background 定义背景色的时候跟 background-color 作用完全相同。但是 background 还可以定义背景图片，是否居中，等样式。
+
+```css
+background:#FFFFFF url(1.png) no-repeat center top
+background-color:#FFFFFF;
+background-image:url(1.png);
+background-repeat:no-repeat;
+background-position:center top
+```
+
+div 块布局主要涉及到的样式如下：
+- 定位方式：absolute, static（默认），relative
+- 定位信息，left, top, right, bottom  
+- 尺寸信息，height, width
+
+【参考资料】  
+- css 布局的学习资料1：http://zh.learnlayout.com/  
+- css 布局的学习资料2：慕课网的布局视频课程，一列布局、两列布局、三列布局，等  

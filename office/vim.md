@@ -285,10 +285,9 @@ git clone https://github.com/VundleVim/Vundle.vim.git
   - 安装方式：  
     - cd ~/.vim/bundle  
     - git clone https://github.com/mattn/emmet-vim  
-    - vi ~/.vimrc
-    - 增加 Plugin 'mattn/emmet-vim'
+    - vi ~/.vimrc，增加 `Plugin 'mattn/emmet-vim'`
     - OK，编写一个 html 文件测试一下，html:5<c-y>,
-  - 使用方式，请参考文档：https://zfanw.com/blog/zencoding-vim-tutorial-chinese.html
+
 ## 键盘映射
 
 键盘映射是 vim 高效率的关键所在。

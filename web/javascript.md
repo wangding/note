@@ -1,3 +1,9 @@
+【参考资料】  
+
+- JSDoc 文档资料: http://www.css88.com/doc/jsdoc/index.html  
+- JSDoc 工具下载: https://www.npmjs.com/package/jsdoc
+- JSDoc 的 vim 插件的内容，参考：vim.md  
+
 # 文字教程学习资料
 
 - 阮一峰的 JavaScript 教程  

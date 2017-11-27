@@ -288,6 +288,14 @@ git clone https://github.com/VundleVim/Vundle.vim.git
     - vi ~/.vimrc，增加 `Plugin 'mattn/emmet-vim'`
     - OK，编写一个 html 文件测试一下，html:5<c-y>,
 
+- heavenshell/vim-jsdoc
+  - JSDoc 插件，生成符合 JSDoc 格式的函数块注释  
+  - 安装方式：
+    - cd ~/.vim/bundle  
+    - git clone https://github.com/heavenshell/vim-jsdoc  
+    - vi ~/.vimrc，增加 `Plugin 'heavenshell/vim-jsdoc'`
+    - OK，编写一个 js 文件测试一下，写两个函数，一个不带入口参数，一个带两、三个入口参数，在普通模式下，将光标放到 function 行上，按 `:JsDoc` 奇迹产生了。
+
 ## 键盘映射
 
 键盘映射是 vim 高效率的关键所在。

@@ -4,6 +4,7 @@
 
 - [官网](http://www.vim.org/)  
 - [插件](http://www.vim.org/scripts/script_search_results.php?order_by=rating)  
+- [中文文档](https://vimcn.github.io/vimcdoc/doc/help.html)  
 
 ## 学习资料
 
@@ -295,6 +296,14 @@ git clone https://github.com/VundleVim/Vundle.vim.git
     - git clone https://github.com/heavenshell/vim-jsdoc  
     - vi ~/.vimrc，增加 `Plugin 'heavenshell/vim-jsdoc'`
     - OK，编写一个 js 文件测试一下，写两个函数，一个不带入口参数，一个带两、三个入口参数，在普通模式下，将光标放到 function 行上，按 `:JsDoc` 奇迹产生了。
+
+- vimcn/vimrdoc  
+  - vim 的中文帮助文档  
+  - 安装方式：
+    - cd ~/.vim/bundle  
+    - git clone https://github.com/vimcn/vimcdoc
+    - vi ~/.vimrc，增加 `Plugin 'vimcn/vimcdoc'`  
+    - OK，在 vim 界面下 `:help` 就可以看到中文帮助文档  
 
 ## 键盘映射
 

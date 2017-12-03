@@ -487,3 +487,25 @@ export test
 
 # 可以看到 test 变量的值
 ```
+
+## crontab 定时任务
+
+【参考资料】  
+- https://www.cnblogs.com/peida/archive/2013/01/08/2850483.html
+
+```bash
+sudo crontab -e -u wangding   # -e 编辑某个用户的 crontab，如果不指定用户，则编辑当前用户的 crontab 文件，-u user 用来设定某个用户的 crontab 服务
+sudo crontab -l -u wangding   # 查看某个用户的 crontab 文件内容
+sudo crontab -r -u wangding   # 删除某个用户的 crontab 文件内容
+```
+
+crontab 文件的内容
+```
+*      *  *   *    *     command
+# 分钟 小时 日 月 星期几
+```
+特殊符号：
+\*: 代表说有可能值
+, : 代表一个列表范围，例如：1, 3, 5, 7
+- : 代表一个整数范围，例如：2-6，表示 2, 3, 4, 5, 6
+/ : 代表指定时间的间隔频率：例如：\*/2 在分钟位置，每隔两分钟执行一次 

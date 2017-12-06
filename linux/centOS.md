@@ -1,5 +1,9 @@
 # centOS 作为服务器
 
+【学习资料】  
+- http://webres.wang/the-art-of-command-line/
+- http://webres.wang/list-10-funny-linux-commands/
+
 ## docker 技术
 
 - 安装 docker，从 github 官网用 sh 脚本一键安装  

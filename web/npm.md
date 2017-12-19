@@ -65,3 +65,19 @@
 - npm uninstall --save 删除依赖的包  
 - npm unpublish <package> --force  
 - npm list -g 查看全局安装的包  
+
+```
+npm install 安装加速的问题可以先不讨论。
+
+假如，上面的安装命令执行的非常慢，因为 date-now 这个包非常小，可能快慢看不出来。
+你可以试着安装一下 npm install express 这个包比较大，网络
+npm install date-now --registry=http://registry.npm.taobao.org  速度 OK
+npm config ls -l       重看 npm 配置信息，registry = "https://registry.npmjs.org/"
+每次 npm install 时，设置仓库地址非常不方便
+
+npm config set registry https://registry.npmjs.org/
+
+npm config ls -l       看到设置成功
+rm -rf node_modules    删除依赖包
+npm install date-now   看一下速度
+```

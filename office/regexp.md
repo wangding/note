@@ -177,6 +177,20 @@ options：
 
 另外，对于命令行有特别用途的元字符，例如：`*`，如果出现在正则表达式中，需要用 `\` 转义。
 
+例如：
+在 `~/wd/nodejs-demo/` 目录下面找所有 `.js` 扩展名的文件，执行如下命令：
+
+```bash
+find . | grep ".js"                        // 会匹配 .json 文件
+find . | grep ".js$"                       // 会匹配 node_module 目录下的 *.js 文件
+find . | grep "^\.\/.*js$"                 // 会匹配 node_module 目录下的 *.js 文件
+find . | grep "^\.\/[0-9]\{2\}.*js$"       // 正确匹配，匹配上的文字呈现红色
+```
+
+注意 PATTERN 被双引号引用起来以防止被 Shell 解析。
+
+- Linux 基础命令介绍五：文本过滤 grep：https://segmentfault.com/a/1190000007416745
+
 ## less 中用正则表达式搜索
 
 /后面是正则表达式

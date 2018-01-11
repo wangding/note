@@ -154,7 +154,7 @@ max
 step
 min
 
-## svg 
+## SVG
 
 - 51CTO 上没有这个技术讲解
 - 参考资料1：https://msdn.microsoft.com/zh-cn/library/gg193983(v=vs.85).aspx

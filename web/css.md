@@ -46,10 +46,10 @@ HTML 标签原本被设计为用于定义文档内容。通过使用 `<h1>、<p>
 
 1. 浏览器缺省设置
 2. 外部样式表
-3. 内部样式表（位于 <head> 标签内部）
+3. 内部样式表（位于 `<head>` 标签内部）
 4. 内联样式（在 HTML 元素内部）
 
-因此，内联样式（在 HTML 元素内部）拥有最高的优先权，这意味着它将优先于以下的样式声明：<head> 标签中的样式声明，外部样式表中的样式声明，或者浏览器中的样式声明（缺省值）。
+因此，内联样式（在 HTML 元素内部）拥有最高的优先权，这意味着它将优先于以下的样式声明：`<head>` 标签中的样式声明，外部样式表中的样式声明，或者浏览器中的样式声明（缺省值）。
 
 ### CSS 基础语法
 
@@ -107,9 +107,11 @@ p { color: rgb(100%,0%,0%); }
 请注意，当使用 RGB 百分比时，即使当值为 0 时也要写百分比符号。但是在其他的情况下就不需要这么做了。比如说，当尺寸为 0 像素时，0 之后不需要使用 px 单位，因为 0 就是 0，无论单位是什么。
 
 ---
+
 #### 记得写引号
 
 提示：如果值为若干单词，则要给值加引号：
+
 ```css
 p {font-family: "sans serif";}
 ```
@@ -117,10 +119,13 @@ p {font-family: "sans serif";}
 #### 多重声明：
 
 提示：如果要定义不止一个声明，则需要用分号将每个声明分开。下面的例子展示出如何定义一个红色文字的居中段落。最后一条规则是不需要加分号的，因为分号在英语中是一个分隔符号，不是结束符号。然而，大多数有经验的设计师会在每条声明的末尾都加上分号，这么做的好处是，当你从现有的规则中增减声明时，会尽可能地减少出错的可能性。就像这样：
+
 ```css
 p {text-align:center; color:red;}   
 ```
+
 你应该在每行只描述一个属性，这样可以增强样式定义的可读性，就像这样：
+
 ```css
 p {
   text-align: center;
@@ -128,9 +133,11 @@ p {
   font-family: arial;
 }
 ```
+
 #### 空格和大小写
 
 大多数样式表包含不止一条规则，而大多数规则包含不止一个声明。多重声明和空格的使用使得样式表更容易被编辑：
+
 ```css
 body {
   color: #000;
@@ -202,13 +209,9 @@ body {
 - CSS 总结
 
 
-
 ## CSS 选择器语法
 
 http://www.w3school.com.cn/cssref/css_selectors.asp  
-
-
-
 
 
 ## CSS 实战
@@ -221,7 +224,6 @@ http://www.w3school.com.cn/cssref/css_selectors.asp
   - 视频：慕课网，重拾CSS的乐趣
   - 作品：http://www.oschina.net/news/52103/50-css-only-icon-graphics
   - 极客：http://one-div.com/
-  - 
 
 盒模型中 margin、border 和 paddding 会让盒子尺寸变大，替代方案是使用 box-sizing
 
@@ -229,11 +231,11 @@ http://www.w3school.com.cn/cssref/css_selectors.asp
   background 包括 background-color，当用 background 定义背景色的时候跟 background-color 作用完全相同。但是 background 还可以定义背景图片，是否居中，等样式。
 
 ```css
-background:#FFFFFF url(1.png) no-repeat center top
-background-color:#FFFFFF;
-background-image:url(1.png);
-background-repeat:no-repeat;
-background-position:center top
+background: #FFFFFF url(1.png) no-repeat center top
+background-color: #FFFFFF;
+background-image: url(1.png);
+background-repeat: no-repeat;
+background-position: center top
 ```
 
 div 块布局主要涉及到的样式如下：

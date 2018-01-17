@@ -131,6 +131,15 @@ reg.exec(html)
 ### 7.4.3 捕获的引用
 
 ```javascript
+'<b class='hello'>hello</b><i>world!</i>'.match(/<(\w+)([^>]*(.*?)<\/1>/g));
+1234567890'.replace(/(\d{3})(\d{3})(\d{4})/, `$1-$2-$3`);
+```
+第一行代码使用 `\1` 来捕获匹配项
+第二行代码使用 $1、$2、$3 表示每个捕获的数字
+
+### 7.4.4 没有捕获的分组
+
+```javascript
 "ninja-ninja-sword".match(/((ninja-)+)sword/)
 "ninja-ninja-sword".match(/((?:ninja-)+)sword/)
 ```

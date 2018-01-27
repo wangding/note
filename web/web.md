@@ -1,5 +1,31 @@
 # 各种 web 技术
 
+## 响应式网页设计
+
+- Responsive Web Design 响应式网页设计，自适应网页设计
+- 阮一峰的文章：http://www.ruanyifeng.com/blog/2012/05/responsive_web_design.html  
+- 实现要点如下：
+- 媒体查询 @media：https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Media_queries  
+- 视口属性 viewpoint：https://developer.mozilla.org/zh-CN/docs/Mobile/Viewport_meta_tag  
+- 不使用绝对宽度，使用百分比宽度  
+- 字体大小不用绝对值，使用相对大小  em，rem  
+- 使用浮动布局 float: right|left  
+- 媒体查询，选择性加载 CSS 文件  
+- 图片自适应  
+
+## SEO
+
+- Search Engine Optimization, SEO 搜索引擎优化  
+- 各种搜索引擎爬虫 User Agent：https://www.cnblogs.com/psunny/archive/2010/05/29/1746866.html  
+- Chrome 浏览器修改 User Agent 方法：  
+  - F12 打开开发者工具  
+  - 点击开发者工具右上角的三个小点  
+  - 在下拉菜单中点击 More Tools  
+  - 在 More Tools 菜单中点击 Network conditions  
+  - User agent 的 Select automatically 勾选去掉  
+  - 在下拉列表中选择 User agent，可以是 Google 搜索引擎爬虫的 UA  
+  - 也可以自定义 UA 字符串  
+
 ## favicon.ico 网站图标
 
 - 作用价值：https://baike.baidu.com/item/favicon.ico/8944811?fr=aladdin

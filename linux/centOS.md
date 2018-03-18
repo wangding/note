@@ -222,8 +222,8 @@ ONBOOT=yes
 ## 安装 node.js
 参考：https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora
 ```bash
-curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
-yum -y install nodejs
+curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
+sudo yum -y install nodejs
 
 # 检查 node.js 安装是否成功
 node -v

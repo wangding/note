@@ -1,0 +1,21 @@
+{
+  "name": "note",
+  "version": "1.0.0",
+  "description": "学习笔记",
+  "scripts": {
+    "test": "echo \"nothing to test!\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangding/note.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wangding/note/issues"
+  },
+  "homepage": "https://github.com/wangding/note#readme",
+  "devDependencies": {
+    "gitbook-cli": "^2.3.2"
+  }
+}

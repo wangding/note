@@ -1,8 +1,10 @@
-# 相关资源
+# 正则表达式
+
+## 相关资源
 
 - 正则表达式在线开发和测试工具：https://regex101.com/
 
-# JavaScript 中的正则表达式
+## JavaScript 中的正则表达式
 
 参考资料：《JavaScript 忍者秘籍》第 7 章 正则表达式
 
@@ -21,7 +23,6 @@ JavaScript 中与正则表达式相关的函数：
   - `str.replace()`
   - `str.split()`
 
-## 第 7 章 正则表达式
 
 ## 7.1 为什么正则表达式很牛
 
@@ -176,7 +177,6 @@ var str = 'foo=1&foo=2&blash=a&blash=b&foo=3';
 console.log(compress(str));
 ```
 
-
 【补充】  
 - 测验和练习，可以在 chrome 控制台中执行下面的代码：
 
@@ -193,7 +193,7 @@ str.match(/[ab]c/)
 str.match(/[ab]c/g)
 ```
 
-# Linux 中的正则表达式
+## Linux 中的正则表达式
 
 正则表达式的语法基本相同。只不过 Linux Bash 中的正则表达式语法分为：基本的正则表达式和扩展的正则表达式，两个加起来就是 JavaScript 的正则表达式。
 

@@ -2,7 +2,8 @@
 
 ## pm2 进程管理
 
-pm2 工具非常强大，是一个生产环境下 Node.js 进程管理工具
+pm2 工具非常强大，是一个生产环境下 Node.js 进程管理工具：
+
 - GitHub 仓库：https://github.com/Unitech/pm2  
 - 可以查看程序的输出日志 `pm2 logs`, `pm2 monit` 
 - 可以监视代码文件的变更 `pm2 start app --watch`  

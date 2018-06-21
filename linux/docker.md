@@ -22,11 +22,9 @@ $ uname -r
 
 ### 二、安装
 
-1. 安装最新版本的 Docker
+安装最新版本的 Docker。最新版本的 Docker 分两个版本，docker-ce(Community Edition)和docker-ee(Enterprise Edition)。CE 版本是免费的、社区版。
 
-最新版本的 Docker 分两个版本，docker-ce(Community Edition)和docker-ee(Enterprise Edition)。CE 版本是免费的、社区版。
-
-2.1 安装依赖的软件包
+1 安装依赖的软件包
 
 ```bash
 $ sudo yum install -y yum-utils \
@@ -34,7 +32,7 @@ $ sudo yum install -y yum-utils \
   lvm2
 ```
 
-2.2 设置稳定版仓库
+2 设置稳定版仓库
 
 # 添加官方数据源
 
@@ -49,13 +47,13 @@ $ sudo yum-config-manager \
   https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 ```
 
-2.3 安装
+3 安装
 
 ```bash
 $ sudo yum install -y docker-ce # 安装最新版本
 ```
 
-2.4 启动Docker
+4 启动Docker
 
 ```bash
 $ sudo systemctl start docker # 启动
@@ -65,6 +63,6 @@ $ sudo systemctl restart docker
 $ sudo docker run hello-world # 检查 docker 运行正常
 ```
 
-2.5 检查 docker 是否安装成功
+5 检查 docker 是否安装成功
 
 $ docker --version # 查看安装的 docker 版本

@@ -8,7 +8,7 @@
 - 媒体查询 @media：https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Media_queries  
 - 视口属性 viewpoint：https://developer.mozilla.org/zh-CN/docs/Mobile/Viewport_meta_tag  
 - 不使用绝对宽度，使用百分比宽度  
-- 字体大小不用绝对值，使用相对大小  em，rem  
+- 字体大小不用绝对值，使用相对大小 em，rem  
 - 使用浮动布局 float: right|left  
 - 媒体查询，选择性加载 CSS 文件  
 - 图片自适应  

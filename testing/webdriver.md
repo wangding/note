@@ -1,13 +1,17 @@
-# JavaScript 语言
+# WebDriver
+
 ## 参考资料
+
 - 官方API文档：http://seleniumhq.github.io/selenium/docs/api/javascript/index.html
 - 阮一峰的文章：https://github.com/ruanyf/jstutorial/blob/63812f4c73e33916406cea2d19b01066960c46f5/tool/testing.md
 
 ## 课程视频
+
 - https://www.youtube.com/watch?v=X3pTXG9a1oQ
 - https://www.youtube.com/playlist?list=PLDcL8dhuVQJzgNMCXtlEe8QeDIEByxBFX
 
 ## Selenium webdriver 环境搭建
+
 ```bash
 # 安装 node.js 略
 # 验证 node.js 和 npm 安装成功
@@ -26,6 +30,7 @@ node install selenium-webdriver
 ```
 
 # 课程设置1
+
 参考：Node.JS Selenium Webdriver
 网址：https://www.youtube.com/watch?v=euEir1hX-Z8&list=PLDcL8dhuVQJzgNMCXtlEe8QeDIEByxBFX
 问题：课程内容不全
@@ -41,6 +46,7 @@ node install selenium-webdriver
 - 第四课：find wiki links
 
 # 课程设置2
+
 参考：WebDriverJS — Selenium WebDriver for Node.js 
 网址：https://www.youtube.com/playlist?list=PLVgOtoUBG2meE37mguTzlZHK4G4LQQGa_
 特色：完全是基于 node 命令行的，环境安装的过程很明白

@@ -1,4 +1,4 @@
-# redmine 项目管理
+# Redmine 项目管理
 
 ## ssh 连接 bitnami redmine vm
 

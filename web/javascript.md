@@ -247,9 +247,6 @@ console.timeEnd('TASK-ABC');
 单元测试和自动化测试的一个很好的范例：jQuery 项目。
 https://github.com/jquery/jquery
 
-
-
-
 ## 文字教程学习资料
 
 - 阮一峰的 JavaScript 教程  

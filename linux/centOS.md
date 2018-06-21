@@ -4,22 +4,6 @@
 - http://webres.wang/the-art-of-command-line/
 - http://webres.wang/list-10-funny-linux-commands/
 
-## docker 技术
-
-- 安装 docker，从 github 官网用 sh 脚本一键安装  
-- docker version 检查 docker 安装是否成功  
-- 如果出现
-  ```
-  docker can not connet to docker domean, 则运行下面的命令
-  service docker start
-  ```
-- docker images 查看安装的所有镜像
-- docker run hello-world 运行 hello-world 容器
-- hub.docker.com docker 镜像的网站
-- docker pull hello-world 从 docker hub 上下载 hello-world 镜像
-- 没有运行的是 docker 镜像，运行中的是 docker 容器
-
-
 # CentOS 作为开发和办公环境的安装过程
 
 首先在虚拟机中构建 CentOS 办公环境，体验成功之后。再在物理机中安装使用 CentOS。下面的内容记录这个过程中的经验。
@@ -67,7 +51,6 @@ git --version
   - vimperator
   - Adblock Plus
 - 配置 ibus 的双拼输入
-- 
 
 ## 常用命令
 
@@ -140,20 +123,21 @@ cat /etc/redhat-release
 - chgrp group filename 改变文件或目录的组名
 - chown user.group filename 改变文件或目录的所有者为 group 组的 user 用户
 
-
 ## 常见问题
 
 - 用户 sudo 不在 sudoers 用户组中的问题
 http://blog.csdn.net/attagain/article/details/11987297
 
-
 ## 学习资料
+
 http://billie66.github.io/TLCL/book/zh/index.html
 
 ## 腾讯主机控制台：
+
 https://console.qcloud.com/cvm
 
 ## Linux 如何关机
+
 ```bash
 # 1、执行命令“who”查看目前在线用户
 who
@@ -171,6 +155,7 @@ poweroff
 ```
 
 ## Linux 如何挂载 CD-ROM
+
 ```bash
 # 确保 /mnt/ 目录下面有 cdrom/ 文件夹
 mkdir /mnt/cdrom
@@ -178,7 +163,9 @@ mkdir /mnt/cdrom
 # 挂载 CD-ROM
 mount /dev/cdrom /mnt/cdrom
 ```
+
 ## yum 设置
+
 ```bash
 # 设置从本地（虚拟机挂载的 iso 镜像）安装源安装软件
 # 需要提前挂载 CD-ROM
@@ -232,6 +219,7 @@ node -v
 npm -v
 ```
 ## helloworld web 站点测试
+
 【服务器端】node server.js
 【客户端】http://192.168.59.130:1337
 
@@ -245,6 +233,7 @@ http.createServer(function (req, res) {
 console.log('Server running at http://192.168.59.130/');
 ```
 ## 开启 centOS 的防火墙端口
+
 ```bash
 # 虚拟机本身可以打开页面
 curl http://192.168.29.129:1337
@@ -378,18 +367,7 @@ http://www.linuxidc.com/Linux/2015-05/117975.htm
 grep "hello" ./*.js  # 在当前目录的所有 js 文件中查找 hello 字符串
 ```
 
-# ubuntu Linux 开发环境
-
-## 一般问题
-
-- 终端环境  
-  字符编码，选择 utf-8  
-- npm install  
-  sudo 做为前缀  
-  
-## terminal 下的快捷键
-
-# 命令行快捷键
+## 命令行快捷键
 
 快捷键大全的参考资料，非常权威：
 - https://linux.cn/article-5660-1.html

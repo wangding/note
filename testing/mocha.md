@@ -1,7 +1,5 @@
 # Mocha 单元测试框架
 
-51CTO 学院没有相关课程
-
 ## 学习资料
 
 - [x] 阮一峰的 JavaScriptTraining 课程的第四天有 Mocha 的资料，资料网址：https://github.com/ruanyf/jstraining/blob/f7a0b4a0d021e400a8d54969ac6feacacc99d2d8/docs/engineering.md

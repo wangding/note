@@ -1,5 +1,56 @@
 # Node.js
 
+## nvm Node.js 版本管理
+
+nvm Node.js Version Manager
+
+Node.js 版本管理有两个工具：nvm 和 n，这两个工具的比对，请看文章：http://taobaofed.org/blog/2015/11/17/nvm-or-n/
+
+如果想在同一台机器，同时安装多个版本的 Node.js，就需要用到版本管理工具 nvm。
+
+用下面的方式安装 nvm。
+
+```bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+```
+
+安装以后，nvm 的执行脚本，每次使用前都要激活，建议将其加入 ~/.bashrc文件（假定使用Bash）。激活后，就可以安装指定版本的 Node。
+
+```bash
+# 安装最新版本
+$ nvm install node
+
+# 安装指定版本
+$ nvm install 6
+
+# 使用已安装的最新版本
+$ nvm use node
+
+# 使用指定版本的node
+$ nvm use 0.12
+```
+
+nvm 也允许进入指定版本的 REPL 环境。
+
+```bash
+$ nvm run 0.12
+```
+
+如果在项目根目录下新建一个 .nvmrc 文件，将版本号写入其中，就只输入 nvm use 命令即可，不再需要附加版本号。
+
+下面是其他经常用到的命令。
+
+```bash
+# 查看本地安装的所有版本
+$ nvm ls
+
+# 查看服务器上所有可供安装的版本。
+$ nvm ls-remote
+
+# 退出已经激活的nvm，使用deactivate命令。
+$ nvm deactivate
+```
+
 ## pm2 进程管理
 
 pm2 工具非常强大，是一个生产环境下 Node.js 进程管理工具：
@@ -19,9 +70,10 @@ pm2 工具非常强大，是一个生产环境下 Node.js 进程管理工具：
 - node 大学在线教程：https://nodeschool.io/zh-cn/
 - 阮一峰的 JavaScript 教程中有 NodeJS 的内容：http://javascript.ruanyifeng.com/nodejs/basic.html
 - 极客学院的 wiki 有 nodejs api 中文：http://wiki.jikexueyuan.com/project/nodejs/
-- 阮一峰的前端开发教程中的 nodejs 文章：https://github.com/ruanyf/jstraining/blob/master/docs/node.md
-- https://github.com/ElemeFE/node-interview/blob/master/sections/zh-cn/README.md
-- https://cnodejs.org/
+- 饿了吗 Node.js 面试题：https://github.com/ElemeFE/node-interview/blob/master/sections/zh-cn/README.md
+- Node.js 中文社区：https://cnodejs.org/
+- 程序猿小卡的 Node.js 学习笔记：https://github.com/chyingp/nodejs-learning-guide
+- 一起学 Node.js（有一个完整的大案例）：https://github.com/nswbmw/N-blog
 
 ## 视频教程
 

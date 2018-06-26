@@ -19,6 +19,7 @@
   - [Redmine](./office/redmine.md)  
   - [RegExp](./office/regexp.md)  
   - [tern_for_vim](./office/tern_for_vim.md)  
+  - [vmware](./office/vmware.md)
   - [vim](./office/vim.md)  
   - [Win 10](./office/win10.md)  
 - Testing

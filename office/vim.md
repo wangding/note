@@ -315,3 +315,10 @@ git clone https://github.com/VundleVim/Vundle.vim.git
 
 - :source ~/.vimrc 不退出 vim 重新加载配置文件
 
+## 批量查找替换
+
+- 打开若干个文件，例如：`vi *.html`
+- 查看当前打开的文件：`:args`
+- 在所有打开的文件中批量查找替换：`argdo %s/old/new/g`
+- 退出 vim
+- 验证是否修改正确，用命令：`git diff`

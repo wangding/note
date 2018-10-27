@@ -499,3 +499,16 @@ crontab 文件的内容
 cd /var/log
 sudo less /var/log/cron.log
 ```
+
+## curl 常用参数
+
+- GET 请求 URL：`curl http://localhost:8080`
+- POST 请求 URL：`curl -X POST http://localhost:8080 -d "item=abc"`
+- curl 默认请求方法是 GET，修改请求方法的参数是 -X，例如：`curl -X PUT http://localhost:8080`
+- curl 的 -v 参数，除了可以看到响应体，还可以看到请求头和响应头，当然 curl -i 参数可以看到响应头的，-v 参数打印信息的时候，请求头和响应头前面的前导符号是大于号和小于号，正好相反，反映了数据发送的两个方向，设计的很细腻。
+- curl -H 参数可以定制请求头信息，例如：`curl -H "Content-Type:appliction/json" http://localhost:8080`，如果需要多个自定义的头字段，就多加几个 -H 参数，一个 -H 参数跟一个头字段信息
+- 综合起来，curl POST 发送 JSON 数据的命令：例如：`curl -H "Content-Type:application/json" -X POST -d '{"name":"wangding","age":"41"}'`
+- curl -F 参数可以上传文件，参数格式：-F 'file=@file-path'，例如：`curl -F 'file=@/usr/bin/node' http://localhost:8080`
+- curl -c cookie.txt url 访问 url 获得服务器给的 cookie 并存放到 cookie.txt 文件中
+- curl -b cookie.txt url 访问 url 的同时，将 cookie 作为请求头发送给服务器
+- curl -b cookie.txt -c cookie.txt url 同时发送 cookie，并接收服务器的 cookie

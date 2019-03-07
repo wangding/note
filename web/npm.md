@@ -75,6 +75,8 @@ npm install date-now --registry=http://registry.npm.taobao.org  速度 OK
 npm config ls -l       重看 npm 配置信息，registry = "https://registry.npmjs.org/"
 每次 npm install 时，设置仓库地址非常不方便
 
+npm config set registry http://registry.npm.taobao.org
+npm config set package-lock false
 npm config set registry https://registry.npmjs.org/
 
 npm config ls -l       看到设置成功

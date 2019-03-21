@@ -1,5 +1,12 @@
 # 各种 web 技术
 
+## jQuery 全屏滚动插件 fullPage.js
+
+- 示例：http://www.dowebok.com/demo/2014/77/index11.html
+- CDN：http://staticfile.org/
+- 图片 Demo，见 demo-code 仓库 slide 目录
+- 应用：可以搞教学板书图片的轮播
+
 ## 响应式网页设计
 
 - Responsive Web Design 响应式网页设计，自适应网页设计

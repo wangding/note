@@ -1,5 +1,20 @@
 # Node.js
 
+## 刘士的 gitbook 插件
+
+- 他的个人主页：https://liushilive.github.io/
+- 他的软件测试必知必会内容很丰富
+- 他的 gitbook 插件挺好用：https://github.com/liushilive/books-cli
+- 我的电子书都用上他的插件了
+
+## Puppeteer google 出的无头浏览器
+
+- 文章 1：https://www.jianshu.com/p/2f04f9d665ce
+- 文章 2：https://www.jb51.net/article/138391.htm
+- 官网：https://github.com/GoogleChrome/puppeteer
+- API：https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md
+- 应用：Node.js 前端技术，爬虫或者 UI 自动化测试
+
 ## nvm Node.js 版本管理
 
 nvm Node.js Version Manager

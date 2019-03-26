@@ -1,5 +1,43 @@
 # Git
 
+## 提升访问速度
+
+- win10 系统
+
+找到 hosts 文件，C:/Windows/system32/drivers/etc/hosts，在 hosts 文件最下面直接复制粘贴添加：
+
+151.101.44.249 github.global.ssl.fastly.net
+192.30.253.113 github.com
+103.245.222.133 assets-cdn.github.com
+23.235.47.133 assets-cdn.github.com
+203.208.39.104 assets-cdn.github.com
+204.232.175.78 documentcloud.github.com
+204.232.175.94 gist.github.com
+107.21.116.220 help.github.com
+207.97.227.252 nodeload.github.com
+199.27.76.130 raw.github.com
+107.22.3.110 status.github.com
+204.232.175.78 training.github.com
+207.97.227.243 www.github.com
+185.31.16.184 github.global.ssl.fastly.net
+185.31.18.133 avatars0.githubusercontent.com
+185.31.19.133 avatars1.githubusercontent.com
+
+然后立刻刷新系统：
+刷新方法是：cmd 打开命令控制行，直接输入：ipconfig /flushdns
+
+注意，hosts 文件有权限限制不能编辑保存，先找到 notepad.exe 程序，鼠标右键用管理员身份运行。然后再打开 Hosts 文件，就可以保存了。
+
+- CentOS 7 系统
+
+终端命令行模式，输入 sudo vi /etc/hosts，我们需要加入 github 的 host 地址，接下来我们需要知道 github.com 和 github.global.ssl.fastly.net 域名对应的ip地址。
+
+用浏览器访问 IPAddress.com 使用 IP Lookup 工具获得这个域名的ip地址，该网站可能需要梯子，输入上述域名后，分别获得github.com和github.global.ssl.fastly.net对应的ip，比如192.168.xx.xx和185.31.17.xx。准备工作做完之后，在vi打开的hosts文件中添加如下格式：
+
+192.168.xx.xx github.com
+
+185.31.17.xx github.global.ssl.fastly.net
+
 Git 仓库的版本控制，好处是所有代码发展的历史都会记录下来。我们只要去看代码的每个版本，就可以从中学习到很多东西，知道代码怎么写，知道文档该怎么写。可以举例说明，比如不知道到 MarkDown 中的 TaskList  
 
 ## 阮一峰的 Git 教程

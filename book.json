@@ -1,5 +1,6 @@
 {
   "title": "学习笔记",
+  "description" : "学习笔记及各种参考资料链接",
   "author": "王顶",
   "language": "zh-hans",
   "plugins": [
@@ -10,8 +11,7 @@
     "books",
     "edit-link",
     "sharing-plus",
-    "github-buttons@2.1.0",
-    "ace"
+    "github-buttons@2.1.0"
   ],
   "pluginsConfig": {
     "books": {

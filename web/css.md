@@ -1,11 +1,11 @@
-# CSS 技术
+# CSS
 
 学习 CSS 的层次：
-- 基本样式：背景色，文字颜色，字体，最简单的选择器，把英文单词学一下，就记住了；
+- 基本样式，例如：背景色、文字颜色、字体，最简单的选择器，把英文单词记住，就学会了；
 - 盒模型、选择器、布局、定位；
-- CSS3 的动画特效等；
-- bootstrap；（bootstrap 的 github 仓库是 sass 代码，可以研究一下）；
-- sass；
+- CSS3 动画特效，等；
+- Bootstrap 库，等；
+- SASS、LESS 或 Stylus 等高级语言；
 
 ## CSS 基础
 
@@ -149,15 +149,6 @@ body {
 ```
 是否包含空格不会影响 CSS 在浏览器的工作效果，同样，与 XHTML 不同，CSS 对大小写不敏感。不过存在一个例外：如果涉及到与 HTML 文档一起工作的话，class 和 id 名称对大小写是敏感的。
 
-
-
-### CSS 高级语法
-### CSS 派生选择器
-### CSS id 选择器
-### CSS 类选择器
-### CSS 属性选择器
-### CSS 创建
-
 ## CSS 样式
 
 - CSS 背景
@@ -195,6 +186,7 @@ body {
 - CSS 相邻兄弟选择器
 - CSS 伪类
 - CSS 伪元素
+- 参考：http://www.w3school.com.cn/cssref/css_selectors.asp  
 
 ## CSS 高级
 
@@ -205,14 +197,6 @@ body {
 - CSS 图片库
 - CSS 图片透明
 - CSS 媒介类型
-- CSS 注意事项
-- CSS 总结
-
-
-## CSS 选择器语法
-
-http://www.w3school.com.cn/cssref/css_selectors.asp  
-
 
 ## CSS 实战
 

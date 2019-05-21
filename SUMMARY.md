@@ -25,7 +25,7 @@
 
 ## Linux
 
-- [CentOS](./linux/centOS.md)
+- [CentOS](./linux/centos.md)
 - [Command](./linux/command.md)
 - [GitLab](./linux/gitlab.md)
 - [Ruby](./linux/ruby.md)
@@ -33,9 +33,9 @@
 
 ## Testing
 
-- [JMeter](./testing/JMeter.md)
+- [JMeter](./testing/jmeter.md)
 - [Mocha](./testing/mocha.md)
-- [SeleniumIDE](./testing/SeleniumIDE.md)
+- [SeleniumIDE](./testing/selenium-ide.md)
 - [WebDriver](./testing/webdriver.md)
 
 ## DataBase

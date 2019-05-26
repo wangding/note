@@ -12,6 +12,7 @@
 - [Redmine](./office/redmine.md)
 - [vmware](./office/vmware.md)
 - [Win 10](./office/win10.md)
+- [LaTex](./office/latex.md)
 
 ## WEB
 

@@ -1,14 +1,10 @@
-# centOS 作为服务器
+# CentOS
 
-【学习资料】  
-- http://webres.wang/the-art-of-command-line/
-- http://webres.wang/list-10-funny-linux-commands/
-
-# CentOS 作为开发和办公环境的安装过程
+## CentOS 作为开发和办公环境的安装过程
 
 首先在虚拟机中构建 CentOS 办公环境，体验成功之后。再在物理机中安装使用 CentOS。下面的内容记录这个过程中的经验。
 
-## 虚拟机创建
+### 创建虚拟机
 
 - 创建空的虚拟机  
 - 操作系统版本：CentOS 64 位  
@@ -19,7 +15,7 @@
 - 磁盘大小：20 G
 - 将虚拟磁盘存储成单一文件
 
-## 操作系统安装
+### 安装操作系统
 
 安装的图形界面中，进行如下设置：
 
@@ -35,7 +31,7 @@
 - root 密码
 - 创建新用户并设置密码，把新用户加到管理员组中
 
-## 工作环境安装
+### 安装工作环境
 
 - 安装 git 并验证 git 安装成功
 ```bash
@@ -128,10 +124,6 @@ cat /etc/redhat-release
 - 用户 sudo 不在 sudoers 用户组中的问题
 http://blog.csdn.net/attagain/article/details/11987297
 
-## 学习资料
-
-http://billie66.github.io/TLCL/book/zh/index.html
-
 ## 腾讯主机控制台：
 
 https://console.qcloud.com/cvm
@@ -221,7 +213,7 @@ npm -v
 ## helloworld web 站点测试
 
 【服务器端】node server.js
-【客户端】http://192.168.59.130:1337
+【客户端】`http://192.168.59.130:1337`
 
 hello.js 代码如下：
 ```javascript
@@ -346,16 +338,6 @@ http://blog.chinaunix.net/uid-20726500-id-4662320.html
 
 ## nfs 的用法
 
-
-## 笔记本安装 CentOS
-
-- 参考资料，主要借鉴如何制作安装 U 盘：
-http://www.centoscn.com/image-text/setup/2015/0613/5648.html
-安装过程比较简单和顺利，连无线网卡都能识别出来，非常顺利，唯一的问题是安装完之后中文是乱码的，暂时没有解决。
-
-## 命令行测网速
-
-http://www.centoscn.com/CentOS/Intermediate/2015/0311/4860.html
 
 ## 通过 xshell windows 给 linux 虚拟机上传文件
 
@@ -512,3 +494,8 @@ sudo less /var/log/cron.log
 - curl -c cookie.txt url 访问 url 获得服务器给的 cookie 并存放到 cookie.txt 文件中
 - curl -b cookie.txt url 访问 url 的同时，将 cookie 作为请求头发送给服务器
 - curl -b cookie.txt -c cookie.txt url 同时发送 cookie，并接收服务器的 cookie
+
+## 学习资料
+
+- http://webres.wang/the-art-of-command-line/
+- http://webres.wang/list-10-funny-linux-commands/

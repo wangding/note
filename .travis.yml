@@ -2,9 +2,11 @@ language: node_js
 node_js:
   - "node"
 
-after_script:
+before_script:
   - gitbook install
   - gitbook build
+
+after_script:
   - grunt minify
   - cd ./_book
   - git init

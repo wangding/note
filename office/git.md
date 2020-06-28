@@ -6,25 +6,23 @@ Git 仓库的版本控制，好处是所有代码发展的历史都会记录下�
 
 - win10 系统
 
-在 `C:/Windows/system32/drivers/etc/hosts` 找到 hosts 文件，在 hosts 文件最下面复制粘贴下面的内容：
+复制下面的域名解析数据到记事本，在[站长工具](http://tool.chinaz.com/dns)中，对所有域名测试最快的 IP 地址，即 TTL 值最小的 IP 地址，把这个 IP 地址贴到记事本中，换掉原来的 IP 地址。所有域名搞完一遍后。在 `C:/Windows/system32/drivers/etc/hosts` 找到 hosts 文件，在 hosts 文件最下面复制粘贴下面的内容：
 
 ```
-151.101.44.249  github.global.ssl.fastly.net
-192.30.253.113  github.com
-103.245.222.133 assets-cdn.github.com
-23.235.47.133   assets-cdn.github.com
-203.208.39.104  assets-cdn.github.com
-204.232.175.78  documentcloud.github.com
-204.232.175.94  gist.github.com
-107.21.116.220  help.github.com
-207.97.227.252  nodeload.github.com
-199.27.76.130   raw.github.com
-107.22.3.110    status.github.com
-204.232.175.78  training.github.com
-207.97.227.243  www.github.com
-185.31.16.184   github.global.ssl.fastly.net
-185.31.18.133   avatars0.githubusercontent.com
-185.31.19.133   avatars1.githubusercontent.com
+69.171.245.53     github.global.ssl.fastly.net
+140.82.113.4      github.com
+185.199.109.153   assets-cdn.github.com
+185.199.109.153   documentcloud.github.com
+203.98.7.65       gist.github.com
+185.199.108.154   help.github.com
+54.251.140.56     nodeload.github.com
+151.101.108.133   raw.github.com
+52.205.36.92      status.github.com
+140.82.113.18     training.github.com
+52.74.223.119     www.github.com
+151.101.229.194   github.global.ssl.fastly.net
+151.101.108.133   avatars0.githubusercontent.com
+151.101.108.133   avatars1.githubusercontent.com
 ```
 
 然后立刻刷新系统，刷新方法是：cmd 打开控制台窗口，直接输入：ipconfig /flushdns
@@ -34,14 +32,7 @@ hosts 文件有权限限制不能编辑保存，先找到 notepad.exe 程序，�
 
 - CentOS 7 系统
 
-终端命令行模式，输入 `sudo vi /etc/hosts`，加入 github 的 host 地址。首先，需要知道 github.com 和 github.global.ssl.fastly.net 域名对应的 IP 地址。
-
-用浏览器访问 IPAddress.com 使用 IP Lookup 工具获得这个域名的 IP 地址，该网站可能需要梯子，输入上述域名后，分别获得 github.com 和 github.global.ssl.fastly.net 对应的 IP，比如 192.168.xx.xx 和 185.31.17.xx。准备工作做完之后，在 vi 打开的 hosts 文件中添加如下格式：
-
-```
-192.168.xx.xx github.com
-185.31.17.xx  github.global.ssl.fastly.net
-```
+终端命令行模式，输入 `sudo vi /etc/hosts`，打开 hosts 文件，粘贴上面的 IP 地址和域名的数据。
 
 ## 常见问题
 

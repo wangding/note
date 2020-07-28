@@ -79,6 +79,7 @@ cat /etc/redhat-release
 
 ## 安装卸载程序（yum 包管理）
 
+- yum list installed 列出已经安装的软件包
 - yum list 列出已安装的和可安装的应用程序包
 - yum list package 列出 package 应用的安装情况
 - yum clean 清除缓存的软件包信息

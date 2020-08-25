@@ -301,6 +301,19 @@ git clone https://github.com/VundleVim/Vundle.vim.git
     - vi ~/.vimrc，增加 `Plugin 'vimcn/vimcdoc'`  
     - OK，在 vim 界面下 `:help` 就可以看到中文帮助文档  
 
+## coc.nvim 插件系统
+
+- coc-html
+- coc-tabnine
+- coc-css
+- coc-json
+- coc-tsserver
+- coc-emmet
+- coc-pairs
+- coc-sql
+- coc-snippets
+- honza/vim-snippets snippets 代码库，coc-snippets 配合这个库才能起作用
+
 ## 键盘映射
 
 键盘映射是 vim 高效率的关键所在。
@@ -318,7 +331,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git
 
 ## 杂项
 
-- :source ~/.vimrc 不退出 vim 重新加载配置文件
+l :source ~/.vimrc 不退出 vim 重新加载配置文件
 
 ## 参考资料
 

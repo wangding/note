@@ -9,7 +9,6 @@
 - [Git](./office/git.md)
 - [RegExp](./office/regexp.md)
 - [tern_for_vim](./office/tern_for_vim.md)
-- [GitBook](./office/gitbook.md)
 - [Redmine](./office/redmine.md)
 - [vmware](./office/vmware.md)
 - [Win 10](./office/win10.md)

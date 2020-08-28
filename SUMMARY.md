@@ -27,6 +27,7 @@
 ## Linux
 
 - [CentOS](./linux/centos.md)
+- [阿里云服务器](./linux/aliyun.md)
 - [Command](./linux/command.md)
 - [GitLab](./linux/gitlab.md)
 - [Ruby](./linux/ruby.md)

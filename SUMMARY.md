@@ -6,6 +6,7 @@
 ## Office
 
 - [vim](./office/vim.md)
+- [cVim](./office/cvim.md)
 - [Git](./office/git.md)
 - [RegExp](./office/regexp.md)
 - [tern_for_vim](./office/tern_for_vim.md)
@@ -27,7 +28,7 @@
 ## Linux
 
 - [CentOS](./linux/centos.md)
-- [阿里云服务器](./linux/aliyun.md)
+- [aliyun](./linux/aliyun.md)
 - [Command](./linux/command.md)
 - [GitLab](./linux/gitlab.md)
 - [Ruby](./linux/ruby.md)

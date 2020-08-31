@@ -124,6 +124,27 @@ GRANT ALL PRIVILEGES ON redmine.* TO 'redmine'@'localhost';
 - 用户名：admin
 - 密码：admin
 
+## 配置 redmine 邮件服务
+
+- 进入 redmine 代码目录，`cd redmine-4.1.1`
+- 修改默认配置文件名，`mv config/configuration.yml.example config/configuration.yml`
+- 编辑配置文件，`vi config/configuration.yuml`
+- 使用 163 邮箱的配置信息如下，其他邮箱类似：
+
+```yml
+production:
+  email_delivery:
+    delivery_method: :smtp
+    smtp_settings:
+      ssl: true
+      address: "smtp.163.com"
+      port: 465
+      domain: '163.com'
+      authentication: :login
+      user_name: 'email address'
+      password: '授权码'
+```
+
 ## ssh 连接 bitnami redmine vm
 
 ```bash

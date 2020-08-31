@@ -69,6 +69,15 @@ cd /usr/local/nginx
 # 编辑 nginx 的配置文件 nginx.conf 文件，默认不用编辑
 vi conf/nginx.conf
 
+
+```
+location / {
+  proxy_pass   http://localhost:3000;
+  proxy_set_header Host redmine.wangding.in;
+  proxy_set_header X-Real-IP 39.104.115.100;
+}
+```
+
 # 启动 nginx
 sudo sbin/nginx
 

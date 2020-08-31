@@ -29,6 +29,7 @@
 
 - [CentOS](./linux/centos.md)
 - [aliyun](./linux/aliyun.md)
+- [nginx](./linux/nginx.md)
 - [Command](./linux/command.md)
 - [GitLab](./linux/gitlab.md)
 - [Ruby](./linux/ruby.md)

@@ -1,75 +1,54 @@
 # Git
 
-Git 仓库的版本控制，好处是所有代码发展的历史都会记录下来。我们只要去看代码的每个版本，就可以从中学习到很多东西，知道代码怎么写，知道文档该怎么写。可以举例说明，比如不知道到 MarkDown 中的 TaskList  
+Git 的用法。
 
-## 提升 GitHub 访问速度
+## Git 基本概念
 
-- win10 系统
-
-复制下面的域名解析数据到记事本，在[站长工具](http://tool.chinaz.com/dns)中，对所有域名测试最快的 IP 地址，即 TTL 值最小的 IP 地址，把这个 IP 地址贴到记事本中，换掉原来的 IP 地址。所有域名搞完一遍后。在 `C:/Windows/system32/drivers/etc/hosts` 找到 hosts 文件，在 hosts 文件最下面复制粘贴下面的内容：
+![Git 基本概念](http://www.ruanyifeng.com/blogimg/asset/2015/bg2015120901.png)
 
 ```
-69.171.245.53     github.global.ssl.fastly.net
-140.82.113.4      github.com
-185.199.109.153   assets-cdn.github.com
-185.199.109.153   documentcloud.github.com
-203.98.7.65       gist.github.com
-185.199.108.154   help.github.com
-54.251.140.56     nodeload.github.com
-151.101.108.133   raw.github.com
-52.205.36.92      status.github.com
-140.82.113.18     training.github.com
-52.74.223.119     www.github.com
-151.101.229.194   github.global.ssl.fastly.net
-151.101.108.133   avatars0.githubusercontent.com
-151.101.108.133   avatars1.githubusercontent.com
+Workspace：  工作区
+Index/Stage：暂存区
+Repository： 仓库区（或本地仓库）
+Remote：     远程仓库
 ```
 
-然后立刻刷新系统，刷新方法是：cmd 打开控制台窗口，直接输入：ipconfig /flushdns
+## 配置
 
-**注意：**  
-hosts 文件有权限限制不能编辑保存，先找到 notepad.exe 程序，鼠标右键用管理员身份运行。然后再打开 Hosts 文件，就可以保存了。
+Git 的设置文件为 .gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
 
-- CentOS 7 系统
-
-终端命令行模式，输入 `sudo vi /etc/hosts`，打开 hosts 文件，粘贴上面的 IP 地址和域名的数据。
-
-## 常见问题
-
-- [git 存储凭证](http://www.cnblogs.com/volnet/p/git-credentials.html)
 ```bash
-$ git config --global credential.helper wincred
+# 显示当前的 Git 配置
+git config --list
+
+# 编辑 Git 配置文件
+git config -e --global
+
+# 设置提交代码时的用户信息，用户名最好不要写汉字
+git config --global user.name "your name"
+git config --global user.email "email address"
 ```
-用这一行命令搞定，参考网址：https://help.github.com/articles/caching-your-github-password-in-git/
 
-- [git 撤销远程仓库的提交](http://www.cnblogs.com/chucklu/p/4661149.html)
+## 新建代码仓库
 
-- [Git 文件换行问题](http://www.cnblogs.com/flying_bat/archive/2013/09/16/3324769.html)
+```bash
+# 在当前目录新建一个 Git 代码库
+git init
 
-- 如何在 Github 的 pull request 中进行 code review
-  - https://github.com/wangding/Sample/pull/1
-  - https://github.com/wangding/seIDE/pull/6
-  - https://github.com/wangding/seIDE/pull/11
+# 新建一个目录，将其初始化为 Git 代码库
+git init [project-name]
 
-- issue 过滤
-
-  ![issue filter.png](http://upload-images.jianshu.io/upload_images/3058932-fbc953aaadb6cdf0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-## Git 命令行配置
-
-- 自动记忆凭证  
-- 设置快捷键  
-- 设置换行检查  
+# 下载一个项目和它的整个代码历史
+git clone [url]
+```
 
 ## Git 常用操作
 
-- git 教学演示  
+- git 快速上手
 
 ```bash
-# 目的命令简单，快捷，可以制造变更
-# 快速制造多个提交，看到版本路线
-# 先看一下命令的效果，然后就不用看了
-
+git init git-demo
+cd git-demo
 touch a
 touch b
 touch c
@@ -85,16 +64,6 @@ echo 33 >> a
 git commit -am "33"
 ```
 
-- git rebase 操作  
-
-```bash
-# -i 是交互操作
-git rebase -i <SHA>
-
-# 把当前分支在 master 的位置接上
-git rebase master
-```
-
 - git 基本操作
 
 ```bash
@@ -102,19 +71,19 @@ git rebase master
 git add .
 git commit -m "message"
 
-#Git 假定所有的改变都是针对同一件事情的，因此它把这些都放在了一个块里。你有如下几个选项：
+# add & commit Mothed 2
+git commit -a -m "message"
+
+# add & commit Mothed 3
+git commit -am "message"
+
+# Git 假定所有的改变都是针对同一件事情的，因此它把这些都放在了一个块里。你有如下几个选项：
 #输入 y 来暂存该块
 #输入 n 不暂存
 #输入 e 手工编辑该块
 #输入 d 退出或者转到下一个文件
 #输入 s 来分割该块
 git add -p <file name>
-
-# add & commit Mothed 2
-git commit -a -m "message"
-
-# add & commit Mothed 3
-git commit -am "message"
 
 # 改变文件夹的名字：Name -> name
 # 直接运行 git mv Name name，执行不成功，会搞成：Name ->name/Name
@@ -272,7 +241,7 @@ git pull --tags
 git push origin :refs/tags/foo
 ```
 
-- git stash 操作  
+- git stash 操作
 
 ```bash
 # 保存进度
@@ -288,7 +257,17 @@ git stash list
 git stash clear
 ```
 
-- Git 其他操作  
+- git rebase 操作
+
+```bash
+# -i 是交互操作
+git rebase -i <SHA>
+
+# 把当前分支在 master 的位置接上
+git rebase master
+```
+
+- Git 其他操作
 
 ```bash
 # 查看某个文件的提交记录
@@ -308,9 +287,58 @@ git commit
 git log --grep <filter word>
 ```
 
-## 阮一峰的 Git 教程
+## 提升 GitHub 访问速度
 
-阮一峰老师的博客网站，搜索 git 的结果，每个文章质量都很高。
+- win10 系统
+
+复制下面的域名解析数据到记事本，在[站长工具](http://tool.chinaz.com/dns)中，对所有域名测试最快的 IP 地址，即 TTL 值最小的 IP 地址，把这个 IP 地址贴到记事本中，换掉原来的 IP 地址。所有域名搞完一遍后。在 `C:/Windows/system32/drivers/etc/hosts` 找到 hosts 文件，在 hosts 文件最下面复制粘贴下面的内容：
+
+```
+140.82.113.4      github.com
+185.199.109.153   assets-cdn.github.com
+185.199.109.153   documentcloud.github.com
+69.171.245.53     github.global.ssl.fastly.net
+203.98.7.65       gist.github.com
+185.199.108.154   help.github.com
+54.251.140.56     nodeload.github.com
+151.101.108.133   raw.github.com
+52.205.36.92      status.github.com
+151.101.229.194   github.global.ssl.fastly.net
+151.101.108.133   avatars0.githubusercontent.com
+151.101.108.133   avatars1.githubusercontent.com
+```
+
+然后立刻刷新系统，刷新方法是：cmd 打开控制台窗口，直接输入：ipconfig /flushdns
+
+**注意：**
+hosts 文件有权限限制不能编辑保存，先找到 notepad.exe 程序，鼠标右键用管理员身份运行。然后再打开 Hosts 文件，就可以保存了。
+
+- CentOS 7 系统
+
+终端命令行模式，输入 `sudo vi /etc/hosts`，打开 hosts 文件，粘贴上面的 IP 地址和域名的数据。
+
+## 常见问题
+
+- [git 存储凭证](http://www.cnblogs.com/volnet/p/git-credentials.html)
+```bash
+$ git config --global credential.helper wincred
+```
+用这一行命令搞定，参考网址：https://help.github.com/articles/caching-your-github-password-in-git/
+
+- [git 撤销远程仓库的提交](http://www.cnblogs.com/chucklu/p/4661149.html)
+
+- [Git 文件换行问题](http://www.cnblogs.com/flying_bat/archive/2013/09/16/3324769.html)
+
+- 如何在 Github 的 pull request 中进行 code review
+  - https://github.com/wangding/Sample/pull/1
+  - https://github.com/wangding/seIDE/pull/6
+  - https://github.com/wangding/seIDE/pull/11
+
+- issue 过滤
+
+  ![issue filter.png](http://upload-images.jianshu.io/upload_images/3058932-fbc953aaadb6cdf0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+## 参考资料
 
 - [常用 Git 命令清单](http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html)
 - [Git 使用规范流程](http://www.ruanyifeng.com/blog/2015/08/git-use-process.html)
@@ -319,21 +347,18 @@ git log --grep <filter word>
 - [Git 分支管理策略](http://www.ruanyifeng.com/blog/2012/07/git.html)
 - [Git 使用规范](http://www.ruanyifeng.com/blog/2015/08/git-use-process.html)
 - [Commit message 和 Change log 编写指南](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
-
-## 学习资料
-
-- [Git 命令参考手册（中文）](http://www.open-open.com/lib/view/open1401433488824.html)，网站不错，全是开源方面的资料，平时可以多看看，会有很多简单、有趣的东西  
-- [专为设计师写的 github 资料](http://www.ui.cn/detail/20957.html)，可以参考一下吧，职业方向还是有差异的  
-- [git-it 课程资料](http://jlord.us/git-it/index-zhtw.html)，闯关练习软件的教程文字  
-- [git 心法（张文细）](https://blog.alphacamp.co/2015/01/13/git/)，一个简单、明了的博客文章  
-- [张文细的所有 Git 资料](https://ihower.tw/git/)，带视频，有幻灯片，讲的很到位，可以模仿  
+- [Git 命令参考手册（中文）](http://www.open-open.com/lib/view/open1401433488824.html)，网站不错，全是开源方面的资料，平时可以多看看，会有很多简单、有趣的东西
+- [专为设计师写的 github 资料](http://www.ui.cn/detail/20957.html)，可以参考一下吧，职业方向还是有差异的
+- [git-it 课程资料](http://jlord.us/git-it/index-zhtw.html)，闯关练习软件的教程文字
+- [git 心法（张文细）](https://blog.alphacamp.co/2015/01/13/git/)，一个简单、明了的博客文章
+- [张文细的所有 Git 资料](https://ihower.tw/git/)，带视频，有幻灯片，讲的很到位，可以模仿
 - [git ready](http://gitready.com/)
-- [git 命令图解](http://blog.csdn.net/yangwen123/article/details/9084007)，配图清楚，比较多，够啰嗦  
-- [猴子都能懂的 Git 入门](http://backlogtool.com/git-guide/cn/intro/intro1_1.html)，配图还算可以，有点儿卡通幼稚，寓教于乐  
-- [Learn Git](https://www.atlassian.com/git)，排版简洁、大方，配图时尚、漂亮，内容专业权威  
+- [git 命令图解](http://blog.csdn.net/yangwen123/article/details/9084007)，配图清楚，比较多，够啰嗦
+- [猴子都能懂的 Git 入门](http://backlogtool.com/git-guide/cn/intro/intro1_1.html)，配图还算可以，有点儿卡通幼稚，寓教于乐
+- [Learn Git](https://www.atlassian.com/git)，排版简洁、大方，配图时尚、漂亮，内容专业权威
 
 ## 资源
 
-- 勋章：http://shields.io/  
-- 进度：https://github.com/fehmicansaglam/progressed.io  
-- Git 教学软件：https://onlywei.github.io/explain-git-with-d3/  
+- 勋章：http://shields.io/
+- 进度：https://github.com/fehmicansaglam/progressed.io
+- Git 教学软件：https://onlywei.github.io/explain-git-with-d3/

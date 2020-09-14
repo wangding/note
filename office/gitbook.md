@@ -1,5 +1,29 @@
 # GitBook
 
+GitBook 的安装配置，以及一些插件信息，当前使用的 GitBook 版本为 3.2.3。
+
+## 常用命令
+
+- 安装 GitBook 命令行工具
+
+```bash
+npm i -g gitbook-cli
+```
+
+- 其他命令
+
+```bash
+# 安装 GitBook 插件
+gitbook install
+
+# 生成 GitBook 静态网站
+gitbook build
+
+# 构建 Gitbook，并在 8080 端口上，运行 GitBook 网站
+# md 文件有更新后，会自动重新构建
+gitbook serve --port 8080
+```
+
 ## 参考资料
 
 - [gitbook 官方文档（中文）](https://snowdreams1006.github.io/gitbook-official/zh/)

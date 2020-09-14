@@ -1,133 +1,90 @@
 # CentOS
 
-## CentOS 作为开发和办公环境的安装过程
+## 命令行快捷键
 
-首先在虚拟机中构建 CentOS 办公环境，体验成功之后。再在物理机中安装使用 CentOS。下面的内容记录这个过程中的经验。
+- ctrl + a 移动光标到行首  ahead
+- ctrl + e 移动光标到行尾  end
 
-### 创建虚拟机
+- ctrl + f 按字符前移（右） forward
+- ctrl + b 按字符后移（左） backward
+- alt  + f 按单词前移（右） forward
+- alt  + b 按单词后移（左） backward
 
-- 创建空的虚拟机  
-- 操作系统版本：CentOS 64 位  
-- 处理器数量 1 个，核心数量 2 个  
-- 内存 2048  
-- NAT 网络类型
-- 磁盘类型默认
-- 磁盘大小：20 G
-- 将虚拟磁盘存储成单一文件
+- ctrl + w 删除光标前面的一个单词
+- alt  + d 删除光标后面的一个单词
 
-### 安装操作系统
+- ctrl + k 从光标处删除至命令行尾
+- ctrl + u 从光标处删除至命令行首
 
-安装的图形界面中，进行如下设置：
+- ctrl + r 逆向搜索命令历史
+- ctrl + d 删除当前字符
+- ctrl + h 删除光标前一个字符
 
-- 虚拟机设置 DVD 加载 CentOS ISO 镜像文件
-- 启动虚拟机
-- 第一个安装画面：选择安装 CentOS 7
-- 语言：中文
-- 安全策略：Common Profile for General-Purpose Systems
-- 软件选择：开发及生成工作站，包括：图形生成工具，办公套件和生产效率
-- 安装介质
-- 安装位置
-- 网络启用
-- root 密码
-- 创建新用户并设置密码，把新用户加到管理员组中
+- ctrl + l 窗口清屏，效果等同命令 clear
 
-### 安装工作环境
+- alt  + c 从光标处更改为首字符大写的单词 capital
+- alt  + u 从光标处更改为全部大写的单词   upper
+- alt  + l 从光标处更改为全部小写的单词   lower
 
-- 安装 git 并验证 git 安装成功
-```bash
-sudo yum install git
-git --version 
-```
-- 下载了 git 的配置文件，
-  - 问题是如何能从网上一键安装配置文件？
-  - git 的表现不完全和 windows 相同
-- 火狐浏览器已经安装
-- 设置火狐浏览器的参数
-- 添加火狐浏览器的插件
-  - vimperator
-  - Adblock Plus
-- 配置 ibus 的双拼输入
+- ctrl + t 交换光标处和之前的字符
+- alt  + t 交换光标处和之前的单词
+
+在 xshell 中使用 alt 快捷键，需要进行设置，否则会和 window 窗口的快捷键冲突：
 
 ## 常用命令
 
-- ls -R 显示所有子目录和文件
-- 查看 centOS 版本
-```bash
-cat /etc/redhat-release
-```
-- rpm -aq 查看本机安装的软件包
-- init 3 从窗口界面进入命令行界面
-- init 5 或 startx 从命令行界面进入窗口界面
-- nmtui 命令行界面设置网卡
-  - 在 root 权限下设置 NAT 模式下固定 IP 地址
-  - 用 nmtui 设置网卡的 IP 地址、子网掩码、DNS，等
-  - 例如：192.168.29.144/24
-  - 默认网关是 x.x.x.2
-  - vim 修改 /etc/sysconfig/network-scripts/ifcfg-ensxx（查 ifconfig 知道网卡的名字）
-  - BOOTPROTO=static
-  - systemctl restart network # 让修改的 IP 地址立刻生效
+- `ls -R`，显示所有子目录和文件
+- `cat /etc/redhat-release`，查看 centOS 版本
+- `rpm -aq`，查看本机安装的软件包
+- `ps -ef`，查看系统中的进程
+- `which firewalld`，查看进程 firewalld 用到的命令
+- `kill pid`，杀掉 pid 的进程
+- `kill -9 970`，强制删除 970 进程
+- `gsettings set org.gnome.desktop.interface cursor-blink false`，设置终端光标不闪烁
+- `passwd wangding`，修改当前用户 wangding 账户的密码
+- `sudo hostnamectl --static set-hostname DEV`，设置主机名为 DEV
+- `hostnamectl status`，查看主机名信息
 
-- ps -ef 查看系统中的进程
-- which firewalld 查看进程 firewalld 用到的命令
-- kill pid 杀掉 pid 的进程
-- kill -9 970 强制删除 970 进程
-- gsettings set org.gnome.desktop.interface cursor-blink false 设置终端光标不闪烁
-- passwd wangding 修改当前用户 wangding 账户的密码
-- sudo hostnamectl --static set-hostname DEV 设置主机名为 DEV
-- hostnamectl status 查看主机名信息
+## 安装卸载程序
 
-
-## 安装卸载程序（yum 包管理）
-
-- yum list installed 列出已经安装的软件包
-- yum list 列出已安装的和可安装的应用程序包
-- yum list package 列出 package 应用的安装情况
-- yum clean 清除缓存的软件包信息
-- /etc/yum.repos.d/\*.repo  yum 源定义文件
-- 把 cdrom 的安装包设为本地 yum 源
-- yum install package 安装 package
-- yum remove package 删除 package
-- yum update package 升级 package
-- yum list updates 列出所有可以升级的软件包
+- `yum list installed`，列出已经安装的软件包
+- `yum list`，列出已安装的和可安装的应用程序包
+- `yum list package`，列出 package 应用的安装情况
+- `yum clean`，清除缓存的软件包信息
+- `/etc/yum.repos.d/\*.repo`，yum 源定义文件
+- `yum install package`，安装 package
+- `yum remove package`，删除 package
+- `yum update package`，升级 package
+- `yum list updates`，列出所有可以升级的软件包
 
 ## 启动服务
 
-- systemctl start mariadb  启动 mariadb 数据库服务
-- systemctl start httpd    启动 apache 服务
-- systemctl status httpd   查询 apache 服务是否启动
-- systemctl restart httpd  重新启动 apache 服务
-- apache 服务启动不正常的解决办法
-  firewall-cmd --add-service=http
+- `systemctl start mariadb`，启动 mariadb 数据库服务
+- `systemctl start httpd`，启动 apache 服务
+- `systemctl status httpd`，查询 apache 服务是否启动
+- `systemctl restart httpd`，重新启动 apache 服务
+- apache 服务启动不正常的解决办法，`firewall-cmd --add-service=http`
 
 ## 用户、组和文件权限
 
-- useradd wangding 添加新用户 wangding
-- vipw 命令查看系统中的用户，一般新添加的用户都在文件的最后一行
+- `useradd wangding`，添加新用户 wangding
+- `vipw`，命令查看系统中的用户，一般新添加的用户都在文件的最后一行
   查看的信息包括：用户 ID 和主 ID，用户家目录，用户的 shell
-- groupadd abc 添加 abc 用户组
-- vigr 命令查看用户组的信息，vipw 命令和 vigr 命令是有规律的，vi 代表 vi 编辑器，其实是用 vi 编辑器查看信息的。pw 代表 password 用户，gr 代表 group 用户组。查看的信息包括：组的 ID 和组的成员。
-- gpasswd -a username groupname 把用户加到组中
-- groups wangding 查看用户 wangding 所在的用户组信息
-- whoami 查看当前登录的用户
-- su - 切换到 root 用户，su 是 switch user 的缩写
-- su - wangding 将当前用户环境切换到 wangding 用户环境下面，退出用 exit
-- userdel wangding 删除用户 wangding
-- groupdel 删除组
-- id root 查看 root 用户的 ID 值，ID 值越小权限越大
-- chmod permission filename 修改文件权限
-- permission：r=4, w=2, x=1, rw=4+2=6, rx=4+1=5, 等等，用户权限，组权限和其他用户权限，按顺序依次为三个组
-- chown user filename 改变文件或目录的所有者，ch: change, own：owner
-- chgrp group filename 改变文件或目录的组名
-- chown user.group filename 改变文件或目录的所有者为 group 组的 user 用户
-
-## 常见问题
-
-- 用户 sudo 不在 sudoers 用户组中的问题
-http://blog.csdn.net/attagain/article/details/11987297
-
-## 腾讯主机控制台：
-
-https://console.qcloud.com/cvm
+- `groupadd abc`，添加 abc 用户组
+- `vigr`，命令查看用户组的信息，vipw 命令和 vigr 命令是有规律的，vi 代表 vi 编辑器，其实是用 vi 编辑器查看信息的。pw 代表 password 用户，gr 代表 group 用户组。查看的信息包括：组的 ID 和组的成员。
+- `gpasswd -a username groupname`，把用户加到组中
+- `groups wangding`，查看用户 wangding 所在的用户组信息
+- `whoami`，查看当前登录的用户
+- `su` - 切换到 root 用户，su 是 switch user 的缩写
+- `su - wangding`，将当前用户环境切换到 wangding 用户环境下面，退出用 exit
+- `userdel wangding`，删除用户 wangding
+- `groupdel`，删除组
+- `id root`，查看 root 用户的 ID 值，ID 值越小权限越大
+- `chmod permission filename`，修改文件权限
+- `permission：r=4, w=2, x=1, rw=4+2=6, rx=4+1=5`, 等等，用户权限，组权限和其他用户权限，按顺序依次为三个组
+- `chown user filename`，改变文件或目录的所有者，ch: change, own：owner
+- `chgrp group filename`，改变文件或目录的组名
+- `chown user.group filename`，改变文件或目录的所有者为 group 组的 user 用户
 
 ## Linux 如何关机
 
@@ -184,11 +141,13 @@ yum install net-tools
 ```
 
 ## 网络设置
+
 ```bash
-vi /etc/sysconfig/network-scripts/ifcfg-eth0
+vi /etc/sysconfig/network-scripts/ifcfg-ens32
 
 # 地址是否自动获得 none 不自动获得，否则 dhcp 为自动获得
 BOOTPROTO=dhcp
+
 # 是否自动加载
 ONBOOT=yes
 ```
@@ -196,11 +155,22 @@ ONBOOT=yes
 ## 启用 OpenSSH
 参考：http://wangsheng1.blog.51cto.com/29473/1548853/
 
+## 常见问题
+
+- 用户 sudo 不在 sudoers 用户组中的问题
+http://blog.csdn.net/attagain/article/details/11987297
+
+## 腾讯主机控制台：
+
+https://console.qcloud.com/cvm
+
 ## 安装 vim
 参考：http://www.jb51.net/os/RedHat/160662.html
 
 ## 安装 node.js
+
 参考：https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora
+
 ```bash
 curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
 sudo yum -y install nodejs
@@ -211,20 +181,7 @@ node -v
 # 检查 npm 是否安装成功
 npm -v
 ```
-## helloworld web 站点测试
 
-【服务器端】node server.js
-【客户端】`http://192.168.59.130:1337`
-
-hello.js 代码如下：
-```javascript
-var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World!\n');
-}).listen(1337, '192.168.59.130');
-console.log('Server running at http://192.168.59.130/');
-```
 ## 开启 centOS 的防火墙端口
 
 ```bash
@@ -239,8 +196,11 @@ firewall-cmd --reload
 sudo firewall-cmd --zone=public --list-ports
 # 上面的命令列出本机防火墙打开的所有端口
 ```
+
 ## 安装 selenium webdriver
+
 参考：https://www.npmjs.com/package/selenium-webdriver
+
 ```bash
 cd ~
 mkdir selenium
@@ -253,7 +213,9 @@ ls
 ```
 
 ## 安装 phantomJS
+
 http://www.cnblogs.com/LH2014/p/4073881.html
+
 ```bash
 # 安装依赖软件
 yum install -y wget fontconfig
@@ -276,7 +238,9 @@ ln -sf /usr/local/src/phantomjs/bin/phantomjs /usr/local/bin/phantomjs
 ```
 
 ## Selenium + Phantomjs 的测试代码
+
 貌似好像跑通了
+
 ```javascript
 var webdriver = require('selenium-webdriver'),
     By = webdriver.By,
@@ -293,6 +257,7 @@ driver.wait(until.titleIs('selenium_百度搜索'), 1000);
 console.log('OK!');
 driver.quit();
 ```
+
 ## 网页按钮推动后台操作<待续>
 
 ## node.js 代码开发的工具有待研究
@@ -305,13 +270,15 @@ driver.quit();
 
 zsh 的安装过程如下：
 
-- echo $SHELL                   # 查看当前的 shell
-- sudo yum install -y zsh       # 安装 zsh
-- sudo yum install -y wget      # 安装 wget
-- wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
-- vim ~/.zshrc                  # 编辑 zsh 的配置文件
-- chsh -s /bin/zsh              # 却换 bash 至 zsh
-- exit                          # 查新登录 shell
+```bash
+echo $SHELL                   # 查看当前的 shell
+sudo yum install -y zsh       # 安装 zsh
+sudo yum install -y wget      # 安装 wget
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+vim ~/.zshrc                  # 编辑 zsh 的配置文件
+chsh -s /bin/zsh              # 却换 bash 至 zsh
+exit                          # 查新登录 shell
+```
 
 ## tmux
 
@@ -349,41 +316,6 @@ http://www.linuxidc.com/Linux/2015-05/117975.htm
 ```bash
 grep "hello" ./*.js  # 在当前目录的所有 js 文件中查找 hello 字符串
 ```
-
-## 命令行快捷键
-
-快捷键大全的参考资料，非常权威：
-- https://linux.cn/article-5660-1.html
-
-- ctrl + a 移动光标到行首  ahead  
-- ctrl + e 移动光标到行尾  end
-
-- ctrl + f 按字符前移（右） forward  
-- ctrl + b 按字符后移（左） backward  
-- alt  + f 按单词前移（右） forward  
-- alt  + b 按单词后移（左） backward  
-
-- ctrl + w 删除光标前面的一个单词  
-- alt  + d 删除光标后面的一个单词
-
-- ctrl + k 从光标处删除至命令行尾  
-- ctrl + u 从光标处删除至命令行首  
-
-- ctrl + r 逆向搜索命令历史  
-- ctrl + d 删除当前字符
-- ctrl + h 删除光标前一个字符
-
-- ctrl + l 窗口清屏，效果等同命令 clear  
-
-- alt  + c 从光标处更改为首字符大写的单词 capital  
-- alt  + u 从光标处更改为全部大写的单词   upper  
-- alt  + l 从光标处更改为全部小写的单词   lower  
-
-- ctrl + t 交换光标处和之前的字符
-- alt  + t 交换光标处和之前的单词
-
-
-在 xshell 中使用 alt 快捷键，需要进行设置，否则会和 window 窗口的快捷键冲突：
 
 ## 搭建 apache 服务器
 
@@ -455,7 +387,7 @@ export test
 
 ## crontab 定时任务
 
-【参考资料】  
+【参考资料】
 - https://www.cnblogs.com/peida/archive/2013/01/08/2850483.html
 
 ```bash
@@ -491,12 +423,63 @@ sudo less /var/log/cron.log
 - curl 的 -v 参数，除了可以看到响应体，还可以看到请求头和响应头，当然 curl -i 参数可以看到响应头的，-v 参数打印信息的时候，请求头和响应头前面的前导符号是大于号和小于号，正好相反，反映了数据发送的两个方向，设计的很细腻。
 - curl -H 参数可以定制请求头信息，例如：`curl -H "Content-Type:appliction/json" http://localhost:8080`，如果需要多个自定义的头字段，就多加几个 -H 参数，一个 -H 参数跟一个头字段信息
 - 综合起来，curl POST 发送 JSON 数据的命令：例如：`curl -H "Content-Type:application/json" -X POST -d '{"name":"wangding","age":"41"}'`
-- curl -F 参数可以上传文件，参数格式：-F 'file=@file-path'，例如：`curl -F 'file=@/usr/bin/node' http://localhost:8080`
-- curl -c cookie.txt url 访问 url 获得服务器给的 cookie 并存放到 cookie.txt 文件中
-- curl -b cookie.txt url 访问 url 的同时，将 cookie 作为请求头发送给服务器
-- curl -b cookie.txt -c cookie.txt url 同时发送 cookie，并接收服务器的 cookie
+- `curl -F`，参数可以上传文件，参数格式：-F 'file=@file-path'，例如：`curl -F 'file=@/usr/bin/node' http://localhost:8080`
+- `curl -c cookie.txt url`，访问 url 获得服务器给的 cookie 并存放到 cookie.txt 文件中
+- `curl -b cookie.txt url`，访问 url 的同时，将 cookie 作为请求头发送给服务器
+- `curl -b cookie.txt -c cookie.txt url`，同时发送 cookie，并接收服务器的 cookie
 
-## 学习资料
+## CentOS 作为开发和办公环境的安装过程
 
+首先在虚拟机中构建 CentOS 办公环境，体验成功之后。再在物理机中安装使用 CentOS。下面的内容记录这个过程中的经验。
+
+### 创建虚拟机
+
+- 创建空的虚拟机
+- 操作系统版本：CentOS 64 位
+- 处理器数量 1 个，核心数量 2 个
+- 内存 2048
+- NAT 网络类型
+- 磁盘类型默认
+- 磁盘大小：20 G
+- 将虚拟磁盘存储成单一文件
+
+### 安装操作系统
+
+安装的图形界面中，进行如下设置：
+
+- 虚拟机设置 DVD 加载 CentOS ISO 镜像文件
+- 启动虚拟机
+- 第一个安装画面：选择安装 CentOS 7
+- 语言：中文
+- 安全策略：Common Profile for General-Purpose Systems
+- 软件选择：开发及生成工作站，包括：图形生成工具，办公套件和生产效率
+- 安装介质
+- 安装位置
+- 网络启用
+- root 密码
+- 创建新用户并设置密码，把新用户加到管理员组中
+
+### 安装工作环境
+
+- 安装 git 并验证 git 安装成功
+
+```bash
+sudo yum install git
+git --version
+```
+
+- 下载了 git 的配置文件，
+  - 问题是如何能从网上一键安装配置文件？
+  - git 的表现不完全和 windows 相同
+- 火狐浏览器已经安装
+- 设置火狐浏览器的参数
+- 添加火狐浏览器的插件
+  - vimperator
+  - Adblock Plus
+- 配置 ibus 的双拼输入
+
+## 参考资料
+
+- [Bash 快捷键大全](https://linux.cn/article-5660-1.html)
 - http://webres.wang/the-art-of-command-line/
 - http://webres.wang/list-10-funny-linux-commands/

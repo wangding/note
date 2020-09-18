@@ -2,37 +2,89 @@
 
 ## 命令行快捷键
 
-- ctrl + a 移动光标到行首  ahead
-- ctrl + e 移动光标到行尾  end
-
-- ctrl + f 按字符前移（右） forward
-- ctrl + b 按字符后移（左） backward
-- alt  + f 按单词前移（右） forward
-- alt  + b 按单词后移（左） backward
-
-- ctrl + w 删除光标前面的一个单词
-- alt  + d 删除光标后面的一个单词
-
-- ctrl + k 从光标处删除至命令行尾
-- ctrl + u 从光标处删除至命令行首
-
-- ctrl + r 逆向搜索命令历史
-- ctrl + d 删除当前字符
-- ctrl + h 删除光标前一个字符
-
-- ctrl + l 窗口清屏，效果等同命令 clear
-
-- alt  + c 从光标处更改为首字符大写的单词 capital
-- alt  + u 从光标处更改为全部大写的单词   upper
-- alt  + l 从光标处更改为全部小写的单词   lower
-
-- ctrl + t 交换光标处和之前的字符
-- alt  + t 交换光标处和之前的单词
+- `ctrl + a` 移动光标到行首  ahead
+- `ctrl + e` 移动光标到行尾  end
+- 
+- `ctrl + f` 按字符前移（右） forward
+- `ctrl + b` 按字符后移（左） backward
+- `alt  + f` 按单词前移（右） forward
+- `alt  + b` 按单词后移（左） backward
+- 
+- `ctrl + w` 删除光标前面的一个单词
+- `alt  + d` 删除光标后面的一个单词
+- 
+- `ctrl + k` 从光标处删除至命令行尾
+- `ctrl + u` 从光标处删除至命令行首
+- 
+- `ctrl + r` 逆向搜索命令历史
+- `ctrl + d` 删除当前字符
+- `ctrl + h` 删除光标前一个字符
+- 
+- `ctrl + l` 窗口清屏，效果等同命令 clear
+- 
+- `alt  + c` 从光标处更改为首字符大写的单词 capital
+- `alt  + u` 从光标处更改为全部大写的单词   upper
+- `alt  + l` 从光标处更改为全部小写的单词   lower
+- 
+- `ctrl + t` 交换光标处和之前的字符
+- `alt  + t` 交换光标处和之前的单词
 
 在 xshell 中使用 alt 快捷键，需要进行设置，否则会和 window 窗口的快捷键冲突：
 
 ## 常用命令
 
+- `&`：在后台执行
+- `&&`：逻辑与
+- `*`：匹配任意长度的任意字符
+- `?`：匹配任意一个字符
+- `[]`：匹配属于字符组的字符
+- `|`：管道符，用于连接多个命令，前一个命令的输出作为后一命令的输入
+- `||`：逻辑或
+- `<`：输入重定向
+- `>`：输出重定向
+- `>>`：附加到指定文件的结尾
+- `awk`：过滤器
+- `basename`：提取基本文件名
+- `cal`：显示日历
+- `cat`：一次性显示输出文件的全部内容
+- `cd`：改变当前工作目录
+- `chgrp`：修改文件或目录的用户组
+- `chmod`：修改文件或目录的权限
+- `chown`：修改文件或目录的所有者
+- `clear`：清屏，提示符回到屏幕左上方
+- `cp`：复制文件
+- `cut`：剪切文件
+- `date`：显示当前日期和时间
+- `df`：对文件系统的磁盘空间使用情况进行统计
+- `diff`：比较两个文件的差异
+- `echo`：回显，即将字符串输出到标准输出设备
+- `egrep`：支持正则表达式的 grep 命令
+- `file`：显示文件的类型
+- `find`：查找指定的文件
+- `grep`：查找指定的字符串
+- `head`：查看文件的开始部分，默认为前 10 行
+- `ls`：列出目录中的内容
+- `man`：显示联机参考手册
+- `mkdir`：创建目录
+- `more`：分屏显示文件的内容
+- `mv`：移动文件
+- `netstat`：显示网络状态
+- `passwd`：修改用户密码
+- `ps`：显示进程相关信息
+- `pwd`：显示当前目录
+- `rm`：删除文件
+- `rmdir`：删除目录，要求目录非空
+- `sed`：流编辑器
+- `sleep`：暂停指定的时间间隔
+- `su`：临时切换到另一用户
+- `tail`：查看文件的结尾部分，默认为后 10 行
+- `Talk`：与其他用户对话
+- `vi`：vim 编辑器
+- `wc`：计算文件的单词数、行数、字符数
+- `who`：显示当前登录的用户的信息
+- `write`：给指定用户发消息
+- `shutdown -r now`，重启 linux 系统
+- `shutdown -h now`，关闭 linux 系统
 - `ls -R`，显示所有子目录和文件
 - `cat /etc/redhat-release`，查看 centOS 版本
 - `rpm -aq`，查看本机安装的软件包
@@ -65,6 +117,21 @@
 - `systemctl restart httpd`，重新启动 apache 服务
 - apache 服务启动不正常的解决办法，`firewall-cmd --add-service=http`
 
+## 开启 centOS 的防火墙端口
+
+```bash
+# 虚拟机本身可以打开页面
+curl http://192.168.29.129:1337
+
+# 宿主计算机的浏览器却不能打开页面
+# 由此判断是 Linux 的防火墙没有打开端口
+
+firewall-cmd --permanent --add-port=1337/tcp
+firewall-cmd --reload
+sudo firewall-cmd --zone=public --list-ports
+# 上面的命令列出本机防火墙打开的所有端口
+```
+
 ## 用户、组和文件权限
 
 - `useradd wangding`，添加新用户 wangding
@@ -85,6 +152,83 @@
 - `chown user filename`，改变文件或目录的所有者，ch: change, own：owner
 - `chgrp group filename`，改变文件或目录的组名
 - `chown user.group filename`，改变文件或目录的所有者为 group 组的 user 用户
+
+## crontab 定时任务
+
+【参考资料】
+- https://www.cnblogs.com/peida/archive/2013/01/08/2850483.html
+
+```bash
+sudo crontab -e -u wangding   # -e 编辑某个用户的 crontab，如果不指定用户，则编辑当前用户的 crontab 文件，-u user 用来设定某个用户的 crontab 服务
+sudo crontab -l -u wangding   # 查看某个用户的 crontab 文件内容
+sudo crontab -r -u wangding   # 删除某个用户的 crontab 文件内容
+```
+
+crontab 文件的内容
+```
+*      *  *   *    *     command
+# 分钟 小时 日 月 星期几
+```
+特殊符号：
+\*: 代表说有可能值
+, : 代表一个列表范围，例如：1, 3, 5, 7
+- : 代表一个整数范围，例如：2-6，表示 2, 3, 4, 5, 6
+/ : 代表指定时间的间隔频率：例如：\*/2 在分钟位置，每隔两分钟执行一次 
+
+查看 crontab 日志，来排错：
+排错的另一个经验，可以先在特定目录下，执行 crontab 中的命令，目录最好都用绝对路径，命令执行成功之后，再考虑定时执行。
+
+```bash
+cd /var/log
+sudo less /var/log/cron.log
+```
+
+## curl 常用参数
+
+- GET 请求 URL：`curl http://localhost:8080`
+- POST 请求 URL：`curl -X POST http://localhost:8080 -d "item=abc"`
+- curl 默认请求方法是 GET，修改请求方法的参数是 -X，例如：`curl -X PUT http://localhost:8080`
+- curl 的 -v 参数，除了可以看到响应体，还可以看到请求头和响应头，当然 curl -i 参数可以看到响应头的，-v 参数打印信息的时候，请求头和响应头前面的前导符号是大于号和小于号，正好相反，反映了数据发送的两个方向，设计的很细腻。
+- curl -H 参数可以定制请求头信息，例如：`curl -H "Content-Type:appliction/json" http://localhost:8080`，如果需要多个自定义的头字段，就多加几个 -H 参数，一个 -H 参数跟一个头字段信息
+- 综合起来，curl POST 发送 JSON 数据的命令：例如：`curl -H "Content-Type:application/json" -X POST -d '{"name":"wangding","age":"41"}'`
+- `curl -F`，参数可以上传文件，参数格式：-F 'file=@file-path'，例如：`curl -F 'file=@/usr/bin/node' http://localhost:8080`
+- `curl -c cookie.txt url`，访问 url 获得服务器给的 cookie 并存放到 cookie.txt 文件中
+- `curl -b cookie.txt url`，访问 url 的同时，将 cookie 作为请求头发送给服务器
+- `curl -b cookie.txt -c cookie.txt url`，同时发送 cookie，并接收服务器的 cookie
+
+## ZSH 的 z 命令
+
+- z 命令可以快速完成目录切换
+- `z`，列出所有最近访问过的路径及权重，权重越大，越优先匹配
+- `z -l [keyword]`，列出匹配 keyword 的路径及权重，keyword 可以是一个字母
+- `z -t [keyword]`，跳转到最近使用的 keyword 路径，即使 keyword 权重较低
+- zsh 的用法，[为什么说 zsh 是 shell 中的极品？](https://www.zhihu.com/question/21418449/answer/91817026)
+
+## yum 设置
+
+```bash
+# 设置从本地（虚拟机挂载的 iso 镜像）安装源安装软件
+# 需要提前挂载 CD-ROM
+# 并且禁用网络源，需要把 CentOS-Base.repo 文件改名为 CentOS-Base.repo.bak 
+
+# yum 的配置文件分为两部分：main 和 repository
+# main 部分定义了全局配置选项，整个yum 配置文件应该只有一个 main。常位于 /etc/yum.conf 中
+# repository 部分定义了每个源/服务器的具体配置，可以有一到多个。常位于/etc/yum.repo.d 目录下的各文件中。
+cd /etc/yum.repos.d/
+ls
+
+# 会看到四个 repo 文件，其中：
+# CentOS-Base.repo 是yum 网络源的配置文件
+# CentOS-Media.repo 是yum 本地源的配置文件
+# 修改 CentOS-Media.repo
+# 在 baseurl 中修改第 2 个路径为 /mnt/cdrom（即为光盘挂载点）
+# 将 enabled=0 改为 1
+
+# 运行 yum install 命令，net-tools 安装包中包括 ifconfig 命令
+yum install net-tools
+
+# 设置国内的 yum 源（略），请参考文章：http://www.cnblogs.com/mchina/archive/2013/01/04/2842275.html
+```
 
 ## Linux 如何关机
 
@@ -114,32 +258,6 @@ mkdir /mnt/cdrom
 mount /dev/cdrom /mnt/cdrom
 ```
 
-## yum 设置
-
-```bash
-# 设置从本地（虚拟机挂载的 iso 镜像）安装源安装软件
-# 需要提前挂载 CD-ROM
-# 并且禁用网络源，需要把 CentOS-Base.repo 文件改名为 CentOS-Base.repo.bak 
-
-# yum 的配置文件分为两部分：main 和 repository
-# main 部分定义了全局配置选项，整个yum 配置文件应该只有一个 main。常位于 /etc/yum.conf 中
-# repository 部分定义了每个源/服务器的具体配置，可以有一到多个。常位于/etc/yum.repo.d 目录下的各文件中。
-cd /etc/yum.repos.d/
-ls
-
-# 会看到四个 repo 文件，其中：
-# CentOS-Base.repo 是yum 网络源的配置文件
-# CentOS-Media.repo 是yum 本地源的配置文件
-# 修改 CentOS-Media.repo
-# 在 baseurl 中修改第 2 个路径为 /mnt/cdrom（即为光盘挂载点）
-# 将 enabled=0 改为 1
-
-# 运行 yum install 命令，net-tools 安装包中包括 ifconfig 命令
-yum install net-tools
-
-# 设置国内的 yum 源（略），请参考文章：http://www.cnblogs.com/mchina/archive/2013/01/04/2842275.html
-```
-
 ## 网络设置
 
 ```bash
@@ -153,49 +271,13 @@ ONBOOT=yes
 ```
 
 ## 启用 OpenSSH
+
 参考：http://wangsheng1.blog.51cto.com/29473/1548853/
 
 ## 常见问题
 
 - 用户 sudo 不在 sudoers 用户组中的问题
 http://blog.csdn.net/attagain/article/details/11987297
-
-## 腾讯主机控制台：
-
-https://console.qcloud.com/cvm
-
-## 安装 vim
-参考：http://www.jb51.net/os/RedHat/160662.html
-
-## 安装 node.js
-
-参考：https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora
-
-```bash
-curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
-sudo yum -y install nodejs
-
-# 检查 node.js 安装是否成功
-node -v
-
-# 检查 npm 是否安装成功
-npm -v
-```
-
-## 开启 centOS 的防火墙端口
-
-```bash
-# 虚拟机本身可以打开页面
-curl http://192.168.29.129:1337
-
-# 宿主计算机的浏览器却不能打开页面
-# 由此判断是 Linux 的防火墙没有打开端口
-
-firewall-cmd --permanent --add-port=1337/tcp
-firewall-cmd --reload
-sudo firewall-cmd --zone=public --list-ports
-# 上面的命令列出本机防火墙打开的所有端口
-```
 
 ## 安装 selenium webdriver
 
@@ -258,27 +340,9 @@ console.log('OK!');
 driver.quit();
 ```
 
-## 网页按钮推动后台操作<待续>
-
-## node.js 代码开发的工具有待研究
-
 ## 字体美化
 
 - http://www.jinbuguo.com/gui/fonts.conf.html
-
-## zsh
-
-zsh 的安装过程如下：
-
-```bash
-echo $SHELL                   # 查看当前的 shell
-sudo yum install -y zsh       # 安装 zsh
-sudo yum install -y wget      # 安装 wget
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
-vim ~/.zshrc                  # 编辑 zsh 的配置文件
-chsh -s /bin/zsh              # 却换 bash 至 zsh
-exit                          # 查新登录 shell
-```
 
 ## tmux
 
@@ -303,8 +367,6 @@ strace -eopen ls
 
 - 参考资料：
 http://blog.chinaunix.net/uid-20726500-id-4662320.html
-
-## nfs 的用法
 
 
 ## 通过 xshell windows 给 linux 虚拟机上传文件
@@ -385,101 +447,10 @@ export test
 # 可以看到 test 变量的值
 ```
 
-## crontab 定时任务
-
-【参考资料】
-- https://www.cnblogs.com/peida/archive/2013/01/08/2850483.html
-
-```bash
-sudo crontab -e -u wangding   # -e 编辑某个用户的 crontab，如果不指定用户，则编辑当前用户的 crontab 文件，-u user 用来设定某个用户的 crontab 服务
-sudo crontab -l -u wangding   # 查看某个用户的 crontab 文件内容
-sudo crontab -r -u wangding   # 删除某个用户的 crontab 文件内容
-```
-
-crontab 文件的内容
-```
-*      *  *   *    *     command
-# 分钟 小时 日 月 星期几
-```
-特殊符号：
-\*: 代表说有可能值
-, : 代表一个列表范围，例如：1, 3, 5, 7
-- : 代表一个整数范围，例如：2-6，表示 2, 3, 4, 5, 6
-/ : 代表指定时间的间隔频率：例如：\*/2 在分钟位置，每隔两分钟执行一次 
-
-查看 crontab 日志，来排错：
-排错的另一个经验，可以先在特定目录下，执行 crontab 中的命令，目录最好都用绝对路径，命令执行成功之后，再考虑定时执行。
-
-```bash
-cd /var/log
-sudo less /var/log/cron.log
-```
-
-## curl 常用参数
-
-- GET 请求 URL：`curl http://localhost:8080`
-- POST 请求 URL：`curl -X POST http://localhost:8080 -d "item=abc"`
-- curl 默认请求方法是 GET，修改请求方法的参数是 -X，例如：`curl -X PUT http://localhost:8080`
-- curl 的 -v 参数，除了可以看到响应体，还可以看到请求头和响应头，当然 curl -i 参数可以看到响应头的，-v 参数打印信息的时候，请求头和响应头前面的前导符号是大于号和小于号，正好相反，反映了数据发送的两个方向，设计的很细腻。
-- curl -H 参数可以定制请求头信息，例如：`curl -H "Content-Type:appliction/json" http://localhost:8080`，如果需要多个自定义的头字段，就多加几个 -H 参数，一个 -H 参数跟一个头字段信息
-- 综合起来，curl POST 发送 JSON 数据的命令：例如：`curl -H "Content-Type:application/json" -X POST -d '{"name":"wangding","age":"41"}'`
-- `curl -F`，参数可以上传文件，参数格式：-F 'file=@file-path'，例如：`curl -F 'file=@/usr/bin/node' http://localhost:8080`
-- `curl -c cookie.txt url`，访问 url 获得服务器给的 cookie 并存放到 cookie.txt 文件中
-- `curl -b cookie.txt url`，访问 url 的同时，将 cookie 作为请求头发送给服务器
-- `curl -b cookie.txt -c cookie.txt url`，同时发送 cookie，并接收服务器的 cookie
-
-## CentOS 作为开发和办公环境的安装过程
-
-首先在虚拟机中构建 CentOS 办公环境，体验成功之后。再在物理机中安装使用 CentOS。下面的内容记录这个过程中的经验。
-
-### 创建虚拟机
-
-- 创建空的虚拟机
-- 操作系统版本：CentOS 64 位
-- 处理器数量 1 个，核心数量 2 个
-- 内存 2048
-- NAT 网络类型
-- 磁盘类型默认
-- 磁盘大小：20 G
-- 将虚拟磁盘存储成单一文件
-
-### 安装操作系统
-
-安装的图形界面中，进行如下设置：
-
-- 虚拟机设置 DVD 加载 CentOS ISO 镜像文件
-- 启动虚拟机
-- 第一个安装画面：选择安装 CentOS 7
-- 语言：中文
-- 安全策略：Common Profile for General-Purpose Systems
-- 软件选择：开发及生成工作站，包括：图形生成工具，办公套件和生产效率
-- 安装介质
-- 安装位置
-- 网络启用
-- root 密码
-- 创建新用户并设置密码，把新用户加到管理员组中
-
-### 安装工作环境
-
-- 安装 git 并验证 git 安装成功
-
-```bash
-sudo yum install git
-git --version
-```
-
-- 下载了 git 的配置文件，
-  - 问题是如何能从网上一键安装配置文件？
-  - git 的表现不完全和 windows 相同
-- 火狐浏览器已经安装
-- 设置火狐浏览器的参数
-- 添加火狐浏览器的插件
-  - vimperator
-  - Adblock Plus
-- 配置 ibus 的双拼输入
-
 ## 参考资料
 
+- [快乐的 Linux 命令行](http://billie66.github.io/TLCL/book/index.html)
 - [Bash 快捷键大全](https://linux.cn/article-5660-1.html)
 - http://webres.wang/the-art-of-command-line/
 - http://webres.wang/list-10-funny-linux-commands/
+

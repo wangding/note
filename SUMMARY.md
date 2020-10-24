@@ -8,7 +8,7 @@
 - [vim](./office/vim.md)
 - [cVim](./office/cvim.md)
 - [Git](./office/git.md)
-- [GitBook](./office/gitbook.md)
+- [GitBook](./office/note-gitbook.md)
 - [RegExp](./office/regexp.md)
 - [tern_for_vim](./office/tern_for_vim.md)
 - [Redmine](./office/redmine.md)

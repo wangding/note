@@ -73,7 +73,7 @@ vi conf/nginx.conf
 ```
 location / {
   proxy_pass   http://localhost:3000;
-  proxy_set_header Host redmine.wangding.in;
+  proxy_set_header Host redmine.wangding.co;
   proxy_set_header X-Real-IP 39.104.115.100;
 }
 ```

@@ -42,7 +42,7 @@
   - 图片去背景，把图片变成背景透明图片，可以用在线抠图网站：http://www.aigei.com/bgremover/
   - 把去背景后的图片变成图标，用在线图标生成网站：http://www.faviconico.org/  
   - 可以选择 128\*128 尺寸的图标，因为一般浏览器会缓存  
-  - 案例：http://sample.wangding.in/ 图标是 S 形状，代表 sample 的意思。
+  - 案例：http://sample.wangding.co/ 图标是 S 形状，代表 sample 的意思。
 
 ## 参考资料
 

@@ -1,68 +1,48 @@
 # docker
 
-## 目标
-
-- 用 Docker 实现 Node.js 开发环境
-- 用 Docker 实现 Node.js 程序的测试和评价
-
 ## Docker 安装
 
-### 一、查看内核是否符合要求
+Docker 分两个版本，docker-ce(Community Edition) 和 docker-ee(Enterprise Edition)。CE 版本是免费的、社区版。
 
-| CentOS版本 | 内核版本 |
-| ---------- | -------- |
-| CentOS 7 x64 | 3.10 以上 |
-| CentOS 6.5+ x64 |  2.6.32-431 以上 |
-
-查看内核版本，使用下面的命令：
+具体安装步骤，参考 Docker 官方文档：https://docs.docker.com/engine/install/centos/
 
 ```bash
-$ uname -r
+yum install -y yum-utils
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+yum install docker-ce docker-ce-cli containerd.io
+yum list docker-ce --showduplicates | sort -r
+systemctl start docker
+systemctl status docker
+systemctl enable docker
+docker version
+docker run hello-world
 ```
 
-### 二、安装
-
-安装最新版本的 Docker。最新版本的 Docker 分两个版本，docker-ce(Community Edition)和docker-ee(Enterprise Edition)。CE 版本是免费的、社区版。
-
-1 安装依赖的软件包
+## Docker 使用
 
 ```bash
-$ sudo yum install -y yum-utils \
-  device-mapper-persistent-data \
-  lvm2
+docker -h
+docker images
+docker pull centos
+docker images
+mkdir -p /etc/docker
+tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://v0yaxj7c.mirror.aliyuncs.com"]
+}
+EOF
+systemctl daemon-reload
+systemctl restart docker
+docker pull ubuntu
+docker images
+docker search tomcat
+docker images
+docker rmi ubuntu
+docker images
+docker run -it --name c1 centos /bin/bash
+docker run -d --name c2 centos /bin/bash
+history
+docker ps
+docker exec -it c1 /bin/bash
+docker exec -it c2 /bin/bash
 ```
-
-2 设置稳定版仓库
-
-# 添加官方数据源
-
-```bash
-$ sudo yum-config-manager \
-  --add-repo \
-  https://download.docker.com/linux/centos/docker-ce.repo
-
-# 添加阿里云数据源
-$ sudo yum-config-manager \
-  --add-repo \
-  https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-```
-
-3 安装
-
-```bash
-$ sudo yum install -y docker-ce # 安装最新版本
-```
-
-4 启动Docker
-
-```bash
-$ sudo systemctl start docker # 启动
-$ sudo systemctl stop docker
-$ sudo systemctl restart docker
-
-$ sudo docker run hello-world # 检查 docker 运行正常
-```
-
-5 检查 docker 是否安装成功
-
-$ docker --version # 查看安装的 docker 版本

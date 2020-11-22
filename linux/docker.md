@@ -121,7 +121,7 @@ docker ps --no-trunc      返回
 --read-only               只读文件系统
 ```
 
-## 创造镜像
+## 生成镜像
 
 ```bash
 # 构建镜像
@@ -131,9 +131,38 @@ docker build -t 镜像的名字 --rm=true .
 
 # Dockerile 基于 DSL（Domain Specific Language） 语法
 
+# 设置镜像 tag
+docker tag
 
+# 登录镜像仓库网站
+docker login
+
+# 推送镜像
+docker push
 ```
 
 ## 容器管理
 
 
+## 其他
+
+```bash
+# 搭建私有镜像仓库
+docker run -d -p 5000:5000 --restart=always --name registry \
+-v /home/wangding:/var/lib/registry registry:latest
+
+docker tag hello-world:latest localhost:5000/hello-world:1.0.0
+
+docker push localhost:5000/hello-world:1.0.0
+
+# 防火墙打开 5000 端口
+firewall-cmd --permanent --add-port=5000/tcp
+firewall-cmd --reload
+firewall-cmd --zone=public --list-ports
+
+# 通过浏览器查看仓库信息
+http://192.168.133.144:5000/v2/hello-world/tags/list
+
+# 通过磁盘文件查看仓库信息
+ls /home/wangding/docker
+```

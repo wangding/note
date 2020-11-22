@@ -90,13 +90,6 @@ docker rmi centos
 docker exec -it c1 /bin/bash
 docker exec -it c2 /bin/bash
 
-# 构建镜像
-docker build -t 镜像的名字 --rm=true .
-# --rm=true 删除中间镜像
-# . 表示用当前目录的 Dockerfile 来创建镜像
-
-# Dockerile 基于 DSL（Domain Specific Language） 语法
-
 # 检查容器详细信息
 docker inspect c2
 
@@ -105,9 +98,14 @@ docker inspect --format "{{.State.Running}}" c1
 docker inspect -f "{{.State.Running}}" c1
 
 # 常用参数
---link 容器名字：别名     链接到某个容器
+--link 容器名字：别名     链接到某个容器，解决主机名到 IP 地址映射的问题
+                          链接时静态的，不传递的
+                          链接目标的容器必须先启动
+                          新容器中会创建环境变量来保存目标容器的名称和 IP Addr
+
 --rm                      运行完镜像就删除镜像
 -e 环境变量=值            设置容器的环境变量
+-e = --env
 --pid host                没有 PID 隔离的容器（一般不这样做）
 --cidfile 容器名称文件    把容器的 ID，保存到容器名称文件中，应该给出绝对路径
 docker ps -l -q           返回最后创建容器的截断的 ID
@@ -120,4 +118,22 @@ docker ps --no-trunc      返回
 -p <container port>
 -p <hostport>:<container port>
 -p <hostip>:<hostport>:<container port>
+--read-only               只读文件系统
 ```
+
+## 创造镜像
+
+```bash
+# 构建镜像
+docker build -t 镜像的名字 --rm=true .
+# --rm=true 删除中间镜像
+# . 表示用当前目录的 Dockerfile 来创建镜像
+
+# Dockerile 基于 DSL（Domain Specific Language） 语法
+
+
+```
+
+## 容器管理
+
+

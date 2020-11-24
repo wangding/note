@@ -21,6 +21,10 @@ docker run hello-world
 ## Docker 使用
 
 ```bash
+# 以非 root 用户身份使用 docker
+sudo usermod -aG docker $USER   # $USER 是当前登录的用户
+                                # 此命令执行后，需注销，重新登录，才生效
+
 # 查看 docker 帮助
 docker -h
 

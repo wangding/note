@@ -68,7 +68,7 @@ cd /usr/local/nginx
 
 # 编辑 nginx 的配置文件 nginx.conf 文件，默认不用编辑
 vi conf/nginx.conf
-
+```
 
 ```
 location / {
@@ -78,6 +78,7 @@ location / {
 }
 ```
 
+```bash
 # 启动 nginx
 sudo sbin/nginx
 

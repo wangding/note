@@ -8,6 +8,7 @@ before_script:
 
 after_script:
   - grunt minify
+  - grunt upload
   - cd ./_book
   - git init
   - git config user.name "${USER_NAME}"

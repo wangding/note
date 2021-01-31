@@ -147,6 +147,19 @@ docker push
 
 ## 容器管理
 
+```bash
+# 安装 Docker Compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.28.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+# 添加运行权限
+sudo chmod +x /usr/local/bin/docker-compose
+
+# 检查是否安装成功
+docker-compose --version
+
+# 使用 Docker Compose
+# 例如，bitnami redmine: https://hub.docker.com/r/bitnami/redmine
+```
 
 ## 其他
 

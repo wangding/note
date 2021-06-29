@@ -98,6 +98,7 @@
 - `passwd wangding`，修改当前用户 wangding 账户的密码
 - `sudo hostnamectl --static set-hostname DEV`，设置主机名为 DEV
 - `hostnamectl status`，查看主机名信息
+- `$(cmd)`，把 cmd 的运行结果放到其他命令中，例如：`echo "今天是：$(date)"`
 
 ## 安装卸载程序
 

@@ -29,6 +29,7 @@
 
 ## Linux
 
+- [bash](./linux/bash.md)
 - [CentOS](./linux/centos.md)
 - [aliyun](./linux/aliyun.md)
 - [nginx](./linux/nginx.md)

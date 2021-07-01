@@ -37,6 +37,7 @@
 - [GitLab](./linux/gitlab.md)
 - [Ruby](./linux/ruby.md)
 - [docker](./linux/docker.md)
+- [alpine](./linux/alpine.md)
 
 ## Testing
 

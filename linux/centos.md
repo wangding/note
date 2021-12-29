@@ -99,6 +99,21 @@
 - `sudo hostnamectl --static set-hostname DEV`，设置主机名为 DEV
 - `hostnamectl status`，查看主机名信息
 - `$(cmd)`，把 cmd 的运行结果放到其他命令中，例如：`echo "今天是：$(date)"`
+- `xxd hello.o`，在控制台查看二进制文件
+
+## scp 命令
+
+```bash
+# 复制文件到远程主机
+scp /path/file root@ipaddr:/path/
+# 例如：
+scp index.js wangding@192.168.59.148:/home/wangding/wd/auto/
+
+# 从远程主机复制文件到本地
+scp root@ipaddr:/path/file .
+# 例如：
+scp wangding@192.168.59.144:/home/wangding/wd/auto/index.js .
+```
 
 ## 安装卸载程序
 
@@ -155,6 +170,19 @@ sudo firewall-cmd --zone=public --list-ports
 - `chown user filename`，改变文件或目录的所有者，ch: change, own：owner
 - `chgrp group filename`，改变文件或目录的组名
 - `chown user.group filename`，改变文件或目录的所有者为 group 组的 user 用户
+
+## 常用网络命令
+
+- ssh，远程登录或执行远程主机上的命令，参考链接：https://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html
+- hostname
+- ping
+- ifconfig
+- iwconfig
+- nslookup
+- telnet
+- netstat
+- nc，net cat，参考链接：http://www.linuxso.com/command/nc.html
+- lsof，list open file，参考链接：https://www.jianshu.com/p/a3aa6b01b2e1
 
 ## crontab 定时任务
 

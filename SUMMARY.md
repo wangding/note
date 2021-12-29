@@ -29,11 +29,10 @@
 
 ## Linux
 
-- [bash](./linux/bash.md)
 - [CentOS](./linux/centos.md)
+- [bash](./linux/bash.md)
 - [aliyun](./linux/aliyun.md)
 - [nginx](./linux/nginx.md)
-- [Command](./linux/command.md)
 - [GitLab](./linux/gitlab.md)
 - [Ruby](./linux/ruby.md)
 - [docker](./linux/docker.md)
@@ -50,3 +49,7 @@
 
 - [MariaDB](./database/mariadb.md)
 - [MongoDB](./database/mongodb.md)
+
+## 杂项
+
+- [随笔](other.md)

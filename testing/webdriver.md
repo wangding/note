@@ -28,26 +28,3 @@ node install selenium-webdriver
 
 # IDE 环境用 webstorm，安装略
 ```
-
-# 课程设置1
-
-参考：Node.JS Selenium Webdriver
-网址：https://www.youtube.com/watch?v=euEir1hX-Z8&list=PLDcL8dhuVQJzgNMCXtlEe8QeDIEByxBFX
-问题：课程内容不全
-- 第一课：introduction
-  - 环境准备
-  - 做一个 demo 能打开百度网站
-- 第二课：promise（这个技术没有掌握）
-  - 解释 promise 的作用
-  - 完善上一个 demo，打印百度网站的 title
-- 第三课：Promise Chaining
-  - 解释 promise chaining 的用法
-  - 修改上一个 demo，对百度进行搜索操作，最后打印 title
-- 第四课：find wiki links
-
-# 课程设置2
-
-参考：WebDriverJS — Selenium WebDriver for Node.js 
-网址：https://www.youtube.com/playlist?list=PLVgOtoUBG2meE37mguTzlZHK4G4LQQGa_
-特色：完全是基于 node 命令行的，环境安装的过程很明白
-

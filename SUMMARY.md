@@ -21,7 +21,6 @@
 - [NPM](./web/npm.md)
 - [BenchMark](./web/benchmark.md)
 - [CSS](./web/css.md)
-- [Grunt](./web/grunt.md)
 - [JavaScript](./web/javascript.md)
 - [数据结构](./web/data-structure.md)
 - [Node.js](./web/nodejs.md)
@@ -30,18 +29,17 @@
 ## Linux
 
 - [CentOS](./linux/centos.md)
-- [bash](./linux/bash.md)
+- [Shell 脚本编程](./linux/bash.md)
+- [docker](./linux/docker.md)
 - [aliyun](./linux/aliyun.md)
 - [nginx](./linux/nginx.md)
 - [GitLab](./linux/gitlab.md)
 - [Ruby](./linux/ruby.md)
-- [docker](./linux/docker.md)
 - [alpine](./linux/alpine.md)
 
 ## Testing
 
 - [JMeter](./testing/jmeter.md)
-- [Mocha](./testing/mocha.md)
 - [SeleniumIDE](./testing/selenium-ide.md)
 - [WebDriver](./testing/webdriver.md)
 
@@ -52,4 +50,4 @@
 
 ## 杂项
 
-- [随笔](other.md)
+- [杂物间](other.md)

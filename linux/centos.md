@@ -101,6 +101,58 @@
 - `$(cmd)`，把 cmd 的运行结果放到其他命令中，例如：`echo "今天是：$(date)"`
 - `xxd hello.o`，在控制台查看二进制文件
 
+## 使用 man 命令查看系统调用
+
+man 2 read 或者是 man 3 read。中间的数字是什么意思呢？是man的分卷号，原来man分成很多部分，分别是：
+
+- 1 用户命令，可由任何人启动的
+- 2 系统调用，即由内核提供的函数
+- 3 例程，即库函数，比如标准 C 库 libc
+- 4 设备，即 /dev 目录下的特殊文件
+- 5 文件格式描述，例如：/etc/passwd
+- 6 游戏
+- 7 杂项，例如宏命令包、惯例等
+- 8 系统管理员工具，只能由 root 启动
+- 9 其他（Linux 特定的），用来存放内核例行程序的文档
+- n 新文档，可能要移到更适合的领域
+- o 老文档，可能会在一段期限内保留
+- l 本地文档，与本特定系统有关的
+
+要查属于哪一部分的，就用哪一部分的编号在命令之前。
+
+一般系统没有 man 命令，如果只安装 man，就只能查看第一部分（命令），如：
+
+`yum install man -y`
+
+如果要查看函数，也就是后面的部分，还需要安装 man-pages
+
+`yum install man-pages -y`
+`yum install man-pages-zh-CN -y`
+
+## CentOS 查看系统版本
+
+- `uname -a`
+- `cat /etc/redhat-release`
+
+## linux bash 邮件客户端
+
+```
+yum -y install sendmail
+yum -y install mailx
+
+sudo yum -y install mailx sendmail
+
+mail -s 'test' 408532507@qq.com < a.txt
+```
+
+## 查看进程树
+
+pstree 查看进程树
+yum install psmisc -y（安装 pstree）
+
+ps -ef （可以看到 ppid）
+ps -ajx （可以查看进程组号）
+
 ## scp 命令
 
 ```bash
@@ -275,6 +327,7 @@ ps -aux
 
 # 4、惯用的关机命令：shutdown
 shutdown -h
+
 # or
 poweroff
 ```
@@ -309,67 +362,6 @@ ONBOOT=yes
 
 - 用户 sudo 不在 sudoers 用户组中的问题
 http://blog.csdn.net/attagain/article/details/11987297
-
-## 安装 selenium webdriver
-
-参考：https://www.npmjs.com/package/selenium-webdriver
-
-```bash
-cd ~
-mkdir selenium
-cd selenium
-
-# 安装 Selenium webdriver
-npm install selenium-webdriver
-# 检查模块文件夹是否存在
-ls
-```
-
-## 安装 phantomJS
-
-http://www.cnblogs.com/LH2014/p/4073881.html
-
-```bash
-# 安装依赖软件
-yum install -y wget fontconfig
-
-# 下载安装包
-wget -c https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
-
-# 解压缩
-tar jxvf phantomjs-2.1.1-linux-x86_64.tar.bz2
-
-如果 tar 出错，错误信息是：tar (child): bzip2：无法 exec: 没有那个文件或目录
-则说明没有安装 bzip2
-yum intall -y bzip2
-
-# 移动位置
-mv phantomjs-2.1.1-linux-x86_64 /usr/local/src/phantomjs
-
-# 建立软连接
-ln -sf /usr/local/src/phantomjs/bin/phantomjs /usr/local/bin/phantomjs
-```
-
-## Selenium + Phantomjs 的测试代码
-
-貌似好像跑通了
-
-```javascript
-var webdriver = require('selenium-webdriver'),
-    By = webdriver.By,
-    until = webdriver.until;
-
-var driver = new webdriver.Builder()
-    .forBrowser('phantomjs')
-    .build();
-
-driver.get('http://www.baidu.com');
-driver.findElement(By.id('kw')).sendKeys('selenium');
-driver.findElement(By.id('su')).click();
-driver.wait(until.titleIs('selenium_百度搜索'), 1000);
-console.log('OK!');
-driver.quit();
-```
 
 ## 字体美化
 
@@ -484,4 +476,7 @@ export test
 - [Bash 快捷键大全](https://linux.cn/article-5660-1.html)
 - http://webres.wang/the-art-of-command-line/
 - http://webres.wang/list-10-funny-linux-commands/
-
+- 操作系统：https://github.com/sunym1993/flash-linux0.11-talk
+- linux 性能分析：https://zhuanlan.zhihu.com/p/35879028
+- 笨办法学 linux 视频：https://v.qq.com/biu/videoplus?vuid=327037319
+- LFS 中文：https://lctt.github.io/LFS-BOOK/lfs-sysv/LFS-BOOK.html

@@ -46,6 +46,8 @@
 
 ## 参考资料
 
+- https://web.dev/blog/
+- My Custom CSS Reset：https://www.joshwcomeau.com/css/custom-css-reset/
 - 网站开发人员应该知道的61件事：http://www.ruanyifeng.com/blog/2010/11/61_things_every_web_developer_should_know.html  
 - Best Practices for Speeding Up Your Web Site：https://developer.yahoo.com/performance/rules.html#gzip  
 - 前端开发者的基本要求：http://www.cnblogs.com/chyingp/archive/2013/04/25/a-baseline-for-front-end-developers.html

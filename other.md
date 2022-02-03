@@ -1,5 +1,11 @@
 # 乱七八糟
 
+## 博客
+
+- 为什么这么设计：https://draveness.me/whys-the-design/
+- 陌溪的学习笔记：http://moxi159753.gitee.io/learningnotes/
+- 周陆军博客：https://www.zhoulujun.cn/
+
 ## linux 进程间通信
 
 六种方式方式，参考：https://blog.csdn.net/qq_34827674/article/details/107678226
@@ -10,31 +16,28 @@
 - 信号
 - socket，参考：https://zhuanlan.zhihu.com/p/234806787
 
-## pm2 线上环境
-用 pm2 确保 linux 重启后，node.js 服务自动重启。
+## Software Architecture Patterns
 
-pm2 官网：https://pm2.keymetrics.io/
-pm2 自动重启服务：https://pm2.keymetrics.io/docs/usage/startup/
-主要是两个动作：
-1. 用 pm2 startup 命令产生 systemd service 的配置文件；
-2. 用 pm2 start app 启动服务程序；
-3. 用 pm2 save 命令保存服务信息；
-4. 重启 linux，用 pm2 ls 查看服务是否重启；
+- https://orkhanscience.medium.com/software-architecture-patterns-5-mins-read-e9e3c8eb47d2
 
-pm2 重启不成功的原因是使用了 nvm，导致执行 pm2 没有权限。
-参考链接：PM2 + REHL8 for not root user: permission denied · Issue #4580 · Unitech/pm2 · GitHub
+- 四本开源的软件架构的电子书：http://aosabook.org/en/index.html
 
-PM2 keeps getting killed every 90 seconds on centos 8,
-解决办法：go to /etc/systemd/system/pm2-user.service - comment PIDFile=... (add a # in front of that line)
+- 系统设计：https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md
 
-## sql 随机查询若干条记录
+## 元宇宙
 
-`select * from table order by rand() limit 100;`
+- 根据照片生成 avatr(3D 模型): https://readyplayer.me/
 
-## websocket 通过 https 
-1. 客户端用 wss://domain-name:port/；
-2. 服务器端用 https.createServer 添加证书；
+## 加密
 
-## api 服务程序操作证书文件的权限
-1. api 服务程序没有读取证书文件的权限，开始用 root 账户运行服务程序；
-2. 检查后发现证书文件 u+r, g 和 o 没有 read 权限，chmod 添加了 read 权限后，user 账户下运行 app.js 没有报错了；
+- SHA-1 碰撞：https://www.zhihu.com/question/56234281/answer/148349930
+
+## 人工智能
+
+- 简笔画识别应用：https://quickdraw.withgoogle.com
+- 物体识别应用：https://pjreddie.com/darknet/yolo/
+- 图片混合应用：https://deepdreamgenerator.com
+- ML 平台：https://studio.azureml.net
+- 数据集：https://archive.ics.uci.edu/ml
+- 神经网络案例演示：https://playground.tensorflow.org/
+- Kaggle如何入门：https://www.zhihu.com/question/23987009/answer/285179721

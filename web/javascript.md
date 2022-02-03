@@ -244,3 +244,9 @@ console.log(sum2);
 
 - 现实中的工厂生成产品，编程领域工厂的产品是对象
 - 函数的返回值是对象，这种函数成为工厂函数
+
+## 参考资料
+
+- [函数式编程](函数式编程：https://leanpub.com/javascriptallongesix/read)
+- [web component](https://www.webcomponents.org/)
+- [xy-ui](https://xy-ui.codelabo.cn/)

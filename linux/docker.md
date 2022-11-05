@@ -206,11 +206,18 @@ docker version
 sudo usermod -aG docker $USER   # $USER 是当前登录的用户
                                 # 此命令执行后，需注销，重新登录，才生效
 
-# 使用阿里 docker 镜像，提高镜像拉取速度
+# 使用国内 docker 镜像，提高镜像拉取速度
 mkdir -p /etc/docker
 tee /etc/docker/daemon.json <<-'EOF'
 {
-  "registry-mirrors": ["https://v0yaxj7c.mirror.aliyuncs.com"]
+  "registry-mirrors": [
+    "https://mirror.ccs.tencentyun.com",
+    "http://hub-mirror.c.163.com",
+    "https://registry.docker-cn.com",
+    "http://f1361db2.m.daocloud.io",
+    "https://v0yaxj7c.mirror.aliyuncs.com",
+    "https://05f073ad3c0010ea0f4bc00b7105ec20.mirror.swr.myhuaweicloud.com"
+  ]
 }
 EOF
 systemctl daemon-reload

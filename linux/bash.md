@@ -1,594 +1,345 @@
-# Shell 脚本编程 30 分钟入门
+# bash 学习笔记
 
-## 什么是 Shell 脚本
+全文参考 bash 手册，阅读原文：`man bash`。笔记只摘录个人感兴趣的内容，个人的理解放到注释下面。
 
-### 示例
+## 名称
 
-看个例子吧：
+bash - GNU Bourne-Again SHell (GNU 命令解释程序 “Bourne二世”)
 
-```bash
-#!/bin/sh
-cd ~
-mkdir shell_tut
-cd shell_tut
+## 概述
 
-for ((i=0; i<10; i++)); do
-  touch test_$i.txt
-done
-```
+bash [options] [file]
 
-### 示例解释
+注释：
+- bash 完整的命令行格式为，bash [长选项] [短选项] [脚本文件名]
+- 长选项要放到短选项之前，参考：`bash --help`，以及下面的[选项](#选项)小节。
 
-- 第1行：指定脚本解释器，这里是用 /bin/sh 做解释器的
-- 第2行：切换到当前用户的 home 目录
-- 第3行：创建一个目录 shell_tut
-- 第4行：切换到 shell_tut 目录
-- 第5行：循环条件，一共循环 10 次
-- 第6行：创建一个 test_0…9.txt 文件
-- 第7行：循环体结束
+## 描述
 
-mkdir, touch 都是系统自带的程序，一般在 /bin 或者 /usr/bin 目录下。for, do, done 是 sh 脚本语言的关键字。
+Bash 是一个与 sh 兼容的命令解释程序，可以执行从标准输入或者文件中读取的命令。
 
-### shell 和 shell 脚本的概念
+注释：
+- 直接在命令行输入 `sh`，进入交互式的 sh
+- 输入 `ls` 和 `exit` 两个命令，跟 bash 下的体验差不多
+- sh 是 Bourne Shell，Bourne 一代；而 bash 是 Bourne 二代
 
-shell 是指一种应用程序，这个应用程序提供了一个界面，用户通过这个界面访问操作系统内核的服务。Ken Thompson 的 sh 是第一种 Unix Shell，Windows Explorer 是一个典型的图形界面 Shell。
+## 选项
 
-shell 脚本（shell script），是一种为 shell 编写的脚本程序。业界所说的 shell 通常都是指 shell 脚本，但读者朋友要知道，shell 和 shell script 是两个不同的概念。由于习惯的原因，简洁起见，本文出现的 “shell 编程”都是指 shell 脚本编程，不是指开发 shell 自身（如 Windows Explorer 扩展开发）。
+### 长选项
 
-## 环境
+--help      在标准输出显示用法信息并成功退出
+--version   在标准输出显示此 bash 的版本信息并成功退出
 
-shell 编程跟 java、php 编程一样，只要有一个能编写代码的文本编辑器和一个能解释执行的脚本解释器就可以了。
+注释：
+- 命令行运行 `bash --help` 和 `bash --version`
+- 命令行运行 `bash -c help` 获取帮助信息
+- 命令行输入 `bash`，进入交互模式后，再输入 `help` 查看帮助信息
+- zsh 下面不支持 `help` 命令
 
-### OS
+### 短选项
 
-当前主流的操作系统都支持 shell 编程，本文档所述的 shell 编程是指 Linux 下的 shell，讲的基本都是 POSIX 标准下的功能，所以，也适用于 Unix 及 BSD（如 Mac OS）。
+-c string   如果有 -c 选项，那么命令将从 string 中读取。如果 string 后面有参数 (argument)，它们将用于给位置参数 (positional
+            parameter，以 $0 起始) 赋值。
 
-#### Linux
+-i          如果有 -i 选项，shell 将交互地执行。
 
-Linux 默认安装就带了 shell 解释器。
+注释：
+- 命令行运行 `bash -c "ls -l"`
+- 不用 `-i` 选项，命令行直接运行 `bash`，就会进入交互式的 Shell
+- 关键是要知道 Shell 分为交互式和非交互式
+- 交互式 Shell，就是对话模式，输入：命令，输出：命令执行的结果，输入和输出是一问一答，就是交互式
+- 非交互式 Shell，就是批处理模式或脚本模式，输入：脚本文件，输出：脚本文件执行的结果
+- 这个手册即讲解交互式的 Shell，也讲解非交互式的 Shell，也就是 Shell 编程
 
-#### Mac OS
+## 参数
 
-Mac OS 不仅带了 sh、bash 这两个最基础的解释器，还内置了 ksh、csh、zsh 等不常用的解释器。
+略
 
-#### Windows上的模拟器
+## 启动
 
-windows 出厂时没有内置 shell 解释器，需要自行安装，为了同时能用 grep, awk, curl 等工具，最好装一个 cygwin 或者 mingw 来模拟 linux 环境。
+当 bash 是作为交互的登录 shell 启动的，或者是一个非交互的 shell 但是指定了 --login 选项，它首先读取并执行 /etc/profile 中的
+命令，只要那个文件存在。读取那个文件之后，它以如下的顺序查找 ~/.bash_profile, ~/.bash_login, 和 ~/.profile, 从存在并且可读的
+第一个文件中读取并执行其中的命令。 --noprofile 选项可以用来在 shell 启动时阻止它这样做。
 
-- [cygwin](http://www.cygwin.com)
-- [mingw](http://www.mingw.org)
+当一个登录 shell 退出时， bash 读取并执行文件 ~/.bash_logout 中的命令，只要它存在。
 
-### 脚本解释器
+当一个交互的 shell 但不是登录 shell 启动时，bash 从文件 ~/.bashrc 中读取并执行命令，只要它存在。可以用 --norc 选项来阻止它这
+样做。 --rcfile file 选项将强制 bash 读取并执行文件 file 中的命令，而不是 ~/.bashrc 中的。
 
-#### sh
+注释：
+- `cat /etc/profile`，查看 profile 文件内容
+- `cat ~/.profile`，查看 .profile 文件内容
+- `cat ~/.bash_logout`，查看 .bash_logout 文件内容
+- 修改 .bashrc 文件，在其中添加 `echo wangding`
+- 命令行运行 `bash`，进入 bash 交互模式，看到输出 `wangding`
 
-即 Bourne shell，POSIX（Portable Operating System Interface）标准的 shell 解释器，它的二进制文件路径通常是 /bin/sh，由 Bell Labs 开发。
+## 定义
 
-本文讲的是 sh，如果你使用其它语言用作 shell 编程，请自行参考相应语言的文档。
+略
 
-#### bash
+## 保留字
 
-Bash 是 Bourne shell 的替代品，属 GNU Project，二进制文件路径通常是 /bin/bash。业界通常混用 bash、sh、和 shell，比如你会经常在招聘运维工程师的文案中见到：熟悉 Linux Bash 编程，精通 Shell 编程。
+保留字是对 shell 有特殊意义的词. 下列词被识别为保留的, 如果不是引用, 并且不是一个简单命令的起始词, 也不是 case 或者 for 命令的第三个词:
 
-在 CentOS 里，/bin/sh 是一个指向 /bin/bash 的符号链接:
+`! case do done elif else esac fi for function if in select then until while { } time [[ ]]`
 
-```
-[root@centosraw ~]# ls -l /bin/*sh
--rwxr-xr-x. 1 root root 903272 Feb 22 05:09 /bin/bash
--rwxr-xr-x. 1 root root 106216 Oct 17  2012 /bin/dash
-lrwxrwxrwx. 1 root root      4 Mar 22 10:22 /bin/sh -> bash
-```
+注释：
+- 学过编程的人都知道，保留字就是编程语言中的关键字，保留字不允许用作变量名或函数名。
 
-但在 Mac OS 上不是，/bin/sh 和 /bin/bash 是两个不同的文件，尽管它们的大小只相差 100 字节左右:
+## shell 语法
 
-```
-iMac:~ wuxiao$ ls -l /bin/*sh
--r-xr-xr-x  1 root  wheel  1371648  6 Nov 16:52 /bin/bash
--rwxr-xr-x  2 root  wheel   772992  6 Nov 16:52 /bin/csh
--r-xr-xr-x  1 root  wheel  2180736  6 Nov 16:52 /bin/ksh
--r-xr-xr-x  1 root  wheel  1371712  6 Nov 16:52 /bin/sh
--rwxr-xr-x  2 root  wheel   772992  6 Nov 16:52 /bin/tcsh
--rwxr-xr-x  1 root  wheel  1103984  6 Nov 16:52 /bin/zsh
-```
+注释：
+- shell 语法中的简单命令、管道命令、列表命令和复合命令
+- 类似编程中的变量和运算符、表达式、语句和语句块之间的层次关系
+- 多个简单命令通过管道操作符可以连接成管道命令
+- 多个简单命令或者多个管道命令又组成列表命令
+- 多个列表命令又组成复合命令
+- 从编程语言的语法角度来理解这些概念，会简单和容易很多
+- 站在编程语言的语法角度，shell 语法不是什么新鲜玩意
 
-#### 高级编程语言
+### 简单命令
 
-理论上讲，只要一门语言提供了解释器（而不仅是编译器），这门语言就可以胜任脚本编程，常见的解释型语言都是可以用作脚本编程的，如：Perl、Tcl、Python、PHP、Ruby。Perl 是最老牌的脚本编程语言了，Python 这些年也成了一些 linux 发行版的预置解释器。
+注释：
+- 简单命令就是一个命令，格式为：`command [options] [arguments]`
 
-编译型语言，只要有解释器，也可以用作脚本编程，如 C shell 是内置的（/bin/csh），Java 有第三方解释器 Jshell，Ada 有收费的解释器 AdaScript。
+### 管道命令
 
-如下是一个 PHP Shell Script 示例（假设文件名叫 test.php）：
+管道是一个或多个命令的序列，用字符 | 分隔。管道的格式是这样:
 
-```php
-#!/usr/bin/php
-<?php
-for ($i=0; $i < 10; $i++)
-        echo $i . "\n";
-```
+`[time [-p]] [ ! ] command [ | command2 ... ]`
 
-执行：
-`/usr/bin/php test.php`
+命令 command 的标准输出通过管道连接到命令 command2 的标准输入。连接是在命令指定的任何重定向之前进行的。
 
-或者：
-```bash
-chmod +x test.php
-./test.php
-```
+如果保留字 ! 作为管道前缀，管道的退出状态将是最后一个命令的退出状态的逻辑非值。否则，管道的退出状态就是最后一个命令的。
 
-## 如何选择 shell 编程语言
+如果保留字 time 作为管道前缀，管道中止后将给出执行管道耗费的用户和系统时间。
 
-### 熟悉 vs 陌生
+注释：
+- time 用来做基准测试
+- `!` 是编程语言中的取反操作
+- 在命令行输入 `! ls` 和 `echo $?`
+- 在命令行输入 `ls` 和 `echo $?`
+- unix 的哲学是小而美，每个命令的功能单一
+- 通过管道操作把多个简单命令连接起来，完成一个复杂功能，下面的管道命令用来计算代码行数
+- `find . -name '*.js' ! -path "./**/node_modules/*" ! -path "./node_modules/*" | xargs cat | grep -v ^$ | wc -l`
+- 完成文本行的排序和去重：`cat data.txt | sort | uniq`
 
-如果你已经掌握了一门编程语言（如 PHP、Python、Java、JavaScript），建议你就直接使用这门语言编写脚本程序，虽然某些地方会有点啰嗦，但你能利用在这门语言领域里的经验（单元测试、单步调试、IDE、第三方类库）。
+### 列表命令 list
 
-新增的学习成本很小，只要学会怎么使用 shell 解释器（Jshell、AdaScript）就可以了。
+列表命令是一个或多个管道，用操作符 ;, &, &&, 或 ⎪⎪ 分隔的序列, 并且可以选择用 ;, &, 或 <newline>新行符结束.
 
-### 简单 vs 高级
+这些序列操作符中， && 和 ⎪⎪ 优先级相同，其次是 ; 和 &, 它们的优先级是相同的。
 
-如果你觉得自己熟悉的语言（如 Java、C）写 shell 脚本实在太啰嗦，你只是想做一些备份文件、安装软件、下载数据之类的事情，学着使用 sh，bash 会是一个好主意。
+序列中可以有一个或多个新行符来分隔命令，而不是使用分号分隔。
 
-shell 只定义了一个非常简单的编程语言，所以，如果你的脚本程序复杂度较高，或者要操作的数据结构比较复杂，那么还是应该使用 Python、Perl 这样的脚本语言，或者是你本来就已经很擅长的高级语言。因为 sh 和 bash 在这方面很弱，比如说：
+如果一个命令是由控制操作符 & 结束的, shell 将在后台的子 shell 中执行这个命令。
 
-- 它的函数只能返回字串，无法返回数组
-- 它不支持面向对象，你无法实现一些优雅的设计模式
-- 它是解释型的，一边解释一边执行，连 PHP 那种预编译都不是，如果你的脚本包含错误(例如调用了不存在的函数)，只要没执行到这一行，就不会报错
+shell 不会等待命令执行结束，返回状态总是 0。以分号 ; 分隔的命令会被顺序执行；
 
-### 环境兼容性
+shell 会等待每个命令依次结束。返回状态是最后执行的命令的返回状态。
 
-如果你的脚本是提供给别的用户使用，使用 sh 或者 bash，你的脚本将具有最好的环境兼容性，perl 很早就是 linux 标配了，python 这些年也成了一些 linux 发行版的标配，至于 mac os，它默认安装了 perl、python、ruby、php、java 等主流编程语言。
+控制操作符 && 和 ⎪⎪ 分别代表 AND 和 OR 序列。
 
-## 第一个 shell 脚本
+一个 AND 序列的形式是：`command1 && command2`
 
-### 编写
+command2 只有在 command1 返回 0 时才被执行。
 
-打开文本编辑器，新建一个文件，扩展名为 sh（sh 代表 shell），扩展名并不影响脚本执行，见名知意就好，如果你用 php 写 shell 脚本，扩展名就用 php 好了。
+一个 OR 序列的形式是；`command1 ⎪⎪ command2`
 
-输入一些代码，第一行一般是这样：
+command2 只有在 command1 返回非 0 状态时才被执行。AND 和 OR 序列的返回状态是序列中最后执行的命令的返回状态。
 
-```
-#!/bin/bash
-#!/usr/bin/php
-```
+注释：
+- bash 的语法跟 C 语言的语法如出一辙，三种逻辑运算：取反 !，与 &&，或 ||，还有分号的语句结尾
+- 结合下面的复合命令描述，列表命令其实就是命令组成的语句块
+- 命令行执行两个列表命令：`pwd; echo '-------'; ls;` 和 `pwd; ls | sort;`
+- 根据手册描述，上面两个列表命令，最好用新行来隔开两个命令，这样就成交互模式了，但是放到脚本里面没有问题
+- & 符号放到命令末尾，这个命令将在后台运行
+- `vim &` vim 在后台运行，其实是挂起状态，`fg` 可以把 vim 调到前台
+- 关于 && 和 || 两种列表命令的执行方式，执行以下的操作来体会一下
+- 命令行执行：`pwd && ls`，`! pwd && ls` 观察两者的区别
+- 命令行执行：`pwd || ls`，`! pwd || ls` 观察两者的区别
 
-“#!”是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行。
+### 复合命令
 
-### 运行
+复合命令是如下情况之一：
 
-运行 Shell 脚本有两种方法：
+(list)
 
-#### 作为可执行程序
+列表命令将在一个子 shell 中执行。变量赋值和影响 shell 环境变量的内建命令在命令结束后不会再起作用。返回值是序列的返回值。
 
-```
-chmod +x test.sh
-./test.sh
-```
+{ list; }
 
-注意，一定要写成 ./test.sh，而不是 test.sh，运行其它二进制的程序也一样，直接写 test.sh，linux 系统会去 PATH 里寻找有没有叫 test.sh 的，而只有 /bin, /sbin, /usr/bin，/usr/sbin 等在 PATH 里，你的当前目录通常不在 PATH 里，所以写成 test.sh 是会找不到命令的，要用 ./test.sh 告诉系统说，就在当前目录找。
+列表命令将在当前 shell 环境中执行。序列必须以一个新行符或分号结束。这种做法也称为 group command(命令组)。返回值是序
 
-通过这种方式运行 bash 脚本，第一行一定要写对，好让系统查找到正确的解释器。
+列的返回值。注意与元字符 ( 和 ) 不同， { 和 } 是保留字，必须出现在能够识别保留字的场合。由于它们不会
 
-这里的"系统"，其实就是 shell 这个应用程序（想象一下 Windows Explorer），但我故意写成系统，是方便理解，既然这个系统就是指 shell，那么一个使用 /bin/sh 作为解释器的脚本是不是可以省去第一行呢？是的。
+产生断词(cause a word break)，它们和序列之间必须用空格分开。
 
-#### 作为解释器参数
+((expression))
 
-这种运行方式是，直接运行解释器，其参数就是 shell 脚本的文件名，如：
+表达式 expression 将被求值。求值规则在下面的算术求值章节中描述。如果表达式的值非零，返回值就是 0；否则返回值是 1。
 
-```
-/bin/sh test.sh
-/bin/php test.php
-```
+[[ expression ]]
 
-这种方式运行的脚本，不需要在第一行指定解释器信息，写了也没用。
+返回 0 或 1，取决于条件表达式 expression 求值的情况。 表达式是由下面 CONDITIONAL EXPRESSIONS 条件表达式 章节中描述的原
+语(primaries) 组成。 [[ 和 ]] 中的词不会进行词的拆分和路径的扩展处理； 而tilde  扩展，参数和变量扩展，算术扩展，命令替
+换，函数替换和引用的去除则都将进行。
 
-## 变量
+当使用  ==  和 != 操作符时，操作符右边的字符串被认为是一个模式，根据下面 Pattern Matching(模式匹配) 章节中的规则进行匹
+配。 如果匹配则返回值是 0，否则返回 1。模式的任何部分可以被引用，强制使它作为一个字符串而被匹配。
 
-### 定义变量
+表达式可以用下列操作符结合起来。根据优先级的降序列出如下：
 
-定义变量时，变量名不加美元符号（$），如：
+( expression ) 返回表达式 expression 的值。括号可以用来提升操作符的优先级。
 
-```
-your_name="qinjx"
-```
+! expression   返回真，如果表达式 expression 返回假。
 
-注意，变量名和等号之间不能有空格，这可能和你熟悉的所有编程语言都不一样。
+expression1 && expression2  返回真，如果表达式 expression1 和 expression2 都返回真。
 
-除了显式地直接赋值，还可以用语句给变量赋值，如：
+expression1 || expression2  返回真，如果表达式 expression1 或者 expression2 二者之一返回真。
 
-```
-for file in `ls /etc`
-```
+&&(与) 和 || 操作符不会对表达式 expression2 求值，如果 expression1 可以决定整个条件表达式的返回值的话。
 
-### 使用变量
+for name [ in word ] ; do list ; done
 
-使用一个定义过的变量，只要在变量名前面加美元符号即可，如：
+in 之后的一系列词会被扩展，产生一个项目列表。变量 name 被依次赋以这个列表中的每个元素， 序列  list  每次都被执行。如果
+in  word 被忽略，那么 for 命令遍历 已设置的位置参数(positional parameter，参见下面的 PARAMETERS 参数)， 为每一个执行一
+次序列 list。 返回值是最后一个命令的返回值。如果 in 之后的词扩展的结果是空列表，就不会执行任何命令，返回值是 0。
 
-```
-your_name="qinjx"
-echo $your_name
-echo ${your_name}
-```
+for (( expr1 ; expr2 ; expr3 )) ; do list ; done
 
-变量名外面的花括号是可选的，加不加都行，加花括号是为了帮助解释器识别变量的边界，比如下面这种情况：
+首先，算术表达式 expr1 被根据下面 算术求值 (ARITHMETIC EVALUATION) 中的规则进行求值。  然后算术表达式  expr2  被循环求
+值，直到它等于  0。每次 expr2 结果非零时，序列 list 都被执行， 算术表达式 expr3 被求值。如果任何表达式被忽略，将被视为
+执行结果是 1。 返回值是序列 list 中被执行的最后一个命令的返回值；或者是 false，如果任何表达式非法的话。
 
-```
-for skill in Ada Coffe Action Java; do
-  echo "I am good at ${skill}Script"
-done
-```
+select name [ in word ] ; do list ; done
 
-如果不给 skill 变量加花括号，写成 echo "I am good at $skillScript"，解释器就会把 $skillScript 当成一个变量（其值为空），代码执行结果就不是我们期望的样子了。
+in 之后的一系列词会被扩展，产生一个项目列表。这个扩展后的词集合被输出到标准错误上，每个前面 加上一个数字。如果 in word
+被忽略，将输出位置参数 (参见下面的 PARAMETERS 参数 章节)。 PS3 提示符将被显示出来，等待从标准输入得到一行输入。如果 输
+入是一个数字且显示中有对应的词，那么变量 name 的值将设置为这个词。如果输入一个空行，那么词和提示符将再次显示出来。如果
+读入了一个 EOF，命令就结束。 任何其他值将设置变量 name 为空。读入的行保存为变量 REPLY.  序列 list 在每次选择之后都会执
+行，直到执行了一个 break 命令。 select 的退出状态是序列 list 中执行的最后一个命令的退出状态，如果没有执行命令就是 0。
 
-推荐给所有变量加上花括号，这是个好的编程习惯。IntelliJ IDEA 编写 shell script 时，IDE 就会提示加花括号。
+case word in [ [(] pattern [ | pattern ] ... ) list ;; ] ... esac
 
-### 重定义变量
+case  命令首先扩展  word,  然后依次试着用每个  pattern  来匹配它，  使用与路径扩展相同的匹配规则(参见下面的   Pathname
+Expansion  路径扩展 章节)。如果找到一个匹配，相应的序列将被执行。找到一个匹配之后，不会再尝试其后的匹配。 如果没有模式
+可以匹配，返回值是 0。否则，返回序列中最后执行的命令的返回值。
 
-已定义的变量，可以被重新定义，如：
+if list; then list; [ elif list; then list; ] ... [ else list; ] fi
 
-```
-your_name="qinjx"
-echo $your_name
+序列 if list 被执行。如果退出状态是 0，then list 将被执行。否则，每个 elif 将被一次执行，如果退出状态是 0，相应的 then
+list  将被执行，命令结束。 否则，else list 将被执行，如果存在的话。 退出状态是最后执行的命令的退出状态，或者是 0，如果
+所有条件都不满足。
 
-your_name="alibaba"
-echo $your_name
-```
-  
-这样写是合法的，但注意，第二次赋值的时候不能写 $your_name="alibaba"，使用变量的时候才加美元符。
+while list; do list; done
+until list; do list; done
+
+while 命令不断地执行序列 do list，直到序列中最后一个命令返回 0。 until 命令和  while  命令等价，除了对条件的测试恰好相
+反；序列 do list 执行直到序列中最后一个命令返回非零状态值。 while 和 until 命令的退出状态是序列 do list 中最后一个命令
+的退出状态， 或者是 0，如果没有执行任何命令。
+
+[ function ] name () { list; }
+
+这样可以定义一个名为 name 的函数。函数体 body 是包含在 { 和 } 之间的命令序列 list。 在指定将 name 作为一个命令运行的场
+
+合，这个序列将被执行。函数的退出状态是函数体最后执行的命令的退出状态。
+
+注释：
+
+- 如果对 Shell 编程不感兴趣，复合命令可以不看
+- 如果有编程基础，复合命令没有什么难度，就是分支和循环两种流程控制
 
 ## 注释
 
-以“#”开头的行就是注释，会被解释器忽略。
+`#` 开头行都被忽略，通常用在非交互模式。交互模式下，使用内建命令 shopt 启用了 interactive_comments 选项，`#` 也起注释作用。
 
-### 多行注释
+注释：
 
-sh 里没有多行注释，只能每一行加一个 # 号。就像这样：
+- 交互模式下 interactive_comments 选项默认是启用的
+- zsh 的交互模式也是启用的
+- 会放到历史命令里，执行下面的操作，体会一下
+- `#ls`, `history` 会看到 `#ls` 命令, `ctrl+r ls` 会调出历史命令
 
-```
-#--------------------------------------------
-# 这是一个自动打 ipa 的脚本，基于 webfrogs 的 ipa-build 书写：https://github.com/webfrogs/xcode_shell/blob/master/ipa-build
+## 引用
 
-# 功能：自动为 etao ios app 打包，产出物为 14 个渠道的 ipa 包
-# 特色：全自动打包，不需要输入任何参数
-#--------------------------------------------
+## 参数
 
-##### 用户配置区 开始 #####
-#
-#
-# 项目根目录，推荐将此脚本放在项目的根目录，这里就不用改了
-# 应用名，确保和 Xcode 里 Product 下的 target_name.app 名字一致
-#
-##### 用户配置区 结束  #####
-```
+### 位置参数
 
-如果在开发过程中，遇到大段的代码需要临时注释起来，过一会儿又取消注释，怎么办呢？每一行加个 # 符号太费力了，可以把这一段要注释的代码用一对花括号括起来，定义成一个函数，没有地方调用这个函数，这块代码就不会执行，达到了和注释一样的效果。
+### 特殊参数
 
-## 字符串
+### Shell 内置变量
 
-字符串是 shell 编程中最常用最有用的数据类型（除了数字和字符串，也没啥其它类型好用了，哈哈），字符串可以用单引号，也可以用双引号，也可以不用引号。单双引号的区别跟PHP类似。
+### 数组
 
-### 单引号
+## 扩展
 
-```
-str='this is a string'
-```
+### 花括号扩展
 
-单引号字符串的限制：
+### Tilde 扩展
 
-- 单引号里的任何字符都会原样输出，单引号字符串中的变量是无效的
-- 单引号字串中不能出现单引号（对单引号使用转义符后也不行）
- 
-### 双引号
+### 参数扩展
 
-```
-your_name='qinjx'
-str="Hello, I know your are \"$your_name\"! \n"
-```
+### 命令替换
 
-- 双引号里可以有变量
-- 双引号里可以出现转义字符
+### 算数扩展
 
-### 字符串操作
+### 进程替换
 
-#### 拼接字符串
-  
-```
-your_name="qinjx"
-greeting="hello, "$your_name" !"
-greeting_1="hello, ${your_name} !"
+### 单词分割
 
-echo $greeting $greeting_1
-```
+### 路径扩展
 
-#### 获取字符串长度：
+### 引用移除
 
-```
-string="abcd"
-echo ${#string} #输出：4
-```
+## 重定向
 
-#### 提取子字符串
+### 重定向输入
 
-```
-string="alibaba is a great company"
-echo ${string:1:4} #输出：liba
-```
 
-#### 查找子字符串
+### 重定向输出
 
-```
-string="alibaba is a great company"
-echo `expr index "$string" is`#输出：3，这个语句的意思是：找出字母i在这名话中的位置，要在linux下运行，mac下会报错
-```
+### 重定向输出的追加模式
 
-#### 更多
-
-参见本文档末尾的参考资料中 [Advanced Bash-Scripting Guid Chapter 10.1](http://tldp.org/LDP/abs/html/string-manipulation.html)
-
-## 数组
-
-## 管道
-
-## 条件判断
-
-## 流程控制
-
-和 Java、PHP 等语言不一样，sh 的流程控制不可为空，如：
-
-```
-<?php
-if (isset($_GET["q"])) {
-  search(q);
-}
-else {
-  //do nothing
-}
-```
-
-在 sh/bash 里可不能这么写，如果 else 分支没有语句执行，就不要写这个 else。
-
-还要注意，sh 里的 if [ $foo -eq 0 ]，这个方括号跟 Java/PHP 里 if 后面的圆括号大不相同，它是一个可执行程序（和 ls, grep 一样），想不到吧？在 CentOS 上，它在 /usr/bin 目录下：
-
-  ll /usr/bin/[
-  -rwxr-xr-x. 1 root root 33408 6月  22 2012 /usr/bin/[
-
-正因为方括号在这里是一个可执行程序，方括号后面必须加空格，不能写成 if [$foo -eq 0]
-
-### if else
-#### if
-
-```
-if condition
-then
-  command1 
-  command2
-  ...
-  commandN 
-fi
-```
-
-写成一行（适用于终端命令提示符）：
-
-```
-if `ps -ef | grep ssh`;  then echo hello; fi
-```
-  
-末尾的 fi 就是 if 倒过来拼写，后面还会遇到类似的
-
-#### if else
-
-```
-if condition
-then
-  command1 
-  command2
-  ...
-  commandN
-else
-  command
-fi
-```
-
-#### if else-if else
-
-```
-if condition1
-then
-  command1
-elif condition2
-  command2
-else
-  commandN
-fi
-```
-
-### for while
-
-#### for
-
-在开篇的示例里演示过了：
-
-```
-for var in item1 item2 ... itemN
-do
-  command1
-  command2
-  ...
-  commandN
-done
-```
-
-写成一行：
-
-```
-for var in item1 item2 ... itemN; do command1; command2… done;
-```
-
-#### C风格的for
-
-```
-for (( EXP1; EXP2; EXP3 ))
-do
-  command1
-  command2
-  command3
-done
-```
-
-#### while
-
-```
-while condition
-do
-  command
-done
-```
- 
-#### 无限循环
-
-```
-while :
-do
-  command
-done
-```
-
-或者
-
-```
-while true
-do
-  command
-done
-```
-
-或者
-
-```
-for (( ; ; ))
-```
-
-#### until
-
-```
-until condition
-do
-  command
-done
-```
-
-### case
-
-```
-case "${opt}" in
-  "Install-Puppet-Server" )
-    install_master $1
-    exit
-  ;;
-
-  "Install-Puppet-Client" )
-    install_client $1
-    exit
-  ;;
-
-  "Config-Puppet-Server" )
-    config_puppet_master
-    exit
-  ;;
-
-  "Config-Puppet-Client" )
-    config_puppet_client
-    exit
-  ;;
-
-  "Exit" )
-    exit
-  ;;
-
-  * ) echo "Bad option, please choose again"
-esac
-```
-
-case 的语法和 C family 语言差别很大，它需要一个 esac（就是 case 反过来）作为结束标记，每个 case 分支用右圆括号，用两个分号表示 break
+## 别名
 
 ## 函数
 
-### 定义
+## 算数求值
 
-### 调用
+## 条件表达式
 
-## 文件包含
+## 简单命令扩展
 
-可以使用 source 和.关键字，如：
+## 命令执行
 
-```
-source ./function.sh
-. ./function.sh
-```
+## 命令执行环境
 
-在 bash 里，source 和 . 是等效的，他们都是读入 function.sh 的内容并执行其内容（类似 PHP 里的 include），为了更好的可移植性，推荐使用第二种写法。
+## 环境
 
-包含一个文件和执行一个文件一样，也要写这个文件的路径，不能光写文件名，比如上述例子中:
+## 退出状态
 
-```
-. ./function.sh
-```
+## 信号
 
-不可以写作：
-
-```
-. function.sh
-```
-
-如果 function.sh 是用户传入的参数，如何获得它的绝对路径呢？方法是：
-
-```
-real_path=`readlink -f $1`#$1是用户输入的参数，如function.sh
-. $real_path
-```
+## 作业控制
 
 
-## 用户输入
+## 提示符
 
-### 执行脚本时传入
+## readline 库
 
-### 脚本运行中输入
-
-### select 菜单
-
-## stdin 和 stdout
-
-## 常用的命令
-
-sh 脚本结合系统命令便有了强大的威力，在字符处理领域，有 grep、awk、sed 三剑客，grep 负责找出特定的行，awk 能将行拆分成多个字段，sed 则可以实现更新插入删除等写操作。
-
-### ps
-
-查看进程列表
-
-### grep
-
-#### 排除 grep 自身
-
-#### 查找与 target 相邻的结果
-
-### awk
-
-### sed
-
-#### 插入
-
-#### 替换
-
-#### 删除
-
-### xargs
-
-### curl
-
-## 综合案例
+## 可编程补全
 
 
-## 参考资料
+## 历史
 
-- [Advanced Bash-Scripting Guide](http://tldp.org/LDP/abs/html/)，非常详细，非常易读，大量 example，既可以当入门教材，也可以当做工具书查阅
-- [Unix Shell Programming](http://www.tutorialspoint.com/unix/unix-shell.htm)
-- [Linux Shell Scripting Tutorial - A Beginner's handbook](http://bash.cyberciti.biz/guide/Main_Page)
+## 历史扩展
+
+
+## 内置命令
+
+## 扩展阅读
+
+- `man zsh`
+

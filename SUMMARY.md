@@ -28,8 +28,9 @@
 
 ## Linux
 
+- [bash](./linux/bash.md)
 - [CentOS](./linux/centos.md)
-- [Shell 脚本编程](./linux/bash.md)
+- [Shell 脚本编程](./linux/bash-script.md)
 - [docker](./linux/docker.md)
 - [aliyun](./linux/aliyun.md)
 - [nginx](./linux/nginx.md)

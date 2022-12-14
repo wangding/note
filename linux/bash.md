@@ -199,7 +199,7 @@ echo $2
 **注释：**
 
 - 学过编程的人都知道，保留字就是编程语言中的关键字，保留字不允许用作变量名或函数名
-- 大部分这些保留字跟 C 语言中的关键字用法相同
+- 大部分保留字跟 C 语言中的关键字用法相同
 
 ## shell 语法
 
@@ -377,7 +377,201 @@ while 命令不断地执行序列 do list，直到序列中最后一个命令返
 **注释：**
 
 - 如果有编程基础，复合命令没什么难度，主要就是分支和循环两种流程控制
-- `bash -c "for((num=0; num<10; num++)); do echo wangding; done"`
+- 在控制台逐行输入下面的命令，体会一下
+```bash
+age=25; if(($age>20)); then echo 'You are a man.'; else echo 'You are a boy.'; fi
+for name in /*; do echo $name; done
+for((num=0; num<5; num++)); do echo wangding; done
+select name in /*; do echo $name; done
+```
+
+- 剩余大部分的示例，以脚本文件的方式运行，`bash file.sh`
+
+- `for.sh`
+
+  ```bash
+  for num in {1..5} ;
+  do
+  echo "$num  wangding"
+  done
+
+  echo '------------'
+
+  for num in {5..1} ;
+  do
+  echo "$num  wangding"
+  done
+  ```
+
+- `for-in-step.sh`
+
+  ```bash
+  for num in {1..9..2} ;
+  do
+  echo "$num  wangding"
+  done
+  ```
+
+- `for-string.sh`
+
+  ```bash
+  str="My name is wangding and am 20 years old.";
+
+  for word in $str;
+  do
+  echo $word
+  done
+  ```
+
+- `for-break.sh`
+
+  ```bash
+  num=1
+  for((; ;));
+  do
+  echo "$num wangding"
+  ((num++))
+  if(( $num > 5 )); then
+    break;
+  fi
+  done
+  ```
+
+- `while.sh`
+
+  ```bash
+  num=0
+  while [ $num -lt 10 ];
+  do
+  echo 'wangding'
+  ((num++))
+  done
+  ```
+
+- `while-c-style.sh`
+
+  ```bash
+  num=0
+  while (($num < 10));
+  do
+  echo 'wangding'
+  ((num++))
+  done
+  ```
+
+- `while-break.sh`
+
+  ```bash
+  num=1
+  while :
+  do
+  echo "$num: wangding"
+  ((num++))
+  if [ $num -gt 5 ];
+  then
+    break
+  fi
+  done
+  ```
+
+- `while-continue.sh`
+
+  ```bash
+  num=0
+  while [ $num -lt 10 ];
+  do
+  ((num++))
+  if [ $((num%2)) -eq 0 ];
+  then
+    continue
+  fi
+  echo "$num: wangding"
+  done
+  ```
+
+- `while-case-opt.sh`
+
+  ```bash
+  echo 'bash while-case-opt.sh -n wangding -a 20'
+
+  while getopts n:a: OPT
+  do
+  case "${OPT}"
+  in
+    n) name=${OPTARG};;
+    a) age=${OPTARG};;
+    *) echo "Invalid option"
+  exit 1;;
+  esac
+  done
+
+  printf "My name is $name and am $age years old.\n"
+  ```
+
+- `while-operate-file.sh`
+
+  ```bash
+  while read a b c
+  do
+  echo $b - $a
+  done < languages.txt
+  while-read-file.sh
+  num=1
+  while read -r line;
+  do
+  echo "$num:  $line"
+  ((num++))
+  done < /etc/passwd
+  ```
+
+- `languages.txt`
+
+  ```
+  Language    type      released
+  Python      general   1991
+  Javascript  web       1995
+  Java        mobiLe    1995
+  Rust        embebded  2010
+  Go          backend   2007
+  ```
+
+- `case.sh`
+
+  ```bash
+  scores=(95 81 88 56 34 71)
+
+  for s in ${scores[@]};
+  do
+  case $(($s/10)) in
+    9) echo "$s 优";;
+    8) echo "$s 良";;
+    7) echo "$s 中";;
+    6) echo "$s 及格";;
+    *) echo "$s 不及格";;
+  esac
+  done
+  ```
+
+- `function.sh`
+
+  ```bash
+  factorial() {
+  if [ $# -eq 0 ]; then
+    return 0
+  fi
+
+  local fac=1
+  for((num=1; num<=$1; num++));
+  do
+    ((fac*=$num))
+  done
+  return $fac
+  }
+
+  n=5
+  factorial $n
+  echo "$n! = $?"
+  ```
 
 ## 注释
 
@@ -458,8 +652,9 @@ echo $'\150\145\154\154\157\40\167\157\162\154\144'
 echo $'\x68\x65\x6c\x6c\x6f\x20\x77\x6f\x72\x6c\x64'
 echo $'\u68\u65\u6c\u6c\u6f\u20\u738b\u9876'
 ```
-- 转义字符有一特殊用途，就是命令行续行或换行功能
-- 一行命令太长写不下，可以用转义字符加换行符，另起一行
+- `cat parameters.sh | tr $'\n' ';'`，`tr` 命令将 `parameters.sh` 脚本文件中的换行符替换成了 `;`
+- 转义字符有一特殊用途，就是命令行续行
+- 一行命令太长写不下，可以用转义字符加换行符，另起一行，bash 会视为一行
 - 在控制台分别输入两个 echo 命令，体验一下
 ```bash
 echo Hello, bash world!
@@ -467,6 +662,20 @@ echo Hel\
 lo, ba\
 sh world!
 ```
+- 除了转义字符，单引号和双引号才是真正的引用
+- 引用的作用，是消除元字符和控制符的特殊含义，得到该字符的本体
+- 单引号比双引号消除特殊含义的效果更强
+- 也就是说有些字符在双引号中消除不了特殊含义
+- 控制台逐行输入下面的命令，比较单引号和双引号的效果
+```bash
+echo '$(pwd)'
+echo "$(pwd)"
+echo '`pwd`'
+echo "`pwd`"
+```
+- `$(pwd)` 和 \`pwd\` 的作用等价，都是命令替换，即，得到 `pwd` 命令的输出
+- 单引号消除了命令替换，双引号没有消除命令替换
+- 单引号消除了 `$`，`()` 和 \` 字符的特殊含义，双引号没有消除
 
 ## 参数（parameters）
 
@@ -478,15 +687,110 @@ sh world!
 
 ### 数组
 
+Bash 提供了一维数组变量。任何变量都可以作为一个数组；内建命令 declare 可以显式地定义数组。数组的大小没有上限，也没有限制在连续对成员引用和 赋值时有什么要求。数组以整数为下标，从 0 开始。
+
+如果变量赋值时使用语法 name[subscript]=value， 那么就会自动创建数组。 subscript 被当作一个算术表达式，结果必须是大于等于 0 的值。要显式地定义一个数组，使用  declare -a name (参见下面的 shell 内建命令(SHELL BUILTIN COMMANDS) 章节)。也可以用 declare -a name[subscript] 这时  subscript 被忽略。数组变量的属性可以用内建命令 declare 和 readonly 来指定。每个属性对于所有数组元素都有效。
+
+数组赋值可以使用复合赋值的方式，形式是  name=(value1 ... valuen)，这里每个 value 的形式都是 [subscript]=string。string 必须出现。如果出现了可选的括号和下标，将为这个下标赋值，否则 被赋值的元素的下标是语句中上一次赋值的下标加一。下标从 0 开始。 这个语法也被内建命令 declare 所接受。单独的数组元素可以用上面介绍的语法 name[subscript]=value 来赋值。
+
+数组的任何元素都可以用 ${name[subscript]} 来引用。 花括号是必须的，以避免和路径扩展冲突。如果 subscript 是 @ 或是 \*，它扩展为 name 的所有成员。这两种下标只有在双引号中才不同。在双引号中，${name[\*]}  扩展为一个词，由所有数组成员的值组成，用特殊变量 IFS 的第一个字符分隔；${name[@]} 将 name 的每个成员扩展为一个词。 如果数组没有成员，${name[@]} 扩展为空串。这种不同类似于特殊参数 * 和 @ 的扩展 (参见上面的 Special Parameters 段落)。${#name[subscript]} 扩展为 ${name[subscript]} 的长度。如果 subscript 是 * 或者是 @，扩展结果是数组中元素的个数。引用没有下标数组变量等价于 引用元素 0。
+
+内建命令  unset  用于销毁数组。unset  name[subscript]  将销毁下标是 subscript 的元素。 unset name, 这里 name 是一个数组，或者 unset name[subscript], 这里 subscript 是 * 或者是 @，将销毁整个数组。
+
+内建命令 declare, local, 和 readonly 都能接受 -a 选项，从而指定一个数组。内建命令 read 可以接受 -a 选项，从标准输入读入一列词来为数组赋值。内建命令 set 和 declare 使用一种可以重用为输入的格式来显示数组元素。
+
 ## 扩展
 
 ### 花括号扩展
 
 ### Tilde 扩展
 
+如果一个词以没有引用的波浪线字符 (`~') 开始，所有 在第一个没有引用的斜线 (`/') 之前的字符 (或者是这个词的所有字符，  如果没有没引用的斜线的话) 都被认为是 tilde-prefix(波浪线前缀)。 如果 tilde-prefix 中没有被引用的字符，那么波浪线之后的字符串 被认为是login name(登录名)。如果登录名是空字符串，波浪线将 被替换为 shell 参数 HOME 的值。如果没有定义 HOME， 将替换为执行此 shell 的用户的个人目录。否则，tilde-prefix 被替换为 与指定登录名相联系的个人目录。
+
+如果  tilde-prefix 是 `~+'，将使用 shell 变量 PWD 的值来替换。如果 tilde-prefix 是 `~-'，并且设置了 shell 变量 OLDPWD, 将使用这个变量值来替换。如果在 tilde-prefix 中，波浪线之后的字符串 由一个数字 N 组成，前缀可选的 `+' 或者 `-'，那么 tilde-prefix 将被替换为目录栈中相应的元素，就是将  tilde-prefix 作为参数执行内建命令 dirs 显示的结果。如果 tilde-prefix 中波浪线之后的字符是一个数字，没有前缀， 那么就假定有一个 `+'。
+
+如果登录名不合法，或者波浪线扩展失败，这个词将不会变化。
+
+在变量赋值中，对于 : 或 = 之后的字符串会立即检查未引用的 tilde-prefix。  这种情况下，仍然会进行波浪线扩展。因此，可以使用带波浪线的文件名来为 PATH, MAILPATH, 和 CDPATH 赋值，shell 将赋予扩展之后的值。
+
 ### 参数扩展
 
+字符  `$' 引入了参数扩展，命令替换和算术扩展。要扩展的参数名或符号 可能包含在花括号中，花括号可选的，但是可以使得要扩展的变量
+不会与紧随其后 的字符合并，成为新的名称。
+
+使用花括号的时候，匹配的右括号是第一个  `}'，并且它没有被反斜杠引用  或包含在一个引用的字符串中，也没有包含在一个嵌入的算术扩
+展，命令替换 或是参数扩展中。
+
+${parameter}
+        被替换为  parameter 的值。如果 parameter 是一个位置参数，并且数字多于一位时；或者当紧随 parameter 之后有不属于名称一部
+        分的字符时，都必须加上花括号。
+
+如果 parameter 的第一个字符是一个感叹号，将引进一层间接变量。 bash 使用以 parameter  的其余部分为名的变量的值作为变量的名称；
+接下来新的变量被扩展，它的值用在随后的替换当中，而不是使用 parameter 自身的值。这也称为 indirect expansion(间接扩展).  例外情
+况是下面讲到的 ${!prefix*}。
+
+下面的每种情况中，word 都要经过波浪线扩展，参数扩展，命令替换和 算术扩展。如果不进行子字符串扩展，bash 测试一个没有定义或值为
+空的 参数；忽略冒号的结果是只测试未定义的参数。
+
+${parameter:-word}
+        Use Default Values(使用默认值)。如果 parameter 未定义或值为空，将替换为 word 的扩展。否则，将替换为 parameter 的值。
+${parameter:=word}
+        Assign  Default  Values(赋默认值)。如果  parameter 未定义或值为空， word 的扩展将赋予 parameter.  parameter 的值将被替
+        换。位置参数和特殊参数不能用这种方式赋值。
+${parameter:?word}
+        Display Error if Null or Unset(显示错误，如果未定义或值为空)。如果  parameter  未定义或值为空，word  (或一条信息，如果
+        word 不存在) 的扩展将写入到标准错误；shell 如果不是交互的，则将退出。否则， parameter 的值将被替换。
+${parameter:+word}
+        Use Alternate Value(使用可选值)。如果 parameter 未定义或值为空，不会进行替换；否则将替换为 word 扩展后的值。
+${parameter:offset}
+${parameter:offset:length}
+        Substring   Expansion(子字符串扩展)。  扩展为parameter  的最多  length  个字符，从  offset  指定的字符开始。如果忽略了
+        length，扩展为 parameter 的子字符串， 从 offset 指定的字符串开始。length 和 offset 是算术表达式 (参见下面的 ARITHMETIC
+        EVALUATION 算术求值 段落)。 length 必须是一个大于等于 0 的数值。如果 offset 求值结果小于 0， 值将当作从 parameter 的值
+        的末尾算起的偏移量。如果 parameter 是 @，结果是 length 个位置参数，从 offset 开始。 如果 parameter 是一个数组名，以  @
+        或  *  索引，结果是数组的  length 个成员，从 ${parameter[offset]} 开始。 子字符串的下标是从 0 开始的，除非使用位置参数
+        时，下标从 1 开始。
+
+${!prefix*}
+        扩展为名称以 prefix 开始的变量名，以特殊变量 IFS 的第一个字符分隔。
+
+${#parameter}
+        替换为 parameter 的值的长度 (字符数目)。如果 parameter 是 * 或者是 @, 替换的值是位置参数的个数。如果 parameter  是一个
+        数组名，下标是 * 或者是 @, 替换的值是数组中元素的个数。
+
+${parameter#word}
+${parameter##word}
+        word  被扩展为一个模式，就像路径扩展中一样。如果这个模式匹配 parameter 的值的起始，那么扩展的结果是将 parameter 扩展后
+        的值中，最短的匹配 (``#'' 的情况) 或者最长的匹配 (``##''的情况) 删除的结果。如果 parameter 是 @ 或者是 *, 则模式删除操
+        作将依次施用于每个位置参数，最后扩展为结果的列表。如果 parameter 是一个数组变量，下标是 @ 或者是 *, 模式删除将依次施用
+        于数组中的每个成员，最后扩展为结果的列表。
+
+${parameter%word}
+${parameter%%word}
+        word 被扩展为一个模式，就像路径扩展中一样。如果这个模式匹配 parameter  扩展后的值的尾部，那么扩展的结果是将  parameter
+        扩展后的值中，最短的匹配 (``%'' 的情况) 或者最长的匹配 (``%%''的情况) 删除的结果。如果 parameter 是 @ 或者是 *, 则模式
+        删除操作将依次施用于每个位置参数，最后扩展为结果的列表。如果 parameter 是一个数组变量，下标是 @ 或者是 *, 模式删除将依
+        次施用于数组中的每个成员，最后扩展为结果的列表。
+
+${parameter/pattern/string}
+${parameter//pattern/string}
+        patterm  被扩展为一个模式，就像路径扩展中一样。parameter 被扩展，其值中最长的匹配 pattern 的内容被替换为 string。 在第
+        一种形式中，只有第一个匹配被替换。第二种形式使得 pattern 中所有匹配都被替换为 string。 如果 pattern 以 #  开始，它必须
+        匹配  parameter  扩展后  值的首部。如果  pattern  以  %  开始，它必须匹配  parameter  扩展后值的尾部。如果 string 是空
+        值，pattern 的匹配都将被删除， pattern 之后的 / 将被忽略。如果 parameter 是 @ 或者是 *, 则替换操作将依次施用于每个位置
+        参数，最后扩展为结果的列表。如果 parameter 是一个数组变量，下标是 @ 或者是 *, 模式删除将依次施用于数组中的每个成员，最
+        后扩展为结果的列表。
 ### 命令替换
+
+命令替换允许以命令的输出替换命令名。有两种形式：`$(command)` 和 \`command\`
+
+Bash 进行扩展的步骤是执行 command，以它的标准输出替换它，并且将所有后续的新行符删除。内嵌的新行符不会删除，但是它们可能会在词的拆分中被删除。命令替换 `$(cat file)` 可以用等价但是更快的方法 `$(< file)` 代替。
+
+当使用旧式的反引号（\`）替换形式时，反斜杠只有其字面意义，除非后面是 `$`, \`, 或者是 `\`。第一个前面没有反斜杠的反引号将结束命令替换。当使用 `$(command)` 形式时，括号中所有字符组成了整个命令；没有被特殊处理的字符。
+
+命令替换可以嵌套。要在使用反引号形式时嵌套，可以用反斜杠来转义内层的反引号。
+
+如果替换发生在双引号之中，结果将不进行词的拆分和路径扩展。
 
 ### 算术扩展
 
@@ -508,14 +812,35 @@ sh world!
 
 ### 重定向输入
 
-
 ### 重定向输出
 
 ### 重定向输出的追加模式
 
 ## 别名
 
+别名机制允许将一个词来替换为一个字符串，如果它是一个简单命令的第一个词的话。shell 记录着一个别名列表，可以使用内建命令 alias 和 unalias 来定义和取消（参见下面的 [内置命令](#内置命令)章节）。每个命令的第一个词，如果没有引用，都将被检查是否是一个别名。如果是，这个词将被它所指代的文本替换。别名和替换的文本可以包含任何有效的 shell 输入，包含上面列出的 metacharacters（元字符），特殊情况是别名中不能包含 `=`。替换文本的第一个词也被检查是否是别名，但是如果它与被替换的别名相同，就不会再替换第二次。这意味着可以用 ls 作为 ls -F 的别名，bash 不会递归地展开替换文本。如果别名的最后一个字符是 blank，那么命令中别名之后的下一个词也将被检查是否能进行别名展开。
+
+别名可以使用 alias 命令来创建或列举出来，使用 unalias 命令来删除。
+
+在替换文本中没有参数机制。如果需要参数，应当使用 shell 函数（参见下面的[函数](#函数)章节）。
+
+如果 shell 不是交互的，别名将不会展开，除非使用内建命令 shopt 设置了 expand_aliases 选项。
+
+关于别名的定义和使用中的规则比较混乱。Bash 在执行一行中的任何命令之前，总是读入至少完整一行的输入。别名在命令被读取时展开，而不是在执行的时候。因此，别名定义如果和另一个命令在同一行，那么不会起作用，除非读入了下一行。别名定义之后，同一行中的命令不会受新的别名影响。这种行为在函数执行时存在争议，因为别名替换是在函数定义被读取时发生的，而不是函数被执行的时候，因为函数定义本身是一个复合命令。结果，在函数中定义的别名只有当这个函数执行完才会生效。为了保险起见，应当总是将别名定义放在单独的一行，不在复合命令中使用 alias。
+
+不管什么情况下，别名都被 shell 函数超越。
+
 ## 函数
+
+一个 shell 函数，以上面 [shell 语法](#shell-语法)中描述的方法定义，保存着一系列的命令，等待稍后执行。当 shell 函数名作为一个简单命令名使用时，这个函数名关联的命令的序列被执行。函数在当前 shell 的上下文环境中执行；不会创建新的进程来解释它们（这与 shell 脚本的执行形成了对比）。当执行函数时，函数的参数成为执行过程中的位置参数。特殊参数 # 被更新以反映这个变化。位置参数 0 不会改变。函数执行时，FUNCNAME 变量被设置为函数的名称。函数和它的调用者在 shell 执行环境的所有其他方面都是一样的，特殊情况是 DEBUG 陷阱（参见下面对内建函数 [trap](#trap) 的描述，在 shell 内建命令章节中）不会被继承，除非函数设置了 trace 属性（参见下面对内建函数 [declare](#declare) 的描述)。
+
+函数中的局部变量可以使用内建命令 local 来声明。通常情况下，变量和它们的值在函数和它的调用者之间是共享的。
+
+如果函数中执行了内建命令 return，那么函数结束，执行从函数调用之后的下一个命令开始。函数结束后，位置参数的值以及特殊参数 # 都将重置为它们在函数执行前的值。
+
+函数名和定义可以使用内建命令 declare 或 typeset 加上 -f 参数来列出。如果在 declare 或 typeset 命令中使用 -F 选项将只列出函数名。函数可以使用内建命令 export 加上 -f 参数导出，使得子 shell 中它们被自动定义。
+
+函数可以是递归的。对于递归调用的次数没有硬性限制。
 
 ## 算术求值
 
@@ -614,22 +939,137 @@ echo $((2+3, 2*3))
 - `file1 -ef file2`  如果 file1 和 file2 指的是相同的设备和 inode 号则为真
 - `-o optname`       如果启用了 shell 选项 optname 则为真。参见下面对内建命令 set 的 -o 选项的描述中的选项列表
 - `-z string`        如果 string 的长度为 0 则为真
-- `-n string`        string 如果 string 的长度非 0 则为真
+- `-n string`        如果 string 的长度非 0 则为真
 - `string1 == string2`  如果字符串相等则为真。= 可以用于使用 == 的场合来兼容 POSIX 规范
 - `string1 != string2`  如果字符串不相等则为真
 - `string1 < string2`   如果 string1 在当前语言环境的字典顺序中排在 string2 之前则为真
 - `string1 > string2`   如果 string1 在当前语言环境的字典顺序中排在 string2 之后则为真
 - `arg1 OP arg2`        OP 是 `-eq`, `-ne`, `-lt`, `-le`, `-gt`, 或 `-ge` 之一。这些算术双目操作返回真，如果 arg1 与 arg2 分别是 相等，不等，小于，小于或等于，大于，大于或等于关系。 Arg1 和 arg2 可以是正/负整数
 
+**注释：**
+
+- 控制台逐行输入下面命令
+```bash
+bash
+if [ -a /dev/stdin ]; then echo '/dev/stdin exist'; fi
+if [ -a /dev/abc ]; then echo '/dev/abc exist'; else echo '/dev/abc not exist'; fi
+```
+
+- `cat ~/.profile` 内容如下：
+
+  ```bash
+  # if running bash
+  if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+    . "$HOME/.bashrc"
+    fi
+  fi
+
+  # set PATH so it includes user's private bin if it exists
+  if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+  fi
+
+  # set PATH so it includes user's private bin if it exists
+  if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+  fi
+  ```
+
+- 根据上面的列表，很容易读懂脚本代码中的 `if` 判断
+- `[ -n "$BASH_VERSION" ]`，检查 `$BASH_VERSION` 字符串变量是否为空
+- `[ -f "$HOME/.bashrc" ]`，检查 `$HOME/.bashrc` 文件是否存在且为普通文件
+- `[ -d "$HOME/bin" ]`，检查 `$HOME/bin` 是否存在，并且是一个目录
+- `[ -d "$HOME/.local/bin" ]`，检查 `$HOME/.local/bin` 是否存在，并且是一个目录
+- 把这些条件表达式代码的作用，跟代码前面的注释文字互相验证一下
+
 ## 简单命令扩展
+
+当执行一个简单命令时，shell 进行下列扩展，赋值和重定向，从左到右。
+
+1. 解释器标记为与变量赋值（在命令名之前的）和重定向有关的词被保存等待随后处理。
+2. 并非变量赋值或重定向的词被扩展。如果扩展后仍然有词保留下来，第一个词被作为命令名，其余词是参数。
+3. 重定向按照上面[重定向](#重定向)中讲到的规则进行。
+4. 每个变量赋值中 `=` 之后的文本在赋予变量之前要经过波浪线扩展，参数扩展，命令替换，算术扩展和引用删除。
+
+如果没有得到命令名，变量赋值影响当前 shell 环境。否则，变量被加入被执行的命令的环境中，不影响当前 shell 环境。如果任何赋值动作试图为只读变量赋值，将导致出错，命令以非零状态值退出。
+
+如果没有得到命令名，重定向仍会进行，但是不影响当前 shell 环境。重定向出错将使命令以非零状态值退出。
+
+如果扩展后有命令名保留下来，那么执行过程如下所示。否则，命令退出。如果在任何扩展中包含命令替换，那么整个命令的退出状态是最后一个命令替换的退出状态。如果没有进行命令替换，命令以状态零退出。
 
 ## 命令执行
 
+命令被拆分为词之后，如果结果是一个简单命令和可选的参数列表，将执行下面的操作。
+
+如果命令名中没有斜杠，shell 试图定位命令位置。如果存在同名的 shell 函数，函数将被执行，像上面[函数](#函数)中讲到的一样。如果名
+称不是一个函数，shell 从内建命令中搜索它。如果找到对应命令，它将被执行。
+
+如果名称既不是 shell 函数也不是一个内建命令，并且没有包含斜杠，bash 搜索 PATH 的每个成员，查找含有此文件名（可执行文件）的目录。 Bash 使用散列表来储存可执行文件的全路径（参见下面的 shell 内建命令中的 [hash](#hash)。只有在散列表中没有找到此命令，才对 PATH 进行完整的搜索。如果搜索不成功，shell 输出错误消息，返回退出状态 127。
+
+如果搜索成功，或者命令中包含一个或多个斜杠，shell 在单独的执行环境中执行这个程序。参数 0 被设置为所给名称；命令的其他参数被设置为所给的参数，如果有的话。
+
+如果执行失败，因为文件不是可执行格式，并且此文件不是目录，就假定它是一个 shell 脚本，一个包含 shell 命令的文件。此时将孵化出一个子 shell 来执行它。子 shell 重新初始化自身，效果就好像是执行了一个新的 shell 来处理脚本一样，但是父 shell 保存的命令位置仍然被 保留（参见下面的 shell 内建命令中的 [hash](#hash)）。
+
+如果程序是以 #! 开头的文件，那么第一行的其余部分指定了这个程序的解释器。shell 执行指定的解释器，如果操作系统不会自行处理这种可执行文件格式的话。解释器的参数由下面三部分组成：程序第一行中解释器名称之后的可选的一个参数，程序的名称，命令行参数，如果有的话。
+
 ## 命令执行环境
+
+shell 有执行环境的概念，由下列内容组成：
+
+- shell 启动时继承的打开的文件，例如在内建命令 exec 中使用重定向修改的结果
+- 当前工作目录，使用 cd，pushd 或者 popd 设置，或是由 shell 在启动时继承得到
+- 文件创建模式掩码，使用 umask 设置或是从 shell 的父进程中继承得到
+- 当前陷阱，用 trap 设置
+- shell 参数，使用变量赋值或者 set 设置，或者是从父进程的环境中继承得到
+- shell 函数，在执行中定义或者是从父进程的环境中继承得到
+- 设为允许的选项，在执行时设置（要么是默认允许的，要么是命令行给出的）或者是用 set 设置
+- 用 shopt 设为允许的选项
+- 用 alias 定义的 shell 别名
+- 各种进程号，包含后台作业的进程号，`$$` 的值，以及 `$PPID` 的值
+
+当并非 shell 函数或内置命令的简单命令执行时，它在一个由下述内容组成的单独的执行环境中启动。除非另外说明，值都是从 shell 中继承的。
+
+- shell 打开的文件，加上对命令使用重定向修改和添加的文件
+- 当前工作目录
+- 文件创建模式掩码
+- 标记为导出的 shell 变量，以及传递到环境中为这个命令导出的变量
+- shell 捕捉的陷阱被重置为从 shell 的父进程中继承的值，shell 忽略的陷阱也被忽略
+
+在单独的环境中启动的命令不能影响 shell 的执行环境。
+
+命令替换和异步命令都在子 shell 环境中执行。子 shell 环境是原有 shell 环境的赋值，但 shell 捕捉的陷阱被重置为 shell 启动时从父进程中继承的值。作为管道一部分来执行的内建命令也在一个子 shell 环境中执行。对子 shell 环境所作修改不能影响到原有 shell 的执行环境。
+
+如果命令后面是 `&` 并且没有启用作业控制，命令的默认标准输入将是空文件 `/dev/null`。否则，被执行的命令从调用它的 shell 中继承被重定向修改的文件描述符。
 
 ## 环境
 
+当一个程序执行时，它被赋予一个字符串数组，成为环境 environment。 它是一个 名称-值对 (name-value) 的列表，形式是 name=value.
+
+shell 提供了多种操作环境的方法。启动时，shell 扫描自身的环境，为每个找到 的名字创建一个参数，自动地将它标记为 export  (向子进
+程导出的)。被执行的命令继承了这个环境。 export 和 declare -x 命令允许参数和函数被加入到环境中或从环境中删除。如果环境中参数的
+值 被修改，新值成为环境的一部分，替换了旧值。所有被执行的命令继承的环境 包含 shell 的初始环境 (可能值被修改过)，减去被  unset
+命令删除的，加上通过 export 和 declare -x 命令添加的部分。
+
+可以在任何  simple  command  或函数的环境中设定暂时有效的参数，只要将参数赋值放在命令前面就可以了，  参见上面 PARAMETERS 的描
+述。这些赋值语句只在这个命令的环境中有效。
+
+如果设置了内建命令 set 的 -k 选项， 所有的 变量赋值都将放到命令的环境中，不仅是在命令名前面的那些。
+
+当 bash 执行一个外部命令时，变量 _ 被设置为命令的文件全名，然后被传递到命令的环境之中。
+
 ## 退出状态
+
+从 shell 的角度看，一个命令退出状态是 0 意味着成功退出。退出状态是 0 表明成功。非零状态值表明失败。当命令收到 fatal signal N 退出时，bash 使用 128+N 作为它的退出状态。
+
+如果没有找到命令，为执行它而创建的子进程返回 127。如果找到了命令但是文件不可执行，返回状态是 126。
+
+如果命令由于扩展或重定向错误而失败，退出状态大于零。
+
+shell 内建命令如果成功返回 0(true)，执行时出错则返回非零 (false)。所有内建命令返回 2 来指示不正确的用法。
+
+Bash 自身返回最后执行的命令的退出状态，除非发生了语法错误，这时它返回非零值。参见下面置的内命令 [exit](#exit)。
 
 ## 信号
 

@@ -1124,6 +1124,37 @@ shell 将每个管道分配给一个作业。它保存一个当前运行的作�
 
 ## readline 库
 
+这是在交互 shell 中处理读取输入的库，除非在 shell 启动时给出了 `--noediting` 选项。默认情况下，行编辑命令类似于 `emacs` 中的那
+些。也可以使用 vi 样式的行编辑界面。要在 shell 运行之后关闭行编辑，使用内置命令 `set` 的 `+o emacs` 或 `+o vi` 选项（参见下面的shell [内置命令](#内置命令)章节）。
+
+### Readline Notation
+
+在这个小节中，将使用 emacs 样式的记法来表述按键。Ctrl 键记为 C-key，例如，C-n 意思是 Ctrl-N。类似的，meta 键记为 M-key，因
+此 M-x 意味着 Meta-x。（在没有 meta 键的键盘上，M-x 意思是 ESC-x，也就是说，按下 Esc 键，然后按 x  键。这使得 Esc 成为 meta
+prefix。M-C-x 的组合意思是 Esc-Ctrl-x，也就是按 Esc 键，然后按住 Ctrl 键，同时按 x 键。）
+
+readline 命令可以有数字的参数，一般作为重复的计数。有些时候，它是重要参数的标记。给向前方进行的命令（例如，kill-line）传递负数参数，将使得命令向反方向进行。下面的命令如果接受参数时的行为与此不同，将另行说明。
+
+当命令被描述为剪切（killing）文本时，被删除的文本被保存，等待将来粘贴（yanking）。被剪切的文本保存在 kill ring 中。连续的剪切使得文本被依次加入到一个单元中，可以一次被粘贴。不剪切文本的命令将 kill ring 中的文本分离。
+
+Readline Initialization 初始化
+readline  可以通过将命令放入初始化文件  (inputrc 文件) 来定制。 文件名从变量 INPUTRC 的值中获取。如果没有设置这个变量，默认是
+~/.inputrc.  当使用 readline 库的程序启动时，将读取初始化文件，按键关联和变量将被设置。 readline 初始化文件中只允许有很少的基
+本构造。 空行被忽略。以 # 开始的行是注释。以 $ 开始的行指示了有条件的构造。 其他行表示按键关联和变量设置。
+
+默认的按键关联可以使用 inputrc 文件改变。其他使用这个库的程序可以添加它们自己的命令和关联。
+
+例如，将
+
+        M-Control-u: universal-argument
+或
+        C-Meta-u: universal-argument
+放入 inputrc 将使得 M-C-u 执行 readline 命令 universal-argument.
+
+可以识别下列字符的符号名称： RUBOUT, DEL, ESC, LFD, NEWLINE, RET, RETURN, SPC, SPACE, 和 TAB.
+
+在命令名之外，readline 允许将按键与一个字符串关联，当按下这个键时，将插入这个字符串 (一个宏，macro)。
+
 ## 可编程补全
 
 ## 历史

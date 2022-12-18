@@ -1,15 +1,14 @@
-# vim
+# vim 笔记
 
-模式化的编辑器。
+模式化编辑器
 
 ## 打开文件
 
 - vim [option] [file]
-- +# 打开文件后，光标处于第#行的行首
-- +/pattern 打开文件后，直接让光标处于第一个被/pattern匹配到的行的行首
-- +打开文件后，在尾行追加
-- :e `<path/to/file>` 打开一个文件
-- :e 刷新或重载当前的文件
+- `:e <path/to/file>` 打开一个文件
+- `:e` 刷新或重载当前的文件
+- `:e!` 如果当前文件缓存有变化 `:e!` 放弃变更
+- `e` 是 `edit` 的缩写，编辑文件
 
 ## 转换模式
 
@@ -176,8 +175,8 @@
 ## 多文件操作
 
 - `vi *.js` 同时打开多个文件
-- :ls 查看当前打开的文件
-- :b num 切换到第几个文件
+- `:ls` 查看文件缓存
+- `:b num` 切换到某个缓存编号
 
 ## 常用命令
 
@@ -215,7 +214,6 @@
     - s 句子
     - p 段落
     - 也可以是一些范围界定符号，例如：逗号，括号，等
-  - 参考：http://blog.jobbole.com/18339
 
 ## 操作块
 
@@ -346,6 +344,3 @@ l :source ~/.vimrc 不退出 vim 重新加载配置文件
 - [一起来说 vim 语](http://www.jianshu.com/p/a361ce8c97bc)
 - [vim 练级攻略](https://globalinheart.wordpress.com/2011/09/07/简明-vim-练级攻略/)
 - [知乎 vim 专栏](https://zhuanlan.zhihu.com/hack-vim)
-- [youtube 上大神的 vim 视频](https://www.youtube.com/playlist?list=PLwJS-G75vM7kFO-yUkyNphxSIdbi_1NKX)
-- [百度前端工程师的文章](http://efe.baidu.com/blog/vim-javascript-completion/)
-- [**伯乐在线的 vim 文章（重点学习）**](http://blog.jobbole.com/tag/vim/)

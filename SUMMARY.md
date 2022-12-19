@@ -4,6 +4,7 @@
 
 ## Linux
 
+- [命令行的艺术](./linux/the-art-of-command-line.md)
 - [bash](./linux/bash.md)
 - [CentOS](./linux/centos.md)
 - [docker](./linux/docker.md)

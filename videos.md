@@ -1,18 +1,7 @@
-# 前端开发学习路线
+# 视频
 
-[前端开发学习路线图](https://roadmap.sh/frontend)中提供了一些学习材料，基本上都是英文的文档和视频。本文档对这些学习材料进行补充和替换。
+## JavaScript
 
-## HTTP 协议
-
-- [HTTP 教程](https://developer.mozilla.org/zh-CN/docs/Web/HTTP)
-
-## 浏览器工作原理
-
-- [现代浏览器内部揭秘：第一部分](https://juejin.cn/post/6844903679389073415)
-- [现代浏览器内部揭秘：第二部分](https://juejin.cn/post/6844903692890537992)
-- [现代浏览器内部揭秘：第三部分](https://juejin.cn/post/6844903692894732295)
-- [现代浏览器内部揭秘：第四部分](https://juejin.cn/post/6844903695600058375)
-- [浏览器的工作原理：新式网络浏览器幕后揭秘](https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/)
 
 ## DNS
 
@@ -40,5 +29,3 @@
 - [20-实现区域传递2](https://www.bilibili.com/video/BV1ig4y1i79z)
 - [21-实现区域传递3](https://www.bilibili.com/video/BV195411p7ZE)
 - [22-BIND DNS服务器的备份与恢复](https://www.bilibili.com/video/BV1Ki4y1x7R6)
-
-知乎文章：[DNS cache 是什么？](https://www.zhihu.com/question/302677878)。这个文章中介绍了：操作系统的 DNS 缓存和浏览器的 DNS 缓存。操作系统的 DNS 缓存，上面的视频都介绍到了。浏览器的 DNS 缓存，可以了解一下。

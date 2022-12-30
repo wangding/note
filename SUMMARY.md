@@ -1,6 +1,9 @@
 # 目录
 
-- [简介](README.md)
+- [简介](./README.md)
+- [视频](./videos.md)
+- [大学课程](./courses.md)
+- [web 开发文章](./web-articles.md)
 
 ## Linux
 

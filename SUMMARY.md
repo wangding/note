@@ -34,3 +34,4 @@
 
 - [MariaDB](./database/mariadb.md)
 - [MongoDB](./database/mongodb.md)
+- [MySQL](./database/mysql.md)

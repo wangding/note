@@ -1,5 +1,9 @@
 # 大学课程
 
+## 计算机导论
+
+- [编程通识](https://www.bilibili.com/video/BV123411p7rf)
+
 ## C 语言
 
 - 笨办法学 C 语言[电子书](https://www.bookstack.cn/read/lcthw-zh/README.md)

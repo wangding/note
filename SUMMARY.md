@@ -7,7 +7,7 @@
 
 ## Office
 
-- [双拼](./office/shuang-pin.md)
+- [双拼输入法](./office/shuang-pin.md)
 - [Git](./office/git.md)
 - [Markdown](./office/markdown.md)
 - [vim](./office/vim.md)

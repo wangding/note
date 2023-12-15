@@ -21,12 +21,11 @@
 - [vmware](./office/vmware.md)
 - [Win 10](./office/win10.md)
 - [英语语法](./office/english-grammar.md)
-- [Linux](./linux/centos.md)
+- [Linux](./linux/linux.md)
   - [命令行的艺术](./linux/the-art-of-command-line.md)
   - [bash](./linux/bash.md)
   - [CentOS](./linux/centos.md)
   - [Shell 脚本编程](./linux/bash-script.md)
-  - [aliyun](./linux/aliyun.md)
   - [tmux](./linux/tmux.md)
 - [docker](./linux/docker.md)
 

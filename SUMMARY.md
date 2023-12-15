@@ -4,6 +4,7 @@
 - [视频](./videos.md)
 - [大学计算机课程](./courses.md)
 - [web 开发文章](./web-articles.md)
+- [如何学习](./office/study.md)
 
 ## 工具
 

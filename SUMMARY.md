@@ -13,6 +13,7 @@
 - [Markdown](./office/markdown.md)
   - [Markdown 基础语法](./office/markdown-basic.md)
   - [Markdown 扩展语法](./office/markdown-extension.md)
+  - [Markdown 表情符号](./office/emoji.md)
   - [Markdown 其他](./office/markdown-other.md)
 - [chatGPT](./office/chatgpt.md)
 - [vim](./office/vim.md)
